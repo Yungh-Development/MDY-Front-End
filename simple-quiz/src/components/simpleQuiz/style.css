@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    opacity: 1;
+}
+
+.container {
+    opacity: 1;
+    position: absolute;
+    z-index: 999999;
+
+}
