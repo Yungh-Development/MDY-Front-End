@@ -9,6 +9,10 @@
     opacity: 1;
 }
 
+.bi-x-lg {
+    color: red;
+}
+
 .container {
     opacity: 1;
     position: absolute;
