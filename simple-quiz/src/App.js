@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { SimpleQuiz } from "./components/simpleQuiz/simpleQuiz.js";
+import { Home } from "./components/simpleQuiz/home";
+
+import { SimpleQuiz } from "./components/simpleQuiz/quiz.js";
+
 import "./App.css";
 
 function App() {

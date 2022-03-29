@@ -5,17 +5,20 @@
 
 * {
     font-family: 'Raleway', sans-serif;
-    color: white;
-    opacity: 1;
-}
 
-.bi-x-lg {
-    color: red;
+    opacity: 1;
 }
 
 .container {
     opacity: 1;
     position: absolute;
+    color: white;
     z-index: 999999;
+
+}
+
+.homePage {
+    z-index: 9999999;
+
 
 }
