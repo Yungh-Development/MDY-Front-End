@@ -1,4 +1,4 @@
-body .teste {
+body .bgImg {
     background-image: url("./components/simpleQuiz/mathWallpaper.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,9 +9,9 @@ body .teste {
 
 }
 
-.teste .bg {
+.bgImg .bg {
     background-color: white;
-    z-index: 2222;
+    z-index: 22;
     width: 100%;
     height: 100%;
     opacity: 0.4;

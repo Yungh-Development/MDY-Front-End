@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -86,11 +87,12 @@ export const SimpleQuiz = () => {
   };
 
   return (
-    <div className="container">
-      <div className="container flex items-center justify-center">
-        <div className="absolute bg-[#0f172a] flex items-center justify-center flex-col shadow-border-light rounded-md p-2">
+    <div className="bgImg">
+      <div className="absolute w-full h-full z-10 bg-white opacity-40"></div>
+      <div className="absolute container flex items-center justify-center z-30 ml-44 mt-60">
+        <div className="bg-[#0f172a] flex items-center justify-center flex-col shadow-border-light rounded-md p-2">
           {mainRender ? (
-            <div className="absolute w-96 h-96 bg-[#0f172a] flex items-center justify-center flex-col shadow-border-light rounded-md p-2">
+            <div className="w-96 h-96 flex items-center justify-center flex-col">
               <div className="text-justify">
                 <h1 className="text-xl font-extrabold text-center">
                   Quiz Rules
@@ -108,7 +110,7 @@ export const SimpleQuiz = () => {
               </div>
               <div>
                 <input
-                  className="absolute top-100 right-[0px] mt-[10px] bg-[#0f172a] hover:shadow-border-light hover:bg-gray-800 p-3  rounded-md bg-gray-900"
+                  className="absolute mt-[50px] ml-[95px] bg-[#0f172a] hover:shadow-border-light hover:bg-gray-800 p-3  rounded-md bg-gray-900"
                   type="button"
                   value="Let's Quiz!"
                   onClick={renderNew}
@@ -172,8 +174,8 @@ export const SimpleQuiz = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="absolute top-0 m-[-8px] ml-[20px] left-full bg-[#0f172a] hover:shadow-border-light hover:bg-gray-800 p-3  rounded-md bg-gray-900">
-                    <input className=" " type="button" value="HOME" />
+                  <div className="absolute top-0 m-[-8px] ml-[20px] z-40 left-full bg-[#0f172a] hover:shadow-border-light hover:bg-gray-800 p-3  rounded-md bg-gray-900">
+                    <Link to="/home.js">Home</Link>
                   </div>
                 </div>
               ) : (
@@ -210,7 +212,6 @@ export const SimpleQuiz = () => {
           )}
         </div>
       </div>
-      );
     </div>
   );
 };
