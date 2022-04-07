@@ -1,17 +1,39 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { LeftMenu } from "./components/twitteLayout/leftMenu";
+import { NewsContainer } from "./components/twitteLayout/rightNewsContainer";
 
-import { Home } from "./components/simpleQuiz/home";
-import { SimpleQuiz } from "./components/simpleQuiz/quiz.js";
-
+import { Twitter } from "./components/twitteLayout/constants";
 import "./App.css";
-import "./components/simpleQuiz/style.css";
+
+const IconsList = [
+  " ",
+  "Home",
+  "Explore",
+  "Notifications",
+  "Messages",
+  "Bookmarks",
+  "Lists",
+  "Profile",
+  "More",
+];
 
 function App() {
   return (
-    <div className="flex items-center justify-center bgImg">
-      <div className="bg"></div>
-      <Home />
+    <div className="grid grid-cols-10">
+      <div className="relative col-span-2 pl-8 ">
+        <div className="relative pb-10">
+          <div className="absolute ml-[35px] mt-[30px] ">{Twitter}</div>
+          <div className="absolute ml-6 mt-[20px] bg-[#1D9BF0] w-[48px] h-[48px] rounded-full opacity-10 hover:opacity-20 cursor-pointer"></div>
+        </div>
+        <LeftMenu items={IconsList} />
+        <button className="text-center w-full p-3 ml-3 mt-4 rounded-full bg-[#1D9BF0] text-white font-black text-2xl hover:opacity-90">
+          Tweet
+        </button>
+      </div>
+      <div className="col-span-6"></div>
+      <div className="col-span-2">
+        <NewsContainer />
+      </div>
     </div>
   );
 }
