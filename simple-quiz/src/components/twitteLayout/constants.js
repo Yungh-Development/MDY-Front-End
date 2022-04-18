@@ -133,9 +133,8 @@ export const Dots = (
 
 export const SendPicture = (
   <svg
+    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
     fill="#4BAFF3"
     class="bi bi-image-fill"
     viewBox="0 0 16 16"
@@ -146,9 +145,8 @@ export const SendPicture = (
 
 export const SendGif = (
   <svg
+    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
     fill="#4BAFF3"
     class="bi bi-filetype-gif"
     viewBox="0 0 16 16"
@@ -163,8 +161,7 @@ export const SendGif = (
 export const SendGraph = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
     fill="#4BAFF3"
     class="bi bi-bar-chart-line"
     viewBox="0 0 16 16"
@@ -176,8 +173,7 @@ export const SendGraph = (
 export const SendEmoji = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
     fill="#4BAFF3"
     class="bi bi-emoji-smile"
     viewBox="0 0 16 16"
@@ -190,8 +186,7 @@ export const SendEmoji = (
 export const SendDate = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
     fill="#4BAFF3"
     class="bi bi-calendar-date"
     viewBox="0 0 16 16"
@@ -204,8 +199,7 @@ export const SendDate = (
 export const SendLocation = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
+    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
     fill="#4BAFF3"
     class="bi bi-geo-alt"
     viewBox="0 0 16 16"

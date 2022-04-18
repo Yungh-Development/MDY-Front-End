@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Icons } from "./constants";
+import { Icons } from "../constants";
 
 export const IconMap = ({ props }) => {
   const getIcon = Icons[props];
