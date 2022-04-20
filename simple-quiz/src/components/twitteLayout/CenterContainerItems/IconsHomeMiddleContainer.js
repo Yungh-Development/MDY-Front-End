@@ -17,7 +17,7 @@ export const IconsHomeMiddleContainer = () => {
       <span className="pr-4 cursor-pointer">{SendEmoji}</span>
       <span className="pr-4 cursor-pointer">{SendDate}</span>
       <span className="pr-4 cursor-pointer">{SendLocation}</span>
-      <label className="absolute right-0 top-[-5px] w-[90px] text-center p-[6px] rounded-full bg-[#1D9BF0] text-white font-black text-base opacity-60 hover:opacity-100 lg:text-lg p-[10px]">
+      <label className="absolute right-0 top-[-5px] w-[90px] text-center p-[6px] rounded-full bg-[#1D9BF0] text-white font-black text-base opacity-60 hover:opacity-100 lg:text-lg p-[7px]">
         Tweet
       </label>
       <input type="Button"></input>

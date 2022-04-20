@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconMap } from "./leftMenuMap";
+import { HamburguerList } from "../constants";
+import { TwitterButton } from "../Buttons/twitterButton";
+import { TwitterLogo } from "../LogoIcons/TwitterLogo";
+import { CloseMenuIcon } from "../constants";
 
-export const LeftMenu = ({ items }) => {
+import { LeftDesktopMenu } from "./leftDesktopMenu";
+import { LeftMobileMenu } from "./LeftMobileMenu";
+
+const IconsList = [
+  " ",
+  "Home",
+  "Explore",
+  "Notifications",
+  "Messages",
+  "Bookmarks",
+  "Lists",
+  "Profile",
+  "More",
+];
+
+export const LeftMenu = () => {
   return (
-    <div className="ml-3 md:ml-2">
-      <ul className="flex-col ">
-        {items.map((item) => (
-          <li className="flex-row flex text-sm font-extrabold pb-3 pt-3 hover:bg-[#E7E7E8] cursor-pointer w-[105%] rounded-full md:text-base lg:text-xl ">
-            <IconMap props={item} />
-          </li>
-        ))}
-      </ul>
+    <div className="ml-3">
+      <div className="hidden lg:block">
+        <TwitterLogo />
+      </div>
+      <LeftDesktopMenu items={IconsList} />
+      <LeftMobileMenu items={IconsList} />
     </div>
   );
 };

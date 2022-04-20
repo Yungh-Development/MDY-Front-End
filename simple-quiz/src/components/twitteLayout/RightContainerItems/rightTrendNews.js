@@ -3,7 +3,7 @@ import { Trends } from "../constants";
 
 export const RightTrendNews = () => {
   return (
-    <div className="relative mt-20 bg-[#F7F9F9] w-full h-full rounded-2xl">
+    <div className="relative mt-20 pt-2 pb-4 bg-[#F7F9F9] w-full h-auto rounded-2xl">
       <p className="font-extrabold  text-base ml-4 pt-2 font-sans lg:text-xl">
         What's happening
       </p>
@@ -23,7 +23,7 @@ export const RightTrendNews = () => {
           </div>
         ))}
       </div>
-      <a className="font-sans font-semibold pl-6 text-[#58B4F3]" href="#">
+      <a className="font-sans font-semibold pl-6 mt-4 text-[#58B4F3]" href="#">
         Show more
       </a>
     </div>
