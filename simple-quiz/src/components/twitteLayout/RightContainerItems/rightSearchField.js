@@ -3,7 +3,7 @@ import { Search } from "../constants";
 
 export const RightSearchField = () => {
   return (
-    <div className="relative flex mt-3">
+    <div className="relative flex mt-3 mr-4">
       <div className="absolute pt-7 pl-4 z-50">{Search}</div>
       <div className="">
         <input

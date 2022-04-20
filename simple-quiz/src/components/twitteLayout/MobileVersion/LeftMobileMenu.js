@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IconMap } from "./leftMenuMap";
+import { IconMap } from "../LeftContainerItems/leftMenuMap";
 import { HamburguerList } from "../constants";
 import { TwitterButton } from "../Buttons/twitterButton";
 import { TwitterLogo } from "../LogoIcons/TwitterLogo";
@@ -16,7 +16,7 @@ export const LeftMobileMenu = ({ items }) => {
         {HamburguerList}
       </div>
 
-      <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+      <div className={isNavOpen ? "showLeftMenu" : "hideLeftMenu"}>
         {" "}
         <div
           className="CROSS-ICON absolute top-0 right-0 px-8 py-8"

@@ -133,7 +133,8 @@ export const Dots = (
 
 export const SendPicture = (
   <svg
-    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
+    width="20"
+    height="20"
     xmlns="http://www.w3.org/2000/svg"
     fill="#4BAFF3"
     class="bi bi-image-fill"
@@ -145,7 +146,8 @@ export const SendPicture = (
 
 export const SendGif = (
   <svg
-    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
+    width="20"
+    height="20"
     xmlns="http://www.w3.org/2000/svg"
     fill="#4BAFF3"
     class="bi bi-filetype-gif"
@@ -161,7 +163,8 @@ export const SendGif = (
 export const SendGraph = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
+    width="20"
+    height="20"
     fill="#4BAFF3"
     class="bi bi-bar-chart-line"
     viewBox="0 0 16 16"
@@ -173,7 +176,8 @@ export const SendGraph = (
 export const SendEmoji = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
+    width="20"
+    height="20"
     fill="#4BAFF3"
     class="bi bi-emoji-smile"
     viewBox="0 0 16 16"
@@ -186,7 +190,8 @@ export const SendEmoji = (
 export const SendDate = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
+    width="20"
+    height="20"
     fill="#4BAFF3"
     class="bi bi-calendar-date"
     viewBox="0 0 16 16"
@@ -199,7 +204,8 @@ export const SendDate = (
 export const SendLocation = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="w-[18px] h-[18px] md:w-[22px] md:h-[22px]"
+    width="20"
+    height="20"
     fill="#4BAFF3"
     class="bi bi-geo-alt"
     viewBox="0 0 16 16"
@@ -214,7 +220,7 @@ export const HamburguerList = (
     xmlns="http://www.w3.org/2000/svg"
     width="28"
     height="28"
-    fill="currentColor"
+    fill="#77C3F6"
     class="bi bi-list"
     viewBox="0 0 16 16"
   >
@@ -230,7 +236,7 @@ export const SideMenuNews = (
     xmlns="http://www.w3.org/2000/svg"
     width="28"
     height="28"
-    fill="currentColor"
+    fill="#77C3F6"
     class="bi bi-newspaper"
     viewBox="0 0 16 16"
   >
@@ -256,17 +262,17 @@ export const CloseMenuIcon = (
 
 export const leftSideMenusTyle = (
   <style>{`
-  .hideMenuNav {
+  .hideLeftMenu {
     display: none;
   }
-  .showMenuNav {
+  .showLeftMenu {
     display: block;
     position: absolute;
     width: 350px;
     height: 100%;
     top: 0;
     left: 0;
-    background: #def0fa;
+    background: #c4e7ff;
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -277,17 +283,16 @@ export const leftSideMenusTyle = (
 
 export const rightSideMenusTyle = (
   <style>{`
-  .hideMenuNav {
+  .hideRightMenu {
     display: none;
   }
-  .showMenuNav {
-    display: block;
+  .showRightMenu {    
     position: absolute;
-    width: 350px;
+    width: 100%;
     height: 100%;
-    top: 0;
-    right: auto;
-    background: lightgray;
+    top: 0;    
+    right: 0;
+    background: #c4e7ff;
     z-index: 10;
     display: flex;
     flex-direction: column;

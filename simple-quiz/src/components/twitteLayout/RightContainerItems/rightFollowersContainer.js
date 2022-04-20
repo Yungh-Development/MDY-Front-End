@@ -3,7 +3,7 @@ import { Followes } from "../constants";
 
 export const RightFollowersContainer = () => {
   return (
-    <div className="relative mt-20 pt-2 pb-2 bg-[#F7F9F9] w-full h-auto rounded-2xl flex flex-col">
+    <div className="relative mt-20 pt-2 mr-4 pb-2 bg-[#F7F9F9] w-auto h-auto rounded-2xl flex flex-col">
       <p className="font-extrabold text-base ml-4 pt-2 font-sans lg:text-xl">
         Who To Follow
       </p>

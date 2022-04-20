@@ -2,7 +2,7 @@ import React from "react";
 import { RightTrendNews } from "./rightTrendNews";
 import { RightFollowersContainer } from "./rightFollowersContainer";
 import { RightSearchField } from "./rightSearchField";
-import { RightMobileNews } from "./rightMobileNews";
+import { RightMobileNews } from "../MobileVersion/rightMobileNews";
 
 export const NewsContainer = () => {
   return (

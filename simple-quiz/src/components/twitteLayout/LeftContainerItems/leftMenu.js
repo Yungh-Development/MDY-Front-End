@@ -6,7 +6,7 @@ import { TwitterLogo } from "../LogoIcons/TwitterLogo";
 import { CloseMenuIcon } from "../constants";
 
 import { LeftDesktopMenu } from "./leftDesktopMenu";
-import { LeftMobileMenu } from "./LeftMobileMenu";
+import { LeftMobileMenu } from "../MobileVersion/LeftMobileMenu";
 
 const IconsList = [
   " ",

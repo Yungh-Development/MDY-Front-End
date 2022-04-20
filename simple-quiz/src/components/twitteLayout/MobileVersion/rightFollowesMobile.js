@@ -4,9 +4,9 @@ import { CloseMenuIcon } from "../constants";
 import { SideMenuNews } from "../constants";
 import { Trends } from "../constants";
 
-import { RightFollowersContainer } from "./rightFollowersContainer";
-import { RightTrendNews } from "./rightTrendNews";
-import { RightSearchField } from "./rightSearchField";
+import { RightFollowersContainer } from "../RightContainerItems/rightFollowersContainer";
+import { RightTrendNews } from "../RightContainerItems/rightTrendNews";
+import { RightSearchField } from "../RightContainerItems/rightSearchField";
 
 import { Search } from "../constants";
 
@@ -22,14 +22,14 @@ export const RightFollowesMobile = () => {
           {SideMenuNews}
         </div>
 
-        <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+        <div className={isNavOpen ? "showRightMenu" : "hideRightMenu"}>
           {" "}
           <div className="mt-20">
             <RightSearchField />
           </div>
           <RightTrendNews />
           <div
-            className="CROSS-ICON absolute top-0 left-0 px-2 py-8"
+            className="CROSS-ICON absolute top-0 right-0 px-4 py-8"
             onClick={() => setIsNavOpen(false)} // change isNavOpen state to false to close the menu
           >
             {CloseMenuIcon}

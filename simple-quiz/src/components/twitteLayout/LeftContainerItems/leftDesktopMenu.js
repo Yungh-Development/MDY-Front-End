@@ -11,7 +11,7 @@ export const LeftDesktopMenu = ({ items }) => {
     <div>
       <ul className="DESKTOP-MENU hidden lg:flex flex-col">
         {items.map((item) => (
-          <li className="flex-row flex text-sm font-extrabold pb-3 pt-3 hover:opacity-50 cursor-pointer w-[105%] rounded-full md:text-base lg:text-xl ">
+          <li className="flex-row flex text-sm font-extrabold pb-3 pt-3 hover:bg-[#E7E7E8] cursor-pointer w-[90%] rounded-full md:text-base lg:text-xl ">
             <IconMap props={item} />
           </li>
         ))}
