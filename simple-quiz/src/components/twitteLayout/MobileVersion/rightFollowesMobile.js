@@ -17,7 +17,7 @@ export const RightFollowesMobile = () => {
       <section className="MOBILE-MENU flex flex-col md:hidden">
         <div
           className="HAMBURGER-ICON absolute top-4 right-0 px-3"
-          onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
+          onClick={() => setIsNavOpen((prev) => !prev)}
         >
           {SideMenuNews}
         </div>
@@ -30,7 +30,7 @@ export const RightFollowesMobile = () => {
           <RightTrendNews />
           <div
             className="CROSS-ICON absolute top-0 right-0 px-4 py-8"
-            onClick={() => setIsNavOpen(false)} // change isNavOpen state to false to close the menu
+            onClick={() => setIsNavOpen(false)}
           >
             {CloseMenuIcon}
           </div>
