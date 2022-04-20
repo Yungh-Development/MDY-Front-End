@@ -8,8 +8,11 @@ export const RightTrendNews = () => {
         What's happening
       </p>
       <div className="p-2 flex-col lg:flex-row">
-        {Trends.map((TrendNews) => (
-          <div className="font-black p-2 hover:bg-[#E7E7E8] cursor-pointer rounded">
+        {Trends.map((TrendNews, index) => (
+          <div
+            key={index}
+            className="font-black p-2 hover:bg-[#E7E7E8] cursor-pointer rounded"
+          >
             <p className="font-sans text-sm">{TrendNews.Tittle}</p>
             <div className="flex flex-row  justify-between ">
               <span className="font-black  col-span-7 pr-2">

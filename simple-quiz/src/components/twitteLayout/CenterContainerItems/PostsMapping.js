@@ -5,8 +5,8 @@ import { Dots } from "../constants";
 export const PostsMapping = () => {
   return (
     <div className="border-solid font-sans">
-      {Posts.map((UserPost) => (
-        <div>
+      {Posts.map((UserPost, index) => (
+        <div key={index}>
           <div className="relative p-6 border-1 border-b-lightblue-900">
             <div className="relative flex pl-6">
               <img

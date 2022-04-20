@@ -8,8 +8,11 @@ export const RightFollowersContainer = () => {
         Who To Follow
       </p>
       <div className="p-2 flex flex-col">
-        {Followes.map((FollowOption) => (
-          <div className=" font-bold p-2 hover:bg-[#E7E7E8] cursor-pointer rounded mt-4 flex flex-row  justify-between md:flex-col md:flex justify-center">
+        {Followes.map((FollowOption, index) => (
+          <div
+            key={index}
+            className=" font-bold p-2 hover:bg-[#E7E7E8] cursor-pointer rounded mt-4 flex flex-row  justify-between md:flex-col md:flex justify-center"
+          >
             <div className="flex max-w-[40px] max-h-[40px]">
               <img src={FollowOption.UserImg} className="rounded-full"></img>
               <div className="ml-2">
