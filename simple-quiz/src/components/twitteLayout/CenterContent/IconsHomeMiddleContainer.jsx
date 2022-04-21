@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeMiddleContainerIcons } from "../constants";
+import { HomeMiddleContainerIcons } from "./constants";
 
 export const IconsHomeMiddleContainer = () => {
   return (

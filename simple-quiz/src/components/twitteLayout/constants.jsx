@@ -14,26 +14,9 @@ import { ReactComponent as HamburguerMenu } from "../../public/icons/hamburguer.
 // Right Menu Icons
 import BBBLogo from "../../public/imgs/bbbLogo.jpg";
 import Dog from "../../public/imgs/Dog.JPG";
-import UserPostedField from "../../public/imgs/Post.JPG";
+
 import { ReactComponent as TwitterIcon } from "../../public/icons/twitter.svg";
 import Search from "../../public/icons/search.svg";
-
-//HOME POST ICONS fill="#4BAFF3" width="20"
-import { ReactComponent as SendPicture } from "../../public/icons/image.svg";
-import { ReactComponent as SendGif } from "../../public/icons/gifIcon.svg";
-import { ReactComponent as SendGraph } from "../../public/icons/barsGraph.svg";
-import { ReactComponent as SendEmoji } from "../../public/icons/emoji.svg";
-import { ReactComponent as SendDate } from "../../public/icons/calendar.svg";
-import { ReactComponent as SendLocation } from "../../public/icons/locationIcon.svg";
-
-export const HomeMiddleContainerIcons = {
-  SendPicture: SendPicture,
-  SendGif: SendGif,
-  SendGraph: SendGraph,
-  SendEmoji: SendEmoji,
-  SendDate: SendDate,
-  SendLocation: SendLocation,
-};
 
 export const Icons = {
   Home: home,
@@ -91,21 +74,6 @@ export const Followes = [
   },
 ];
 
-// MIDDLE CONTAINER
-export const Posts = [
-  {
-    UserImg: Dog,
-    Name: "Farofa",
-    Account: "@fafa",
-    Posted: UserPostedField,
-  },
-  {
-    UserImg: Dog,
-    Name: "Bacon",
-    Account: "@BaconDelicious",
-    Posted: UserPostedField,
-  },
-];
 
 // Styles
 export const leftSideMenusTyle = (

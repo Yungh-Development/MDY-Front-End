@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { IconMap } from "../LeftContent/leftMenuMap";
-import { Icons } from "../constants";
-import { TwitterButton } from "../Buttons/twitterButton";
-import { TwitterLogo } from "../LogoIcons/TwitterLogo";
+import { IconMap } from "../LeftMenuItens";
+import { Icons } from "../../constants";
+import { TwitterButton } from "../../Buttons/TwitterButton";
+import { TwitterLogo } from "../../LogoIcons/TwitterLogo";
 
 export const MobileMenu = ({ items }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);

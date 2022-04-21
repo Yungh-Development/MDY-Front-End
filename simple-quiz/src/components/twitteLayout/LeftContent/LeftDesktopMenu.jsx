@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { IconMap } from "./leftMenuMap";
-import { TwitterButton } from "../Buttons/twitterButton";
+import { IconMap } from "./LeftMenuItens";
+import { TwitterButton } from "../Buttons/TwitterButton";
 import { leftSideMenusTyle } from "../constants";
 
 export const DesktopMenu = ({ items }) => {

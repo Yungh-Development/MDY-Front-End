@@ -1,8 +1,8 @@
 import React from "react";
-import { Posts } from "../constants";
+import { Posts } from "./constants";
 import { Icons } from "../constants";
 
-export const PostsMap = () => {
+export const UserPosts = () => {
   return (
     <div className="border-solid font-sans">
       {Posts.map((UserPost, index) => (

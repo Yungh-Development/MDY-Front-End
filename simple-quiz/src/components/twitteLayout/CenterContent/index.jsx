@@ -1,7 +1,7 @@
 import React from "react";
-import { PostsMap } from "./PostsMap";
+import { UserPosts } from "./UserPosts";
 
-import Dog from "../../../public/imgs/Dog.JPG";
+import { CenterContainerImgs } from "./constants";
 import { IconsHomeMiddleContainer } from "./IconsHomeMiddleContainer";
 
 export const CenterContainer = () => {
@@ -12,7 +12,7 @@ export const CenterContainer = () => {
           Home
         </h1>
         <div className="flex p-6">
-          <img className="rounded-full w-[50px] md:w-[70px]" src={Dog}></img>
+          <img className="rounded-full w-[50px] md:w-[70px]" src={CenterContainerImgs.Dog}></img>
           <input
             type="text"
             className="text-lg ml-4 w-full font-sans lg:text-2xl"
@@ -21,7 +21,7 @@ export const CenterContainer = () => {
         </div>
         <IconsHomeMiddleContainer />
       </div>
-      <PostsMap />
+      <UserPosts />
     </div>
   );
 };

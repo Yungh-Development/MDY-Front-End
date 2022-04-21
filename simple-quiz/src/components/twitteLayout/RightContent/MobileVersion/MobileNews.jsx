@@ -1,5 +1,5 @@
 import React from "react";
-import { rightSideMenusTyle } from "../constants";
+import { rightSideMenusTyle } from "../../constants";
 import { FollowersMobile } from "./FollowersMobile";
 
 export const MobileNews = () => {

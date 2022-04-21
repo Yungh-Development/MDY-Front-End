@@ -1,7 +1,7 @@
 import React from "react";
-import { LeftMenu } from "./components/twitteLayout/LeftContent/leftMenu";
-import { NewsContainer } from "./components/twitteLayout/RightContent/NewsContainer";
-import { CenterContainer } from "./components/twitteLayout/CenterContent/CenterContainer";
+import { LeftMenu } from "./components/twitteLayout/LeftContent";
+import { NewsContainer } from "./components/twitteLayout/RightContent";
+import { CenterContainer } from "./components/twitteLayout/CenterContent";
 import { leftSideMenusTyle } from "./components/twitteLayout/constants";
 
 import "./App.css";

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Icons } from "../constants";
-import { FollowersContainer } from "../RightContent/FollowersContainer";
-import { TrendNews } from "../RightContent/TrendNews";
-import { SearchField } from "../RightContent/SearchField";
+import { Icons } from "../../constants";
+import { FollowersContainer } from "../../RightContent/FollowersContainer";
+import { TrendNews } from "../../RightContent/TrendNews";
+import { SearchField } from "../../RightContent/SearchField";
 
 export const FollowersMobile = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);

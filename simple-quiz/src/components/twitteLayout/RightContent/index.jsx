@@ -2,7 +2,7 @@ import React from "react";
 import { TrendNews } from "./TrendNews";
 import { FollowersContainer } from "./FollowersContainer";
 import { SearchField } from "./SearchField";
-import { MobileNews } from "../MobileVersion/MobileNews";
+import { MobileNews } from "./MobileVersion/MobileNews";
 
 export const NewsContainer = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TwitterLogo } from "../LogoIcons/TwitterLogo";
-import { DesktopMenu } from "./leftDesktopMenu";
-import { MobileMenu } from "../MobileVersion/MobileMenu";
+import { DesktopMenu } from "./LeftDesktopMenu";
+import { MobileMenu } from "./MobileVersion/MobileMenu";
 
 const IconsList = [
   " ",
