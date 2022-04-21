@@ -1,7 +1,7 @@
 import React from "react";
 import { Followes } from "../constants";
 
-export const RightFollowersContainer = () => {
+export const FollowersContainer = () => {
   return (
     <div className="relative mt-20 pt-2 mr-4 pb-2 bg-[#F7F9F9] w-auto h-auto rounded-2xl flex flex-col">
       <p className="font-extrabold text-base ml-4 pt-2 font-sans lg:text-xl">

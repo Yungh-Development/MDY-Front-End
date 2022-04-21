@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import { IconMap } from "./leftMenuMap";
-import { HamburguerList } from "../constants";
-import { TwitterButton } from "../Buttons/twitterButton";
 import { TwitterLogo } from "../LogoIcons/TwitterLogo";
-import { CloseMenuIcon } from "../constants";
-
-import { LeftDesktopMenu } from "./leftDesktopMenu";
-import { LeftMobileMenu } from "../MobileVersion/LeftMobileMenu";
+import { DesktopMenu } from "./leftDesktopMenu";
+import { MobileMenu } from "../MobileVersion/MobileMenu";
 
 const IconsList = [
   " ",
@@ -26,8 +21,8 @@ export const LeftMenu = () => {
       <div className="hidden lg:block">
         <TwitterLogo />
       </div>
-      <LeftDesktopMenu items={IconsList} />
-      <LeftMobileMenu items={IconsList} />
+      <DesktopMenu items={IconsList} />
+      <MobileMenu items={IconsList} />
     </div>
   );
 };

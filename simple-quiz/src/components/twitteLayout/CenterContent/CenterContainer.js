@@ -1,10 +1,10 @@
 import React from "react";
-import { PostsMapping } from "./PostsMapping";
+import { PostsMap } from "./PostsMap";
 
 import Dog from "../../../public/imgs/Dog.JPG";
 import { IconsHomeMiddleContainer } from "./IconsHomeMiddleContainer";
 
-export const MiddleContainer = () => {
+export const CenterContainer = () => {
   return (
     <div className="relative col-span-10 md:col-span-6 lg:col-span-5">
       <div className="border-solid border-1 pl-6 pt-6 border-x-lightblue-900 font-sans lg:pt-0">
@@ -21,7 +21,7 @@ export const MiddleContainer = () => {
         </div>
         <IconsHomeMiddleContainer />
       </div>
-      <PostsMapping />
+      <PostsMap />
     </div>
   );
 };

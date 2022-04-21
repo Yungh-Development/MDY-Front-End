@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { IconMap } from "../LeftContainerItems/leftMenuMap";
-import { HamburguerList } from "../constants";
+import { IconMap } from "../LeftContent/leftMenuMap";
+import { Icons } from "../constants";
 import { TwitterButton } from "../Buttons/twitterButton";
 import { TwitterLogo } from "../LogoIcons/TwitterLogo";
-import { CloseMenuIcon } from "../constants";
 
-export const LeftMobileMenu = ({ items }) => {
+export const MobileMenu = ({ items }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <section className="MOBILE-MENU flex flex-col lg:hidden">
@@ -13,7 +12,7 @@ export const LeftMobileMenu = ({ items }) => {
         className="HAMBURGER-ICON absolute top-4"
         onClick={() => setIsNavOpen((prev) => !prev)}
       >
-        {HamburguerList}
+        <Icons.HamburguerMenu fill="#4BAFF3" width="24px" height="24px" />
       </div>
 
       <div className={isNavOpen ? "showLeftMenu" : "hideLeftMenu"}>
@@ -21,7 +20,7 @@ export const LeftMobileMenu = ({ items }) => {
           className="CROSS-ICON absolute top-0 right-0 px-8 py-8"
           onClick={() => setIsNavOpen(false)}
         >
-          {CloseMenuIcon}
+          <Icons.CloseMenuIcon width="24px" height="24px" />
         </div>
         <ul className="MENU-LINK-MOBILE-OPEN flex flex-col min-h-[250px]">
           <TwitterLogo />

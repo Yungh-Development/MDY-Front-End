@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import { Followes } from "../constants";
-import { CloseMenuIcon } from "../constants";
-import { SideMenuNews } from "../constants";
-import { Trends } from "../constants";
+import { Icons } from "../constants";
+import { FollowersContainer } from "../RightContent/FollowersContainer";
+import { TrendNews } from "../RightContent/TrendNews";
+import { SearchField } from "../RightContent/SearchField";
 
-import { RightFollowersContainer } from "../RightContainerItems/rightFollowersContainer";
-import { RightTrendNews } from "../RightContainerItems/rightTrendNews";
-import { RightSearchField } from "../RightContainerItems/rightSearchField";
-
-import { Search } from "../constants";
-
-export const RightFollowesMobile = () => {
+export const FollowersMobile = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <nav className="z-50 ">
@@ -19,22 +13,22 @@ export const RightFollowesMobile = () => {
           className="HAMBURGER-ICON absolute top-4 right-0 px-3"
           onClick={() => setIsNavOpen((prev) => !prev)}
         >
-          {SideMenuNews}
+          <Icons.SideMenuNews fill="#4BAFF3" width="24px" height="24px" />
         </div>
 
         <div className={isNavOpen ? "showRightMenu" : "hideRightMenu"}>
           {" "}
           <div className="mt-20">
-            <RightSearchField />
+            <SearchField />
           </div>
-          <RightTrendNews />
+          <TrendNews />
           <div
             className="CROSS-ICON absolute top-0 right-0 px-4 py-8"
             onClick={() => setIsNavOpen(false)}
           >
-            {CloseMenuIcon}
+            <Icons.CloseMenuIcon width="24px" height="24px" />
           </div>
-          <RightFollowersContainer />
+          <FollowersContainer />
         </div>
       </section>
     </nav>

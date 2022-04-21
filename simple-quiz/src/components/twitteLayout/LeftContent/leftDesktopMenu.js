@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { IconMap } from "./leftMenuMap";
-import { HamburguerList } from "../constants";
 import { TwitterButton } from "../Buttons/twitterButton";
-import { TwitterLogo } from "../LogoIcons/TwitterLogo";
-import { CloseMenuIcon } from "../constants";
 import { leftSideMenusTyle } from "../constants";
 
-export const LeftDesktopMenu = ({ items }) => {
+export const DesktopMenu = ({ items }) => {
   return (
     <div>
       <ul className="DESKTOP-MENU hidden lg:flex flex-col">

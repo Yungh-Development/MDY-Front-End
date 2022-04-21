@@ -1,8 +1,8 @@
 import React from "react";
 import { Posts } from "../constants";
-import { Dots } from "../constants";
+import { Icons } from "../constants";
 
-export const PostsMapping = () => {
+export const PostsMap = () => {
   return (
     <div className="border-solid font-sans">
       {Posts.map((UserPost, index) => (
@@ -18,7 +18,7 @@ export const PostsMapping = () => {
                 <p className="pl-2">{UserPost.Account}</p>
                 <p className="pl-2">- 2h</p>
                 <span className="absolute right-4 mt-2 cursor-pointer">
-                  {Dots}
+                  <img src={Icons.Dots}></img>
                 </span>
               </div>
             </div>

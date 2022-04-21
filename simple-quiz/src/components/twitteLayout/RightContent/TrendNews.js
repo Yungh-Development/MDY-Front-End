@@ -1,7 +1,7 @@
 import React from "react";
 import { Trends } from "../constants";
 
-export const RightTrendNews = () => {
+export const TrendNews = () => {
   return (
     <div className="relative mt-20 pt-2 mr-4 pb-4 bg-[#F7F9F9] w-auto h-auto rounded-2xl">
       <p className="font-extrabold  text-base ml-4 pt-2 font-sans lg:text-xl">
