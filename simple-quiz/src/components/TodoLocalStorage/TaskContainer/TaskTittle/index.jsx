@@ -1,33 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AddButton } from "./AddButton";
 import { Icons } from "./constants";
 
-const optionsValues = [
-  { value: "white", label: "Tasks" },
-  { value: "green", label: "Concluído" },
-  { value: "yellow", label: "Em Andamento" },
-  { value: "orange", label: "Na Fila" },
-];
+const storedTodoList = "";
 
-const valorCores = {
-  white: "#ffffff",
-  green: "#00ff00",
-  yellow: "#ffff00",
-  orange: "#ffa500",
-};
+let userID = 0;
 
 export const TaskTittle = () => {
-  const [mainInput, setMainInput] = useState("");
+  const [taskInput, setTaskInput] = useState("");
+  const [userName, setUserName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endDate, setEndDate] = useState("");
   const [endTime, setEndTime] = useState("");
   const [novoInput, setNovoInput] = useState([]);
-  const [selectFiltro, setSelectFiltro] = useState();
+  const [novaList, setNovaList] = useState();
 
-  const handleChange = (event) => {
+  const taskNameHandle = (event) => {
     const inputTask = event.target.value;
-    setMainInput(inputTask);
+    setTaskInput(inputTask);
+  };
+  const userNameHandle = (event) => {
+    const inputTask = event.target.value;
+    setUserName(inputTask);
   };
 
   const startDateHandleChange = (event) => {
@@ -51,51 +46,70 @@ export const TaskTittle = () => {
   };
 
   const handleDeleteItem = (targetIndex) => {
-    setNovoInput(novoInput.filter((item, index) => index !== targetIndex));
+    const newValue = novoInput.filter((item, index) => index !== targetIndex);
+
+    setNovoInput(newValue);
+
+    localStorage.setItem(storedTodoList, JSON.stringify(newValue));
   };
 
   const handleAddItemToList = (event) => {
-    const novaTask = {
-      nome: mainInput,
+    const newTodoTask = {
+      id: ++userID,
+      taskInput: taskInput,
+      userName: userName,
       startDate: startDate,
       startTime: startTime,
       endDate: endDate,
       endTime: endTime,
-      cor: "white",
     };
 
+    const newValue = [...novoInput, newTodoTask];
+
     event.preventDefault();
-    setNovoInput([...novoInput, novaTask]);
-    setMainInput("");
+    setNovoInput(newValue);
+    setTaskInput("");
+
+    if (novoInput.length > 0) {
+      localStorage.setItem(storedTodoList, JSON.stringify(newValue));
+    }
   };
 
-  const selectHandle = (event, item, index) => {
-    // const selectHandle = (value, item, index) => {
-    const allItems = [...novoInput];
-    const itemCor = allItems[index];
-
-    itemCor.cor = event.value;
-    // itemCor.cor = value;
-    setNovoInput(allItems);
-  };
+  useEffect(() => {
+    const novoInput = localStorage.getItem(storedTodoList);
+    if (novoInput && novoInput.length > 0) {
+      setNovoInput(JSON.parse(novoInput));
+    }
+  }, []);
 
   return (
     <>
       <div className="flex flex-col">
-        <div className="">
+        <div className="w-full">
           <form
             onSubmit={handleAddItemToList}
-            className="flex flex-col items-center justify-between"
+            className="flex flex-col p-2 items-center justify-between rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)]"
           >
-            <input
-              type="text"
-              className="rounded bg-[#ffffff] font-black w-full h-auto pl-4"
-              placeholder="What's your new task ?"
-              onChange={(event) => handleChange(event)}
-            />
+            <div className="flex mb-4 w-full">
+              <input
+                type="text"
+                className="rounded bg-[#ffffff] font-black w-full h-10 pl-4"
+                placeholder="What's your new task ?"
+                onChange={(event) => taskNameHandle(event)}
+              />
 
+              <AddButton />
+            </div>
+            <div className="flex mb-4 w-full">
+              <input
+                type="text"
+                className="rounded bg-[#ffffff] font-black w-full h-10 pl-4"
+                placeholder="What's your name or UserID ?"
+                onChange={(event) => userNameHandle(event)}
+              />
+            </div>
             <div>
-              <label className="font-black p-2" for="beginDateTask">
+              <label className="font-black p-2" htmlFor="beginDateTask">
                 Start Date:
               </label>
               <input
@@ -104,7 +118,7 @@ export const TaskTittle = () => {
                 name="beginDateTask"
                 onChange={(event) => startDateHandleChange(event)}
               ></input>
-              <label className="font-black p-2" for="endDateTask">
+              <label className="font-black p-2" htmlFor="endDateTask">
                 End Date:
               </label>
               <input
@@ -113,9 +127,8 @@ export const TaskTittle = () => {
                 name="endDateTask"
                 onChange={(event) => endDateHandleChange(event)}
               ></input>
-            </div>
-            <div>
-              <label className="font-black p-2" for="beginTimeTask">
+
+              <label className="font-black p-2" htmlFor="beginTimeTask">
                 Start Time:
               </label>
               <input
@@ -124,7 +137,7 @@ export const TaskTittle = () => {
                 name="beginTimeTask"
                 onChange={(event) => startTimeHandleChange(event)}
               ></input>
-              <label className="font-black p-2" for="endTimeTask">
+              <label className="font-black p-2" htmlFor="endTimeTask">
                 End Time:
               </label>
               <input
@@ -133,60 +146,75 @@ export const TaskTittle = () => {
                 name="endTimeTask"
                 onChange={(event) => endTimeHandleChange(event)}
               ></input>
-              <AddButton />
             </div>
           </form>
           {/*Render List*/}
         </div>
         {novoInput.map((item, index) => {
-          const currentValue = optionsValues.find(
-            (option) => option.value === item.cor
-          );
-
           return (
-            <div className="mt-8 ">
-              <div
-                className="flex h-10 rounded justify-between font-black"
-                style={{ background: valorCores[item.cor] }}
-              >
+            <div
+              className="mt-8 flex rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)] "
+              key={item.id}
+            >
+              <div className="flex w-full h-[50px] justify-between font-black ">
                 {/*LABEL*/}
-                <span className="pl-4 mt-[10px]">{item.nome} </span>
+
+                <span className="pl-4 h-8 mt-[10px]" value="Task Name: ">
+                  {item.taskInput}{" "}
+                </span>
+                <span className="pl-4 h-8 mt-[10px]">{item.userName} </span>
                 {item.startDate.length > 0 ? (
-                  <span className="pl-4 mt-[10px]">
-                    Start Date - {item.startDate}{" "}
-                  </span>
+                  <label>
+                    Start Date
+                    <input
+                      className="pl-4 h-8 mt-[10px]"
+                      type="date"
+                      value={item.startDate}
+                    ></input>
+                  </label>
                 ) : (
-                  <span className="pl-4 mt-[10px]">Start Date - --:-- </span>
+                  <span className="pl-4 h-8 mt-[10px]">
+                    Start Date - --:--{" "}
+                  </span>
                 )}
                 {item.startTime.length > 0 ? (
-                  <span className="pl-4 mt-[10px]">
-                    Start Time - {item.startTime}{" "}
-                  </span>
+                  <input
+                    className="pl-4 h-8 mt-[10px]"
+                    type="time"
+                    value={item.startTime}
+                  ></input>
                 ) : (
-                  <span className="pl-4 mt-[10px]">Start Time - --:-- </span>
-                )}
-                {item.endDate.length > 0 ? (
-                  <span className="pl-4 mt-[10px]">
-                    Ending Date - {item.endDate}{" "}
+                  <span className="pl-4 h-8 mt-[10px]">
+                    Start Time - --:--{" "}
                   </span>
-                ) : (
-                  <span className="pl-4 mt-[10px]">Ending Date - --:-- </span>
-                )}
-                {item.endTime.length > 0 ? (
-                  <span className="pl-4 mt-[10px]">
-                    Ending Time - {item.endTime}{" "}
-                  </span>
-                ) : (
-                  <span className="pl-4 mt-[10px]">Ending Time - --:-- </span>
                 )}
 
-                <div
-                  className="taskBtn"
-                  onClick={() => handleDeleteItem(index)}
-                >
+                {item.endDate.length > 0 ? (
+                  <input
+                    className="pl-4 h-8 mt-[10px]"
+                    type="date"
+                    value={item.endDate}
+                  ></input>
+                ) : (
+                  <span className="pl-4 h-8 mt-[10px]">
+                    Ending Date - --:--{" "}
+                  </span>
+                )}
+                {item.endTime.length > 0 ? (
+                  <input
+                    className="pl-4 h-8 mt-[10px]"
+                    type="time"
+                    value={item.endTime}
+                  ></input>
+                ) : (
+                  <span className="pl-4 h-8 mt-[10px]">
+                    Ending Time - --:--{" "}
+                  </span>
+                )}
+                <div className="" onClick={() => handleDeleteItem(index)}>
                   <Icons.Trash
                     fill="red"
-                    className="mt-[10px] mr-2 hover:cursor-pointer"
+                    className="mt-[15px] mr-4 ml-4 hover:cursor-pointer"
                   />
                 </div>
               </div>
