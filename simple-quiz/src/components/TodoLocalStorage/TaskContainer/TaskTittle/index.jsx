@@ -1,10 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { AddButton } from "./AddButton";
 import { Icons } from "./constants";
+import { IconsContainer } from "./TaskIcon/IconsContainer";
+import { TimeIcons } from "./constants";
 
 const storedTodoList = "";
 
 let userID = 0;
+
+const monthNumeros = [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+];
+
+const IconsList = ["DizzyEmoji", "Hourglass"];
 
 export const TaskTittle = () => {
   const [taskInput, setTaskInput] = useState("");
@@ -13,8 +32,10 @@ export const TaskTittle = () => {
   const [startTime, setStartTime] = useState("");
   const [endDate, setEndDate] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [novoInput, setNovoInput] = useState([]);
-  const [novaList, setNovaList] = useState();
+  const [newInput, setnewInput] = useState([]);
+  const [newList, setnewList] = useState();
+  const [newName, setNewName] = useState("");
+  const [newTask, setNewTask] = useState("");
 
   const taskNameHandle = (event) => {
     const inputTask = event.target.value;
@@ -45,40 +66,105 @@ export const TaskTittle = () => {
     setEndTime(inputTask);
   };
 
+  const dateAscFilterHandler = (event) => {
+    const inputTask = event.target.value;
+    setnewList(inputTask);
+  };
+  const taskFilterHandler = (event) => {
+    const inputTask = event.target.value;
+    setNewTask(inputTask);
+  };
+
+  const nameFilterHandler = (event) => {
+    const inputTask = event.target.value;
+    setNewName(inputTask);
+  };
+
   const handleDeleteItem = (targetIndex) => {
-    const newValue = novoInput.filter((item, index) => index !== targetIndex);
+    const newValue = newInput.filter((item, index) => index !== targetIndex);
 
-    setNovoInput(newValue);
-
+    setnewInput(newValue);
     localStorage.setItem(storedTodoList, JSON.stringify(newValue));
   };
 
+  // concluido, remove delete
+  //Setar data minima desejada e utilizar ela para o filtro
+
   const handleAddItemToList = (event) => {
-    const newTodoTask = {
-      id: ++userID,
-      taskInput: taskInput,
-      userName: userName,
-      startDate: startDate,
-      startTime: startTime,
-      endDate: endDate,
-      endTime: endTime,
-    };
+    if (userName.length === 0) {
+      alert("Please, Tell us your name or userID!");
+    } else {
+      const newTodoTask = {
+        id: userID++,
+        taskInput: taskInput,
+        userName: userName,
+        startDate: startDate,
+        startTime: startTime,
+        endDate: endDate,
+        endTime: endTime,
+        cor: "white",
+      };
 
-    const newValue = [...novoInput, newTodoTask];
+      let date = new Date();
+      let day = date.getDate();
+      let month = monthNumeros[date.getMonth()];
+      let year = date.getFullYear();
+      let fullDate = year + "-" + month + "-" + day;
 
-    event.preventDefault();
-    setNovoInput(newValue);
-    setTaskInput("");
+      const itemColor = newTodoTask;
 
-    if (novoInput.length > 0) {
-      localStorage.setItem(storedTodoList, JSON.stringify(newValue));
+      itemColor.cor = event;
+
+      if (newTodoTask.endDate.length === 0) {
+        itemColor.cor = "white";
+      } else if (newTodoTask.endDate <= fullDate) {
+        itemColor.cor = "#ff0000";
+      } else if (newTodoTask.endDate >= fullDate) {
+        itemColor.cor = "green";
+      }
+
+      const newValue = [...newInput, newTodoTask];
+
+      event.preventDefault();
+      setnewInput(newValue);
+      setTaskInput("");
+
+      if (newInput.length > 0) {
+        localStorage.setItem(storedTodoList, JSON.stringify(newValue));
+      }
     }
   };
 
+  const newInputList = newInput.filter((item) => {
+    let dataList = true;
+
+    if (item.endDate <= newList) {
+      return false;
+    }
+
+    if (newName.length > 0) {
+      if (!item.userName.toLowerCase().includes(newName)) {
+        return false;
+      }
+    }
+
+    if (newTask.length > 0) {
+      if (!item.taskInput.toLowerCase().includes(newTask)) {
+        return false;
+      }
+    }
+
+    return dataList;
+  });
+
   useEffect(() => {
-    const novoInput = localStorage.getItem(storedTodoList);
-    if (novoInput && novoInput.length > 0) {
-      setNovoInput(JSON.parse(novoInput));
+    const newInput = localStorage.getItem(storedTodoList);
+
+    if (newInput && newInput.length > 0) {
+      let UltimoIndex = newInput[newInput.length - 1];
+      userID = UltimoIndex.id + 1;
+
+      setnewInput(JSON.parse(newInput));
     }
   }, []);
 
@@ -86,6 +172,41 @@ export const TaskTittle = () => {
     <>
       <div className="flex flex-col">
         <div className="w-full">
+          <div className="flex mb-4">
+            <div className="mr-4">
+              <label className="font-black p-2" htmlFor="beginDateTask">
+                Filter dates from:
+                <input
+                  className="rounded bg-[#ffffff] font-black ml-2 w-auto h-8 pl-2"
+                  type="date"
+                  name="beginDateTask"
+                  onChange={(event) => dateAscFilterHandler(event)}
+                ></input>
+              </label>
+            </div>
+            <div className="mr-4">
+              <label className="font-black p-2">
+                What task you are looking for?
+                <input
+                  type="text"
+                  className="rounded bg-[#ffffff] font-black ml-2 w-auto h-8 pl-2"
+                  placeholder="Enter the task"
+                  onChange={(event) => taskFilterHandler(event)}
+                />
+              </label>
+            </div>
+            <div className="">
+              <label className="font-black p-2">
+                Who are you looking for?
+                <input
+                  type="text"
+                  className="rounded bg-[#ffffff] font-black ml-2 w-auto h-8 pl-2"
+                  placeholder="Enter a name or UserID?"
+                  onChange={(event) => nameFilterHandler(event)}
+                />
+              </label>
+            </div>
+          </div>
           <form
             onSubmit={handleAddItemToList}
             className="flex flex-col p-2 items-center justify-between rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)]"
@@ -97,9 +218,9 @@ export const TaskTittle = () => {
                 placeholder="What's your new task ?"
                 onChange={(event) => taskNameHandle(event)}
               />
-
               <AddButton />
             </div>
+
             <div className="flex mb-4 w-full">
               <input
                 type="text"
@@ -150,13 +271,16 @@ export const TaskTittle = () => {
           </form>
           {/*Render List*/}
         </div>
-        {novoInput.map((item, index) => {
+        {newInputList.map((item, index) => {
           return (
             <div
               className="mt-8 flex rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)] "
               key={item.id}
             >
-              <div className="flex w-full h-[50px] justify-between font-black ">
+              <div
+                className="flex w-full h-[50px] justify-between font-black "
+                style={{ background: [item.cor] }}
+              >
                 {/*LABEL*/}
 
                 <span className="pl-4 h-8 mt-[10px]" value="Task Name: ">
@@ -167,7 +291,7 @@ export const TaskTittle = () => {
                   <label>
                     Start Date
                     <input
-                      className="pl-4 h-8 mt-[10px]"
+                      className="ml-2 pl-4 h-8 mt-[10px]"
                       type="date"
                       value={item.startDate}
                     ></input>
@@ -175,6 +299,20 @@ export const TaskTittle = () => {
                 ) : (
                   <span className="pl-4 h-8 mt-[10px]">
                     Start Date - --:--{" "}
+                  </span>
+                )}
+                {item.endDate.length > 0 ? (
+                  <label className="pl-2 pr-4">
+                    End Date
+                    <input
+                      className=" ml-2 pl-4 h-8 mt-[10px]"
+                      type="date"
+                      value={item.endDate}
+                    ></input>
+                  </label>
+                ) : (
+                  <span className="pl-4 h-8 mt-[10px]">
+                    Ending Date - --:--{" "}
                   </span>
                 )}
                 {item.startTime.length > 0 ? (
@@ -186,18 +324,6 @@ export const TaskTittle = () => {
                 ) : (
                   <span className="pl-4 h-8 mt-[10px]">
                     Start Time - --:--{" "}
-                  </span>
-                )}
-
-                {item.endDate.length > 0 ? (
-                  <input
-                    className="pl-4 h-8 mt-[10px]"
-                    type="date"
-                    value={item.endDate}
-                  ></input>
-                ) : (
-                  <span className="pl-4 h-8 mt-[10px]">
-                    Ending Date - --:--{" "}
                   </span>
                 )}
                 {item.endTime.length > 0 ? (
@@ -213,7 +339,7 @@ export const TaskTittle = () => {
                 )}
                 <div className="" onClick={() => handleDeleteItem(index)}>
                   <Icons.Trash
-                    fill="red"
+                    fill="black"
                     className="mt-[15px] mr-4 ml-4 hover:cursor-pointer"
                   />
                 </div>
