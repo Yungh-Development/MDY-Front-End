@@ -10,13 +10,11 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
       {formListHandler.map((item, index) => {
         return (
           <div
-            className="mt-8 flex rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)] "
+            className="mt-8 flex rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)]"
+            style={{ background: [item.cor] }}
             key={item.id}
           >
-            <div
-              className="flex w-full h-[50px] rounded-l-md justify-between font-black "
-              style={{ background: [item.cor] }}
-            >
+            <div className="flex w-full h-[50px] rounded-l-md justify-between font-black ">
               <span className="pl-4 h-8 mt-[10px]" value="Task Name: ">
                 {item.taskInput}{" "}
               </span>
@@ -25,6 +23,7 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
                 <label>
                   Start Date
                   <input
+                    readOnly
                     className="ml-2 pl-4 h-8 mt-[10px]"
                     type="date"
                     value={item.startDate}
@@ -37,6 +36,7 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
                 <label className="pl-2 pr-4">
                   End Date
                   <input
+                    readOnly
                     className=" ml-2 pl-4 h-8 mt-[10px]"
                     type="date"
                     value={item.endDate}
@@ -47,6 +47,7 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
               )}
               {item.startTime.length > 0 ? (
                 <input
+                  readOnly
                   className="pl-4 h-8 mt-[10px]"
                   type="time"
                   value={item.startTime}
@@ -56,6 +57,7 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
               )}
               {item.endTime.length > 0 ? (
                 <input
+                  readOnly
                   className="pl-4 h-8 mt-[10px]"
                   type="time"
                   value={item.endTime}

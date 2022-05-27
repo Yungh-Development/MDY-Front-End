@@ -108,61 +108,17 @@ export const TaskForm = ({
       } else if (newTodoTask.endDate <= fullDate) {
         itemColor.cor = "#ff0000";
       } else if (newTodoTask.endDate >= fullDate) {
-        itemColor.cor = "green";
+        itemColor.cor = "#00ff00";
       }
-
-      //const newValue = [...newInput, newTodoTask];
 
       onSubmitSavedDatas && onSubmitSavedDatas(newTodoTask);
 
       event.preventDefault();
       setTaskInput("");
       inputRef.current.focus();
-
-      // setnewInput(newValue);
-      // if (newInput.length > 0) {
-      //   localStorage.setItem(storedTodoList, JSON.stringify(newValue));
-      //}
     }
   };
-  {
-    /*
-  const newInputList = newInput.filter((item) => {
-    let dataList = true;
 
-    if (item.endDate <= newList) {
-      return false;
-    }
-
-    if (newName.length > 0) {
-      if (!item.userName.toLowerCase().includes(newName)) {
-        return false;
-      }
-    }
-
-    if (newTask.length > 0) {
-      if (!item.taskInput.toLowerCase().includes(newTask)) {
-        return false;
-      }
-    }
-
-    return dataList;
-  });
-
-
-
-  useEffect(() => {
-    const newInput = localStorage.getItem(storedTodoList);
-
-    if (newInput && newInput.length > 0) {
-      let UltimoIndex = newInput[newInput.length - 1];
-      userID = UltimoIndex.id + 1;
-
-      setnewInput(JSON.parse(newInput));
-    }
-  }, []);
- */
-  }
   return (
     <div className="w-full">
       <div className="flex mb-4">

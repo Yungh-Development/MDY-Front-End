@@ -14,8 +14,10 @@ export const TaskTittle = () => {
   const newInputList = items.filter((item) => {
     let dataList = true;
 
-    if (item.endDate <= newList) {
-      return false;
+    if (item.endDate.length > 0) {
+      if (item.endDate <= newList) {
+        return false;
+      }
     }
 
     if (newName.length > 0) {
@@ -42,8 +44,6 @@ export const TaskTittle = () => {
   };
 
   const handleDateAscFilter = (data) => {
-    console.log(data);
-
     setnewList(data);
   };
 
