@@ -14,7 +14,7 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
             style={{ background: [item.cor] }}
             key={item.id}
           >
-            <div className="flex w-full h-[50px] rounded-l-md justify-between font-black ">
+            <div className="flex w-full h-[50px] rounded-l-md justify-around font-black text-lg">
               <span className="pl-4 h-8 mt-[10px]" value="Task Name: ">
                 {item.taskInput}{" "}
               </span>
@@ -44,26 +44,6 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
                 </label>
               ) : (
                 <span className="pl-4 h-8 mt-[10px]">Ending Date - --:-- </span>
-              )}
-              {item.startTime.length > 0 ? (
-                <input
-                  readOnly
-                  className="pl-4 h-8 mt-[10px]"
-                  type="time"
-                  value={item.startTime}
-                ></input>
-              ) : (
-                <span className="pl-4 h-8 mt-[10px]">Start Time - --:-- </span>
-              )}
-              {item.endTime.length > 0 ? (
-                <input
-                  readOnly
-                  className="pl-4 h-8 mt-[10px]"
-                  type="time"
-                  value={item.endTime}
-                ></input>
-              ) : (
-                <span className="pl-4 h-8 mt-[10px]">Ending Time - --:-- </span>
               )}
             </div>
             <div

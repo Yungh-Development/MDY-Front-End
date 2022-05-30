@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TaskForm } from "./TaskForm";
 import { FormList } from "./TaskForm/FormList";
 
-const storedTodoList = "";
+const storedTodoList = [];
 let userID = 0;
 
 export const TaskTittle = () => {
@@ -60,16 +60,16 @@ export const TaskTittle = () => {
   const handleDeleteItem = (data) => {
     const newValue = items.filter((item, index) => index !== data);
 
-    setItems(newValue);
     localStorage.setItem(storedTodoList, JSON.stringify(newValue));
+    setItems(newValue);
   };
 
   useEffect(() => {
     const newInput = localStorage.getItem(storedTodoList);
-
-    if (newInput && newInput.length > 0) {
-      let lastIndex = newInput[newInput.length - 1];
-      userID = lastIndex.id + 1;
+    let newValue = JSON.parse(newInput);
+    console.log(newValue.length);
+    if (newInput && newValue.length > 0) {
+      userID = newValue.length + 1;
 
       setItems(JSON.parse(newInput));
     }

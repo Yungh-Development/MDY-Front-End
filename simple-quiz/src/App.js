@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="relative w-full h-screen bg-[#223355] flex justify-center items-center ">
+    <div className="w-full h-screen relative bg-[#223355] flex justify-center items-center overflow-auto">
       <Todo />
     </div>
   );
