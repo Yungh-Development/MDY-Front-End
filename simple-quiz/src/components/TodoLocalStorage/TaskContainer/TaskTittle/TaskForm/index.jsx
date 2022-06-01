@@ -2,27 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { AddButton } from "../AddButton";
 
-let userID = 0;
-
-const months = [
-  "01",
-  "02",
-  "03",
-  "04",
-  "05",
-  "06",
-  "07",
-  "08",
-  "09",
-  "10",
-  "11",
-  "12",
-];
-
 const IconsList = ["DizzyEmoji", "Hourglass"];
 
 export const TaskForm = ({
-  formProps,
   onSubmitSavedDatas,
   handleDateAscFilter,
   handleTaskFilter,
@@ -68,33 +50,12 @@ export const TaskForm = ({
       setEndDate("");
     } else {
       const newTodoTask = {
-        id: userID++,
         taskInput: taskInput,
         userName: userName,
         startDate: startDate,
         endDate: endDate,
         cor: "#ffffff",
       };
-
-      formProps && formProps(newTodoTask);
-
-      let date = new Date();
-      let day = date.getDate();
-      let month = months[date.getMonth()];
-      let year = date.getFullYear();
-      let fullDate = year + "-" + month + "-" + day;
-
-      const itemColor = newTodoTask;
-
-      itemColor.cor = event;
-
-      if (newTodoTask.endDate <= fullDate) {
-        itemColor.cor = "#ff0000";
-      } else if (newTodoTask.endDate >= fullDate) {
-        itemColor.cor = "#00ff00";
-      } else {
-        itemColor.cor = "#ffffff";
-      }
 
       onSubmitSavedDatas && onSubmitSavedDatas(newTodoTask);
 
