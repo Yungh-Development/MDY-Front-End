@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { SimpleQuiz } from "./quiz";
 import { ScoreBoard } from "./scoreBoard";
 import { quisListKey } from "./constants";
 import { Link } from "react-router-dom";
@@ -24,7 +23,7 @@ export const Home = () => {
     console.log(data);
   };
 
-  const userLoginHandle = (data) => {
+  const userLoginHandle = () => {
     localStorage.setItem(
       loginKey,
       JSON.stringify([userFirstName, userLastName])
@@ -70,7 +69,7 @@ export const Home = () => {
           </div>
           <div className="bg-transparent">
             {quizList.map((xuxu) => (
-              <div className="text-xl m-5 p-3 top-0 right-[-150px] flex items-center justify-center font-extrabold bg-gray-800 p-2  rounded-md hover:shadow-border-light">
+              <div key={xuxu} className="text-xl m-5 p-3 top-0 right-[-150px] flex items-center justify-center font-extrabold bg-gray-800 p-2  rounded-md hover:shadow-border-light">
                 <ScoreBoard xuxu={xuxu} className="bg-transparent" />
               </div>
             ))}
@@ -91,7 +90,7 @@ export const Home = () => {
               Quiztionário!
             </h1>
 
-            <label className="font-bold" for="fname">
+            <label className="font-bold" htmlFor="fname">
               First name:
             </label>
             <input
@@ -100,7 +99,7 @@ export const Home = () => {
               value={userFirstName}
               onChange={(data) => setFirstName(data.target.value)}
             />
-            <label className="font-bold" for="lname">
+            <label className="font-bold" htmlFor="lname">
               Last name:
             </label>
             <input

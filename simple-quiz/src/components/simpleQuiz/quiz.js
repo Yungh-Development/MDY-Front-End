@@ -1,6 +1,5 @@
-import { render } from "@testing-library/react";
 import { questions } from "./constants";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { quisListKey } from "./constants";
 
@@ -10,7 +9,7 @@ import { ScoreBoard } from "./scoreBoard";
 const buttonStyle =
   "hover:shadow-border-light hover:bg-gray-600 rounded-md p-4 m-4 bg-gray-700 float-right hover:scale-125 duration-100 ease-linear";
 
-export const SimpleQuiz = (props) => {
+export const SimpleQuiz = () => {
   const [storedAnswer, setStoredAnswer] = useState([]);
   const [mainQuestion, setMainQuestion] = useState(0);
   const [mainScore, setMainScore] = useState(false);
@@ -98,7 +97,7 @@ export const SimpleQuiz = (props) => {
                     <div className="mt-5">
                       <span className="text-4xl">
                         Question {mainQuestion + 1}{" "}
-                        <i class="bi bi-check-lg"></i>
+                        <i className="bi bi-check-lg"></i>
                       </span>
                     </div>
                     <div className="text-xl mt-5">
@@ -108,8 +107,9 @@ export const SimpleQuiz = (props) => {
 
                   <div className="p-10  flex-col ">
                     {questions[mainQuestion].questionOptions.map(
-                      (questionOptions) => (
+                      (questionOptions, index) => (
                         <button
+                          key={`button-${index}`}
                           className={buttonStyle}
                           onClick={() =>
                             handleAnswerButtonClick(questionOptions)

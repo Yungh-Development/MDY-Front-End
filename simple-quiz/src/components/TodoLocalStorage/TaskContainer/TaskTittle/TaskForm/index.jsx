@@ -1,8 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import React from "react";
+import React, { useState, useRef } from "react";
 import { AddButton } from "../AddButton";
-
-const IconsList = ["DizzyEmoji", "Hourglass"];
 
 export const TaskForm = ({
   onSubmitSavedDatas,

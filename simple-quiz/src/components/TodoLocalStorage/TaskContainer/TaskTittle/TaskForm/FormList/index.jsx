@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Icons } from "../../constants";
 
 export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
@@ -71,7 +71,7 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
                 <span className="pl-4 h-8 mt-[10px]">Ending Date - --:-- </span>
               )}
             </div>
-            <div
+            <button
               style={{ background: [item.cor] }}
               className="rounded-r-md"
               onClick={() => handleDeleteItem(index)}
@@ -80,7 +80,7 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
                 fill="black"
                 className="mt-[15px] mr-4 ml-4 hover:cursor-pointer"
               />
-            </div>
+            </button>
           </div>
         );
       })}

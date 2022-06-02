@@ -1,11 +1,11 @@
-import { ReactComponent as pencil } from "../../../../public/Icons/pencil.svg";
-import { ReactComponent as trash } from "../../../../public/Icons/trash.svg";
-import dizzyEmoji from "../../../../public/Icons/emoji-dizzy.svg";
-import hourglass from "../../../..//public/Icons/hourglass.svg";
+import {ReactComponent as Pencil} from "public/icons/pencil.svg";
+import {ReactComponent as Trash} from "public/icons/trash.svg";
+import {ReactComponent as DizzyEmoji} from "public/icons/emoji-dizzy.svg";
+import {ReactComponent as Hourglass} from "public/icons/hourglass.svg";
 
 export const Icons = {
-  Pencil: pencil,
-  Trash: trash,
-  DizzyEmoji: dizzyEmoji,
-  Hourglass: hourglass,
+  Pencil,
+  Trash,
+  DizzyEmoji,
+  Hourglass,
 };

@@ -6,11 +6,9 @@ const storedTodoList = [];
 
 let userID = 0;
 
-let itemColor = "";
-
 export const TaskTittle = () => {
   const [items, setItems] = useState([]);
-  const [newList, setnewList] = useState();
+  const [newList, setNewList] = useState();
   const [newName, setNewName] = useState("");
   const [newTask, setNewTask] = useState("");
 
@@ -47,7 +45,7 @@ export const TaskTittle = () => {
   };
 
   const handleDateAscFilter = (data) => {
-    setnewList(data);
+    setNewList(data);
   };
 
   const handleFormSubmit = (data) => {
