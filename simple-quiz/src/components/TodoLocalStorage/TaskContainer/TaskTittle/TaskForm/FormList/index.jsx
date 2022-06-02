@@ -8,9 +8,34 @@ export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
   return (
     <>
       {formListHandler.map((item, index) => {
+        const getTaskColor = (data) => {
+          let date = new Date();
+          let todayDate = Date.UTC(
+            date.getUTCFullYear(),
+            date.getUTCMonth(),
+            date.getUTCDate(),
+            date.getUTCHours(),
+            date.getUTCMinutes(),
+            date.getUTCSeconds()
+          );
+
+          let endDate = new Date(data.endDate).valueOf();
+
+          if (data.length < 1) {
+            data.cor = "background: [#ffffff]";
+          } else if (endDate < todayDate) {
+            data.cor = "#ff0000";
+          } else if (endDate >= todayDate) {
+            data.cor = "#00ff00";
+          }
+        };
+
         return (
           <div
-            className="mt-8 flex rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)]"
+            className={
+              "mt-8 flex rounded-md shadow-[1px_0px_1px_1px_rgba(0,0,0,0.1)] " +
+              getTaskColor(item)
+            }
             style={{ background: [item.cor] }}
             key={item.id}
           >

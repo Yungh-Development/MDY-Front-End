@@ -6,20 +6,7 @@ const storedTodoList = [];
 
 let userID = 0;
 
-const months = [
-  "01",
-  "02",
-  "03",
-  "04",
-  "05",
-  "06",
-  "07",
-  "08",
-  "09",
-  "10",
-  "11",
-  "12",
-];
+let itemColor = "";
 
 export const TaskTittle = () => {
   const [items, setItems] = useState([]);
@@ -69,29 +56,6 @@ export const TaskTittle = () => {
 
     setItems([...items, data]);
 
-    let date = new Date();
-    let todayDate = Date.UTC(
-      date.getUTCFullYear(),
-      date.getUTCMonth(),
-      date.getUTCDate(),
-      date.getUTCHours(),
-      date.getUTCMinutes(),
-      date.getUTCSeconds()
-    );
-    let endDate = new Date(data.endDate);
-    let endDateUTC = endDate;
-
-    console.log(todayDate);
-    console.log(endDate);
-
-    if (data.endDate.length < 1) {
-      data.cor = "#ffffff";
-    } else if (endDate < todayDate) {
-      data.cor = "#ff0000";
-    } else if (endDate >= todayDate) {
-      data.cor = "#00ff00";
-    }
-
     const newValue = [...items, data];
 
     if (items.length > 0) {
@@ -123,7 +87,6 @@ export const TaskTittle = () => {
       <div className="flex flex-col">
         <TaskForm
           onSubmitSavedDatas={handleFormSubmit}
-          //onSubmitSavedDatas={localStorageSavedDatas}
           handleDateAscFilter={handleDateAscFilter}
           handleTaskFilter={taskFilterHandler}
           handleNameFilter={nameFilterHandler}
