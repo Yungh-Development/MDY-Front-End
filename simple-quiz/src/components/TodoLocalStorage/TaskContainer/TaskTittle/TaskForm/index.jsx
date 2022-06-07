@@ -42,14 +42,31 @@ export const TaskForm = ({
       alert("Please, Tell us your name or userID!");
       event.preventDefault();
       event.stopPropagation();
-    } else if (startDate.length === 0) {
-      alert("Please, you need to set a starting date!");
-      event.preventDefault();
-      event.stopPropagation();
-    } else if (startDate.length === endDate.length && startDate > endDate) {
-      alert("Start date can't be higher then end date!");
-      event.preventDefault();
-      event.stopPropagation();
+    }
+    if (endDate) {
+      if (startDate > endDate) {
+        alert("Start date can't be higher then end date!");
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        const newTodoTask = {
+          taskInput: taskInput,
+          userName: userName,
+          startDate: startDate,
+          endDate: endDate,
+          cor: "#ffffff",
+        };
+
+        onSubmitSavedDatas && onSubmitSavedDatas(newTodoTask);
+
+        event.preventDefault();
+        setTaskInput("");
+        setUserName("");
+        setStartDate("");
+        setEndDate("");
+        inputRef.current.focus();
+        console.log(event.target.value);
+      }
     } else {
       const newTodoTask = {
         taskInput: taskInput,
