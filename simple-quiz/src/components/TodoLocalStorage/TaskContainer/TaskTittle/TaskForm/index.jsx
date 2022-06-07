@@ -42,8 +42,7 @@ export const TaskForm = ({
       alert("Please, Tell us your name or userID!");
       event.preventDefault();
       event.stopPropagation();
-    }
-    if (endDate) {
+    } else if (endDate) {
       if (startDate > endDate) {
         alert("Start date can't be higher then end date!");
         event.preventDefault();
@@ -90,9 +89,6 @@ export const TaskForm = ({
 
   return (
     <div className="w-full">
-      <p className="font-black text-lg flex justify-center mb-4 text-red-600">
-        UserID and StartDate are required items!!
-      </p>
       <div className="flex mb-4">
         <div className="mr-4">
           <label className="font-black p-2" htmlFor="filterDate">
