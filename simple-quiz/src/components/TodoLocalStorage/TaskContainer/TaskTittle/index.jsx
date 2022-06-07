@@ -15,20 +15,20 @@ export const TaskTittle = () => {
   const newInputList = items.filter((item) => {
     let dataList = true;
 
-    if (item.endDate.length > 0) {
-      if (item.endDate <= newList) {
+    if (item.startDate.length > 0) {
+      if (item.startDate <= newList) {
         return false;
       }
     }
 
     if (newName.length > 0) {
-      if (!item.userName.toLowerCase().includes(newName)) {
+      if (!item.userName.toLowerCase().includes(newName.toLowerCase())) {
         return false;
       }
     }
 
     if (newTask.length > 0) {
-      if (!item.taskInput.toLowerCase().includes(newTask)) {
+      if (!item.taskInput.toLowerCase().includes(newTask.toLowerCase())) {
         return false;
       }
     }

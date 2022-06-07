@@ -20,7 +20,6 @@ export const TaskForm = ({
   const userNameHandle = (event) => {
     setUserName(event.target.value);
   };
-
   const startDateHandleChange = (event) => {
     setStartDate(event.target.value);
   };
@@ -41,10 +40,16 @@ export const TaskForm = ({
   const handleAddItemToList = (event) => {
     if (userName.length === 0) {
       alert("Please, Tell us your name or userID!");
-    } else if (startDate > endDate) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else if (startDate.length === 0) {
+      alert("Please, you need to set a starting date!");
+      event.preventDefault();
+      event.stopPropagation();
+    } else if (startDate.length === endDate.length && startDate > endDate) {
       alert("Start date can't be higher then end date!");
-      setStartDate("");
-      setEndDate("");
+      event.preventDefault();
+      event.stopPropagation();
     } else {
       const newTodoTask = {
         taskInput: taskInput,
@@ -62,19 +67,23 @@ export const TaskForm = ({
       setStartDate("");
       setEndDate("");
       inputRef.current.focus();
+      console.log(event.target.value);
     }
   };
 
   return (
     <div className="w-full">
+      <p className="font-black text-lg flex justify-center mb-4 text-red-600">
+        UserID and StartDate are required items!!
+      </p>
       <div className="flex mb-4">
         <div className="mr-4">
-          <label className="font-black p-2" htmlFor="beginDateTask">
+          <label className="font-black p-2" htmlFor="filterDate">
             Filter dates from:
             <input
               className="rounded bg-[#ffffff] font-black ml-2 w-auto h-8 pl-2"
               type="date"
-              name="beginDateTask"
+              name="filterDate"
               onChange={(event) => dateAscFilterHandler(event)}
             ></input>
           </label>
@@ -127,27 +136,23 @@ export const TaskForm = ({
           />
         </div>
         <div className="flex justify-between w-full">
-          <label className="font-black p-2" htmlFor="beginDateTask">
-            Start Date:
-            <input
-              className="pl-2 ml-2"
-              type="date"
-              name="beginDateTask"
-              value={startDate}
-              onChange={(event) => startDateHandleChange(event)}
-            ></input>
-          </label>
+          <p className="font-black p-2">Start Date:</p>
+          <input
+            className="pl-2 ml-2"
+            type="date"
+            name=""
+            value={startDate}
+            onChange={(event) => startDateHandleChange(event)}
+          ></input>
+          <p className="font-black p-2">End Date: </p>
+          <input
+            className="pl-2 ml-2"
+            type="date"
+            name=""
+            value={endDate}
+            onChange={(event) => endDateHandleChange(event)}
+          ></input>
 
-          <label className="font-black p-2" htmlFor="endDateTask">
-            End Date:
-            <input
-              className="pl-2 ml-2"
-              type="date"
-              name="endDateTask"
-              value={endDate}
-              onChange={(event) => endDateHandleChange(event)}
-            ></input>
-          </label>
           <AddButton />
         </div>
       </form>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Icons } from "../../constants";
+import { Icons } from "../../../../constants";
 
 export const FormList = ({ formListHandler, formDeleteItemHandler }) => {
   const handleDeleteItem = (targetIndex) => {
