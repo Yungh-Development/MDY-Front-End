@@ -1,12 +1,12 @@
 import React from "react";
-import { Todo } from "./components/TodoLocalStorage";
+import { ExercisesMenu } from "components/reactExercises/mainPage";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="w-full h-screen relative bg-[#223355] flex justify-center items-center overflow-auto">
-      <Todo />
+    <div className="">
+      <ExercisesMenu />
     </div>
   );
 }
