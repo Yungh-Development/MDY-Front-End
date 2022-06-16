@@ -46,6 +46,11 @@ export const ExercisesMenu = () => {
             </a>
           </li>
           <li className="rounded-md bg-[#5ed6c0] h-8 m-4 p-1 items-center justify-center">
+            <a className="p-2" href="./condicionalRendering">
+              Exercise 09
+            </a>
+          </li>
+          <li className="rounded-md bg-[#5ed6c0] h-8 m-4 p-1 items-center justify-center">
             <a className="p-2" href="./secondStyles">
               Exercise 10
             </a>
