@@ -1,5 +1,5 @@
 import React from "react";
-import { ShoppingCartProject } from "components/shoppingCart";
+import { ShoppingCartProject } from "./shoppingCart";
 
 import "./App.css";
 
