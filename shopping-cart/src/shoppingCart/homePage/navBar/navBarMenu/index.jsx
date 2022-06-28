@@ -15,13 +15,13 @@ export function NavBarMenu() {
         open
           ? "h-10 w-10 transition-all ease-in-out duration-300"
           : "w-[250px] h-screen transition-all ease-in-out duration-400"
-      } md:h-20 md:w-auto relative font-black text-lg bg-[#24252B]  `}
+      } md:h-20 md:w-auto z-50 relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
     >
-      <div className="flex flex-col ml-2 md:flex-row w-auto pt-4">
+      <div className="flex flex-col ml-2 md:flex-row w-auto pt-4  ">
         <div
           className={`${
             open ? "block" : "hidden"
-          } z-20 top-[-20px] relative right-2  md:hidden`}
+          } z-20 top-[-10px] relative md:hidden`}
         >
           <Icons.HamburguerListIcon
             width="24px"

@@ -7,8 +7,8 @@ import { ContactCard } from "./contact";
 import { MailTo } from "./mailto";
 
 export const FooterContainer = () => (
-  <div className="w-full h-full flex flex-wrap bg-[#24252B] font-black text-white justify-around items-center text-sm md:flex-row">
-    <div className="flex mb-10">
+  <div className="w-full h-full flex flex-wrap bg-[#24252B] font-black text-white justify-evenly  items-center text-sm md:flex-row md:justify-between">
+    <div className="flex mt-10 mb-10 ml-10">
       <HomeButton />
       <FooterCategories />
     </div>
