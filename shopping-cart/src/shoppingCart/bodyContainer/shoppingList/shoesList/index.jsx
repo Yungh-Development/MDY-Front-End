@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ShoesList = (ShoesRenderList) => (
+export const ShoesList = ({ShoesRenderList = []}) => (
   <div>
     {ShoesRenderList.map(({ name, price, quantity, colors, sizes, index }) => (
       <div key={index}>
