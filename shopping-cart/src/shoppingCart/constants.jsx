@@ -13,7 +13,6 @@ export const CategoryItems = [
   { value: "tShirt", label: "T-Shirt" },
   { value: "Shorts", label: "Shorts" },
   { value: "Shoes", label: "Shoes" },
-  { value: "Pants", label: "Pants" },
 ];
 
 export const Icons = {
@@ -32,7 +31,6 @@ export const FooterCategoryItems = [
   { value: "tShirt", label: "T-Shirt" },
   { value: "shorts", label: "Shorts" },
   { value: "Shoes", label: "Shoes" },
-  { value: "Pants", label: "Pants" },
 ];
 
 export const CoinSelection = [

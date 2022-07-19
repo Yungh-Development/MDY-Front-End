@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import { CarouselImgs } from "../constants";
 
 export const CarouselSlide = () => (
-  <Carousel autoPlay emulateTouch infiniteLoop>
+  <Carousel autoPlay emulateTouch infiniteLoop centerMode dynamicHeight="80%">
     <div className="items-center justify-center">
       <img alt="" src={CarouselImgs.photo01} />
       <p className="legend">
