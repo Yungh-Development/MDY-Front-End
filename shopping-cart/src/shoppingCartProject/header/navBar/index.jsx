@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBarMenu } from "./navBarMenu";
+import { NavBarMenu } from "./navBar";
 
 export const NavBar = () => (
   <div>

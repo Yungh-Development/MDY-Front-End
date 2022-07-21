@@ -1,11 +1,11 @@
 import React from "react";
-import { HomePageShoppingCart } from "./homePage";
-import { FooterContainer } from "./footerContainer";
+import { HomePageShoppingCart } from "./header";
+import { FooterContainer } from "./footer";
 import { CarouselSlide } from "./heroSlider";
-import { BodyContainer } from "./bodyContainer";
+import { BodyContainer } from "./body";
 
 export const ShoppingCartProject = () => (
-  <div className="relative ">
+  <div className="">
     <div className="absolute md:relative">
       <HomePageShoppingCart />
     </div>

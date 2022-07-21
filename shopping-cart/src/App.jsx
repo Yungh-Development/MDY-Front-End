@@ -1,5 +1,5 @@
 import React from "react";
-import { ShoppingCartProject } from "./shoppingCart";
+import { ShoppingCartProject } from "./shoppingCartProject";
 
 import "./App.css";
 

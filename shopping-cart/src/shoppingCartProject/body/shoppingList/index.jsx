@@ -1,6 +1,8 @@
 import React from "react";
 import { CollectionMock } from "../../collectionMock";
 import { ShoesList } from "./shoesList";
+import { ShortsList } from "./shortsList";
+import { TShirtList } from "./tShirtsList";
 
 export const ShoppingListItems = () => {
   const collections = {};
@@ -13,10 +15,12 @@ export const ShoppingListItems = () => {
 
     collections[produto.category].products.push(produto);
   });
-  console.log(collections.Shoes.products);
+
   return (
-    <div className="z-40">
+    <div className="w-full justify-between">
       <ShoesList ShoesRenderList={collections.Shoes.products} />
+      <ShortsList ShortsRenderList={collections.Shorts.products} />
+      <TShirtList TShirtListList={collections.TShirts.products} />
     </div>
   );
 };
