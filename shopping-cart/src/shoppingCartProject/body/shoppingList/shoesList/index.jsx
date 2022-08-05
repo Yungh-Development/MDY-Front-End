@@ -3,27 +3,37 @@ import React from "react";
 export const ShoesList = ({ ShoesRenderList = [] }) => (
   <div className="flex justify-between p-8">
     {ShoesRenderList.map(
-      ({ name, price, quantity, colors, sizes, index, image }) => (
-        <div key={index} className="flex flex-col p-8">
-          <img className="w-28 lg:w-60" src={image} alt="Shoes" />
-          <span>{name}</span>
-          <span>price: {price}</span>
-          <span>stock: {quantity}</span>
-          <select className=" text-black">
-            {colors.map((option) => (
-              <option
-                className="w-20"
-                key={option}
-                value={option}
-                label={option}
+      ({ name, price, quantity, colors, sizes, id, image }) => (
+        <div key={id} className="border-2 border-slate-100 rounded-xl">
+          <div className="rounded-xl font-black p-4 border-1 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)] ">
+            <div className="flex flex-col">
+              <img
+                className="rounded-xl w-28 lg:w-60"
+                src={image}
+                alt="T-Shirt"
               />
-            ))}
-          </select>
-          <select>
-            {sizes.map((option) => (
-              <option key={option} value={option} label={option} />
-            ))}
-          </select>
+              <span className="text-center text-xl pb-2">{name}</span>
+              <div className="flex justify-between pb-1">
+                <span>price: {price}</span>
+                <span>stock: {quantity}</span>
+              </div>
+              <select className=" text-black rounded-xl pb-1">
+                {colors.map((option) => (
+                  <option
+                    className="w-20"
+                    key={option}
+                    value={option}
+                    label={option}
+                  />
+                ))}
+              </select>
+              <select className="rounded-xl">
+                {sizes.map((option) => (
+                  <option key={option} value={option} label={option} />
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
       ),
     )}

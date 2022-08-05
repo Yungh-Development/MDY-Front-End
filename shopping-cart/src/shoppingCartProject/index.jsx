@@ -1,16 +1,19 @@
 import React from "react";
-import { HomePageShoppingCart } from "./header";
+import { HomePage } from "./header";
 import { FooterContainer } from "./footer";
 import { CarouselSlide } from "./heroSlider";
 import { BodyContainer } from "./body";
+import { ExchangeCoinContext } from "./ExchangeCoinContext";
 
 export const ShoppingCartProject = () => (
-  <div className="">
-    <div className="absolute md:relative">
-      <HomePageShoppingCart />
+  <ExchangeCoinContext.Provider value="Dolar - $">
+    <div className="">
+      <div className="absolute md:relative">
+        <HomePage />
+      </div>
+      <CarouselSlide />
+      <BodyContainer />
+      <FooterContainer />
     </div>
-    <CarouselSlide />
-    <BodyContainer />
-    <FooterContainer />
-  </div>
+  </ExchangeCoinContext.Provider>
 );

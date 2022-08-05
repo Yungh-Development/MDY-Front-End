@@ -4,6 +4,7 @@ import ShortsImg from "../public/imgs/ShortsImg.png";
 
 export const CollectionMock = [
   {
+    id: 1,
     name: "Normal T-Shirt",
     price: 69.99,
     inStock: true,
@@ -15,6 +16,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
+    id: 2,
     name: "Ultra T-Shirts",
     price: 69.99,
     inStock: true,
@@ -26,6 +28,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
+    id: 3,
     name: "Camisetona",
     price: 59.99,
     inStock: true,
@@ -37,6 +40,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
+    id: 4,
     name: "Camisetuxa",
     price: 59.99,
     inStock: true,
@@ -48,6 +52,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
+    id: 5,
     name: "Normal Shorts",
     price: 49.99,
     inStock: true,
@@ -59,6 +64,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
+    id: 6,
     name: "Ultra Shorts",
     price: 39.99,
     inStock: true,
@@ -70,6 +76,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
+    id: 7,
     name: "Shortin",
     price: 49.99,
     inStock: true,
@@ -81,6 +88,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
+    id: 8,
     name: "Carçola",
     price: 59.99,
     inStock: true,
@@ -92,6 +100,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
+    id: 9,
     name: "Normal Shoes",
     price: 49.99,
     inStock: true,
@@ -103,6 +112,7 @@ export const CollectionMock = [
     image: ShoesImg,
   },
   {
+    id: 10,
     name: "Ultra Shoes",
     price: 39.99,
     inStock: true,
@@ -114,6 +124,7 @@ export const CollectionMock = [
     image: ShoesImg,
   },
   {
+    id: 11,
     name: "Sapatin",
     price: 49.99,
     inStock: true,
@@ -125,6 +136,7 @@ export const CollectionMock = [
     image: ShoesImg,
   },
   {
+    id: 12,
     name: "Chinela",
     price: 59.99,
     inStock: true,
