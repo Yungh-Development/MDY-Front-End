@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { CoinSelection } from "../../constants";
 
 import { ExchangeCoinContext } from "../../ExchangeCoinContext";
 
@@ -7,7 +6,13 @@ import { ExchangeCoinContext } from "../../ExchangeCoinContext";
 export const ExchangeCoin = () => {
   const [currentCoin, setCurrentCoin] = useContext(ExchangeCoinContext);
 
-  console.log(currentCoin);
+  const ExchangeHandler = (data) => {
+    setCurrentCoin({
+      ...currentCoin,
+      value: data.target.value,
+    });
+    console.log(data.target.value);
+  };
 
   return (
     <div className="flex flex-col mr-12 ml-8">
@@ -15,16 +20,11 @@ export const ExchangeCoin = () => {
       <span className="font-black text-sm">CURRENT COIN</span>
       <select
         className="font-black text-black text-base p-1 mt-2 lg:text-lg"
-        onChange={(event) => setCurrentCoin(event.target.value)}
+        onChange={(event) => ExchangeHandler(event)}
         defaultValue={ExchangeCoinContext}
       >
-        {CoinSelection.map((option) => (
-          <option
-            value={option.value}
-            key={option.value}
-            label={option.label}
-          />
-        ))}
+        <option label={currentCoin.Real} value={currentCoin.Real} />
+        <option label={currentCoin.Dolar} value={currentCoin.Dolar} />{" "}
       </select>
     </div>
   );
