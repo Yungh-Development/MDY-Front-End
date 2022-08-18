@@ -17,11 +17,11 @@ export const TShirtList = ({ TShirtListList = [] }) => {
                 />
                 <span className="text-center text-xl pb-2">{name}</span>
                 {currentCoin[0].value === "Dolar - $" ? (
-                  <span>price: {price}</span>
+                  <span>Price: {price}</span>
                 ) : (
-                  <span>price: {(price * 5.1).toFixed(2)}</span>
+                  <span>Price: {(price * 5.1).toFixed(2)}</span>
                 )}
-                <span>stock: {quantity}</span>
+                <span>Stock: {quantity}</span>
                 <select className=" text-black rounded-xl">
                   {colors.map((option) => (
                     <option

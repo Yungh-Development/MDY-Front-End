@@ -19,11 +19,11 @@ export const ShoesList = ({ ShoesRenderList = [] }) => {
                 <span className="text-center text-xl pb-2">{name}</span>
                 <div className="flex justify-between pb-1">
                   {currentCoin[0].value === "Dolar - $" ? (
-                    <span>price: {price}</span>
+                    <span>Price: {price}</span>
                   ) : (
-                    <span>price: {(price * 5.1).toFixed(2)}</span>
+                    <span>Price: {(price * 5.1).toFixed(2)}</span>
                   )}
-                  <span>stock: {quantity}</span>
+                  <span>Stock: {quantity}</span>
                 </div>
                 <select className=" text-black rounded-xl pb-1">
                   {colors.map((option) => (

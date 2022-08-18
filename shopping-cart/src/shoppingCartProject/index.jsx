@@ -4,16 +4,19 @@ import { FooterContainer } from "./footer";
 import { CarouselSlide } from "./heroSlider";
 import { BodyContainer } from "./body";
 import { ExchangeCoinContextProvider } from "./ExchangeCoinContext";
+import { CollectionMockProvider } from "./collectionMock";
 
 export const ShoppingCartProject = () => (
   <ExchangeCoinContextProvider>
-    <div className="">
-      <div className="absolute md:relative">
-        <HomePage />
+    <CollectionMockProvider>
+      <div className="">
+        <div className="absolute md:relative">
+          <HomePage />
+        </div>
+        <CarouselSlide />
+        <BodyContainer />
+        <FooterContainer />
       </div>
-      <CarouselSlide />
-      <BodyContainer />
-      <FooterContainer />
-    </div>
+    </CollectionMockProvider>
   </ExchangeCoinContextProvider>
 );

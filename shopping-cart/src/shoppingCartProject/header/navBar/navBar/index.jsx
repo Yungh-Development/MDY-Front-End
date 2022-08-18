@@ -1,11 +1,35 @@
 /* eslint-disable import/prefer-default-export */
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import { CategoryItems, Icons } from "../../../constants";
+import { CollectionMockContext } from "../../../collectionMock";
 
 import { HomeButton } from "../homeButton";
 
 export function NavBarMenu() {
   const [open, setOpen] = useState(true);
+  const [filterData, setFilterData] = useState("");
+  const [mockList, setMockList] = useContext(CollectionMockContext);
+
+  console.log(mockList[0]);
+
+  const newCollectionsMockItems = mockList.filter((item) => {
+    const dataList = true;
+
+    if (filterData.length > 0) {
+      if (!item.name.toLowerCase().includes(filterData.toLowerCase())) {
+        return false;
+      }
+    }
+
+    return dataList;
+  });
+  console.log(newCollectionsMockItems);
+  /* */
+  const FilterItemsMock = (data) => {
+    setFilterData(data.target.value);
+
+    setMockList(newCollectionsMockItems);
+  };
 
   const categorySelectItems = () => {};
 
@@ -76,6 +100,7 @@ export function NavBarMenu() {
                 name="searchBar"
                 placeholder="Chose a Item"
                 className="bg-[#24252B] font-black rounded-lg p-1"
+                onChange={(data) => FilterItemsMock(data)}
               />
               <div className="absolute right-2 top-3 bg-[#24252B]">
                 <Icons.SearchIcon fill="white" />

@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
+import { CollectionMockContext } from "../../../collectionMock";
 
-export const ShortsList = ({ ShortsRenderList = [] }) => {
+export const ShortsList = () => {
   const currentCoin = useContext(ExchangeCoinContext);
+  const MockList = useContext(CollectionMockContext);
+
+  console.log(MockList);
 
   return (
     <div className="flex justify-between p-8">
-      {ShortsRenderList.map(
+      {MockList[0].map(
         ({ name, price, quantity, colors, sizes, id, image }) => (
           <div key={id} className="border-2 border-slate-100 rounded-xl">
             <div className="rounded-xl font-black p-4 border-1 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)] ">
@@ -18,11 +22,11 @@ export const ShortsList = ({ ShortsRenderList = [] }) => {
                 />
                 <span className="text-center text-xl pb-2">{name}</span>
                 {currentCoin[0].value === "Dolar - $" ? (
-                  <span>price: {price}</span>
+                  <span>Price: {price}</span>
                 ) : (
-                  <span>price: {(price * 5.1).toFixed(2)}</span>
+                  <span>Price: {(price * 5.1).toFixed(2)}</span>
                 )}
-                <span>stock: {quantity}</span>
+                <span>Stock: {quantity}</span>
                 <select className=" text-black rounded-xl">
                   {colors.map((option) => (
                     <option

@@ -1,6 +1,10 @@
+import React, { useState, useContext, createContext } from "react";
+
 import ShoesImg from "../public/imgs/ShoesImg.jpg";
 import TShirtImg from "../public/imgs/T-ShirtImg.png";
 import ShortsImg from "../public/imgs/ShortsImg.png";
+
+export const CollectionMockContext = createContext([null, () => {}]);
 
 export const CollectionMock = [
   {
@@ -148,3 +152,16 @@ export const CollectionMock = [
     image: ShoesImg,
   },
 ];
+
+export const CollectionMockProvider = ({ children, value }) => {
+  const [mockContext, setMockContext] = useState(value || CollectionMock);
+
+  return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <CollectionMockContext.Provider value={[mockContext, setMockContext]}>
+      {children}
+    </CollectionMockContext.Provider>
+  );
+};
+
+export const useTestContext = () => useContext(CollectionMockContext);
