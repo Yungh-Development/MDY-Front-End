@@ -10,7 +10,7 @@ import photo03 from "../public/imgs/photo03.jpg";
 
 export const CategoryItems = [
   { value: "categories", label: "Chose a Category" },
-  { value: "tShirt", label: "T-Shirt" },
+  { value: "TShirts", label: "T-Shirt" },
   { value: "Shorts", label: "Shorts" },
   { value: "Shoes", label: "Shoes" },
 ];
@@ -28,8 +28,8 @@ export const SocialMediaIcons = {
 };
 
 export const FooterCategoryItems = [
-  { value: "tShirt", label: "T-Shirt" },
-  { value: "shorts", label: "Shorts" },
+  { value: "TShirts", label: "T-Shirt" },
+  { value: "Shorts", label: "Shorts" },
   { value: "Shoes", label: "Shoes" },
 ];
 

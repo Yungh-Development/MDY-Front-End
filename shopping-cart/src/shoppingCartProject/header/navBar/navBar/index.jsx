@@ -1,38 +1,25 @@
 /* eslint-disable import/prefer-default-export */
 import { React, useState, useContext } from "react";
-import { CategoryItems, Icons } from "../../../constants";
-import { CollectionMockContext } from "../../../collectionMock";
+import { Icons } from "../../../constants";
+import { FilteredContextList } from "../../../filterContext";
 
 import { HomeButton } from "../homeButton";
 
 export function NavBarMenu() {
   const [open, setOpen] = useState(true);
-  const [filterData, setFilterData] = useState("");
-  const [mockList, setMockList] = useContext(CollectionMockContext);
+  const [setFilterSearch] = useState("");
+  // const [filterCategory, setFilterCategory] = useState("");
 
-  console.log(mockList[0]);
+  const [categoryList] = useContext(FilteredContextList);
 
-  const newCollectionsMockItems = mockList.filter((item) => {
-    const dataList = true;
-
-    if (filterData.length > 0) {
-      if (!item.name.toLowerCase().includes(filterData.toLowerCase())) {
-        return false;
-      }
-    }
-
-    return dataList;
-  });
-  console.log(newCollectionsMockItems);
-  /* */
-  const FilterItemsMock = (data) => {
-    setFilterData(data.target.value);
-
-    setMockList(newCollectionsMockItems);
+  /* Criar Context contendo só o Filtro, passar os filtros para o provider com a mocklist e executa-los ali dentro */
+  const searchFieldHandler = (data) => {
+    setFilterSearch(data);
   };
 
-  const categorySelectItems = () => {};
-
+  const categorySelectItems = (data) => {
+    console.log(data);
+  };
   return (
     <div
       className={`${
@@ -78,7 +65,7 @@ export function NavBarMenu() {
             className="bg-[#24252B] text-white font-black ml-0 mt-8 md:block md:ml-10 md:mt-0"
             onChange={(event) => categorySelectItems(event.target.value)}
           >
-            {CategoryItems.map((option) => (
+            {categoryList.map((option) => (
               <option
                 key={option.value}
                 value={option.value}
@@ -100,7 +87,7 @@ export function NavBarMenu() {
                 name="searchBar"
                 placeholder="Chose a Item"
                 className="bg-[#24252B] font-black rounded-lg p-1"
-                onChange={(data) => FilterItemsMock(data)}
+                onChange={(event) => searchFieldHandler(event.target.value)}
               />
               <div className="absolute right-2 top-3 bg-[#24252B]">
                 <Icons.SearchIcon fill="white" />

@@ -1,5 +1,6 @@
 import React, { useState, useContext, createContext } from "react";
 
+import { FilteredContextList } from "./filterContext";
 import ShoesImg from "../public/imgs/ShoesImg.jpg";
 import TShirtImg from "../public/imgs/T-ShirtImg.png";
 import ShortsImg from "../public/imgs/ShortsImg.png";
@@ -153,12 +154,22 @@ export const CollectionMock = [
   },
 ];
 
-export const CollectionMockProvider = ({ children, value }) => {
-  const [mockContext, setMockContext] = useState(value || CollectionMock);
+export const CollectionMockProvider = ({ children }) => {
+  const [mockContext] = useState(CollectionMock);
+  const [filteredList] = useContext(FilteredContextList);
 
+  console.log(filteredList[0]);
   return (
+    // const [filter] = useContext(filterContext);
+    /*
+  const filteredList = CollectionMock.filter ((item)=>{
+    
+
+    return true;
+  })
+ */
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <CollectionMockContext.Provider value={[mockContext, setMockContext]}>
+    <CollectionMockContext.Provider value={[mockContext]}>
       {children}
     </CollectionMockContext.Provider>
   );
