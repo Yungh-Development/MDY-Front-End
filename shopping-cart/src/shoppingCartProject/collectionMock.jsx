@@ -158,18 +158,23 @@ export const CollectionMockProvider = ({ children }) => {
   const [mockContext] = useState(CollectionMock);
   const [filteredList] = useContext(FilteredContextList);
 
-  console.log(filteredList[0]);
-  return (
-    // const [filter] = useContext(filterContext);
-    /*
-  const filteredList = CollectionMock.filter ((item)=>{
-    
+  console.log(filteredList);
+
+  const filteredListHandler = mockContext.filter((item) => {
+    if (filteredList.category === "categories") {
+      return true;
+    }
+    if (item.category !== filteredList.category) {
+      return false;
+    }
 
     return true;
-  })
- */
+  });
+  return (
+    // const [filter] = useContext(filterContext);
+
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <CollectionMockContext.Provider value={[mockContext]}>
+    <CollectionMockContext.Provider value={[filteredListHandler]}>
       {children}
     </CollectionMockContext.Provider>
   );

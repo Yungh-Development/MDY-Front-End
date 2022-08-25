@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { React, useState, useContext } from "react";
 import { Icons } from "../../../constants";
-import { FilteredContextList } from "../../../filterContext";
+import { FilteredContextList, CategoryItems } from "../../../filterContext";
 
 import { HomeButton } from "../homeButton";
 
@@ -10,15 +10,15 @@ export function NavBarMenu() {
   const [setFilterSearch] = useState("");
   // const [filterCategory, setFilterCategory] = useState("");
 
-  const [categoryList] = useContext(FilteredContextList);
+  const [categoryList, setCategoryList] = useContext(FilteredContextList);
 
   /* Criar Context contendo só o Filtro, passar os filtros para o provider com a mocklist e executa-los ali dentro */
-  const searchFieldHandler = (data) => {
+  const onSearchFieldHandler = (data) => {
     setFilterSearch(data);
   };
 
-  const categorySelectItems = (data) => {
-    console.log(data);
+  const onCategorySelectHandler = (data) => {
+    setCategoryList({ ...categoryList, category: data });
   };
   return (
     <div
@@ -63,9 +63,10 @@ export function NavBarMenu() {
           <HomeButton />
           <select
             className="bg-[#24252B] text-white font-black ml-0 mt-8 md:block md:ml-10 md:mt-0"
-            onChange={(event) => categorySelectItems(event.target.value)}
+            defaultValue={categoryList.value}
+            onChange={(event) => onCategorySelectHandler(event.target.value)}
           >
-            {categoryList.map((option) => (
+            {CategoryItems.map((option) => (
               <option
                 key={option.value}
                 value={option.value}
@@ -87,7 +88,7 @@ export function NavBarMenu() {
                 name="searchBar"
                 placeholder="Chose a Item"
                 className="bg-[#24252B] font-black rounded-lg p-1"
-                onChange={(event) => searchFieldHandler(event.target.value)}
+                onChange={(event) => onSearchFieldHandler(event.target.value)}
               />
               <div className="absolute right-2 top-3 bg-[#24252B]">
                 <Icons.SearchIcon fill="white" />
