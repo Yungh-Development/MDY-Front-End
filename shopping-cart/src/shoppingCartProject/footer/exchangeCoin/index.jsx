@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { ExchangeCoinContext } from "../../ExchangeCoinContext";
+import { ExchangeCoinContext } from "../../exchangeCoinContext";
 
 // Setar valor atual Select
 export const ExchangeCoin = () => {

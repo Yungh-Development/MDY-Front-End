@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext } from "react";
 
 import { FilteredContextList } from "./filterContext";
+import { searchFilterContext } from "./searchFilterContext";
 import ShoesImg from "../public/imgs/ShoesImg.jpg";
 import TShirtImg from "../public/imgs/T-ShirtImg.png";
 import ShortsImg from "../public/imgs/ShortsImg.png";
@@ -157,11 +158,22 @@ export const CollectionMock = [
 export const CollectionMockProvider = ({ children }) => {
   const [mockContext] = useState(CollectionMock);
   const [filteredList] = useContext(FilteredContextList);
+  const [searchField] = useContext(searchFilterContext);
 
-  console.log(filteredList);
+  console.log(mockContext);
+  console.log(searchField);
 
   const filteredListHandler = mockContext.filter((item) => {
-    if (filteredList.category === "categories") {
+    console.log(item.name.toLowerCase());
+    if (searchField) {
+      if (
+        !item.name.toLowerCase().includes(searchField.searchData.toLowerCase())
+      ) {
+        return false;
+      }
+    }
+
+    if (!filteredList.category || filteredList.category === "categories") {
       return true;
     }
     if (item.category !== filteredList.category) {
@@ -179,5 +191,3 @@ export const CollectionMockProvider = ({ children }) => {
     </CollectionMockContext.Provider>
   );
 };
-
-export const useTestContext = () => useContext(CollectionMockContext);

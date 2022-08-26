@@ -2,19 +2,22 @@
 import { React, useState, useContext } from "react";
 import { Icons } from "../../../constants";
 import { FilteredContextList, CategoryItems } from "../../../filterContext";
+import { searchFilterContext } from "../../../searchFilterContext";
 
 import { HomeButton } from "../homeButton";
 
 export function NavBarMenu() {
   const [open, setOpen] = useState(true);
-  const [setFilterSearch] = useState("");
+
   // const [filterCategory, setFilterCategory] = useState("");
 
+  const [searchData, setSearchData] = useContext(searchFilterContext);
   const [categoryList, setCategoryList] = useContext(FilteredContextList);
 
   /* Criar Context contendo só o Filtro, passar os filtros para o provider com a mocklist e executa-los ali dentro */
   const onSearchFieldHandler = (data) => {
-    setFilterSearch(data);
+    setSearchData({ ...searchData, searchData: data });
+    console.log(searchData);
   };
 
   const onCategorySelectHandler = (data) => {

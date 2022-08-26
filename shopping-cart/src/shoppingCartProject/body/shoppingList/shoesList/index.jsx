@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
+import { ExchangeCoinContext } from "../../../exchangeCoinContext";
 
 export const ShoesList = ({ ShoesRenderList = [] }) => {
   const currentCoin = useContext(ExchangeCoinContext);
