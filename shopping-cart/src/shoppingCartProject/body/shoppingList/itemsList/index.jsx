@@ -1,20 +1,23 @@
 import React, { useContext } from "react";
 import { ExchangeCoinContext } from "../../../exchangeCoinContext";
+import { CollectionMockContext } from "../../../collectionMock";
 
-export const TShirtList = ({ TShirtListList = [] }) => {
+export const MockItemsList = () => {
   const currentCoin = useContext(ExchangeCoinContext);
+  const [mockList] = useContext(CollectionMockContext);
+
   return (
-    <div className="flex justify-between p-8">
-      {TShirtListList.map(
-        ({ name, price, quantity, colors, sizes, id, image }) => (
-          <div key={id} className="border-2 border-slate-100 rounded-xl">
-            <div className="rounded-xl font-black p-4 border-1 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)] ">
-              <div className="flex flex-col">
-                <img
-                  className="rounded-xl w-28 lg:w-60"
-                  src={image}
-                  alt="T-Shirt"
-                />
+    <div className="flex p-20 grid grid-cols-4 gap-16 ">
+      {mockList.map(({ name, price, quantity, colors, sizes, id, image }) => (
+        <div key={id} className="flex w-full justify-evenly">
+          <div className="rounded-xl font-black p-4 border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]">
+            <div className="flex relative flex-col">
+              <img
+                className="rounded-xl  w-28  lg:w-60"
+                src={image}
+                alt="T-Shirt"
+              />
+              <div className="flex flex-col flex ">
                 <span className="text-center text-xl pb-2">{name}</span>
                 {currentCoin[0].value === "Dolar - $" ? (
                   <span>Price: {price}</span>
@@ -40,8 +43,8 @@ export const TShirtList = ({ TShirtListList = [] }) => {
               </div>
             </div>
           </div>
-        ),
-      )}
+        </div>
+      ))}
     </div>
   );
 };
