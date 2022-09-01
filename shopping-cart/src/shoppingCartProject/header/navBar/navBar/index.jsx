@@ -74,7 +74,7 @@ export function NavBarMenu() {
                 key={option.value}
                 value={option.value}
                 label={option.label}
-                className="text-white font-black"
+                className="text-white font-black "
               />
             ))}
           </select>

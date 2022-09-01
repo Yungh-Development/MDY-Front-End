@@ -11,7 +11,7 @@ export const FooterCategories = () => {
     <div className="w-10 ml-10 ">
       <ul>
         <select
-          className="bg-[#ffffff] text-black font-black h-8  ml-0 mt-8 md:block md:ml-10 md:mt-0"
+          className="bg-[#ffffff] text-black text-lg font-black h-8  ml-0 mt-8 md:block md:ml-10 md:mt-0"
           defaultValue={categoryList.value}
           onChange={(event) => onCategorySelectHandler(event.target.value)}
         >
@@ -20,7 +20,7 @@ export const FooterCategories = () => {
               key={option.value}
               value={option.value}
               label={option.label}
-              className="font-black"
+              className="font-black "
             />
           ))}
         </select>
