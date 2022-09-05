@@ -43,3 +43,5 @@ export const CarouselImgs = {
   photo02,
   photo03,
 };
+
+export const userLoginKey = "Monda";

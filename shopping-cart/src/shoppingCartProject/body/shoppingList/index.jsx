@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MockItemsList } from "./itemsList";
+import { MockItemsList } from "./MockItemsList";
 
 export const ShoppingListItems = () => (
   <div className="w-full justify-between">

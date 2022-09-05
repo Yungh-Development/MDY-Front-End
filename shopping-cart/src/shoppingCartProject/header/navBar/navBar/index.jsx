@@ -5,6 +5,7 @@ import { FilteredContextList, CategoryItems } from "../../../filterContext";
 import { searchFilterContext } from "../../../searchFilterContext";
 
 import { HomeButton } from "../homeButton";
+import { UserLoginRegister } from "./userForm";
 
 export function NavBarMenu() {
   const [open, setOpen] = useState(true);
@@ -78,25 +79,31 @@ export function NavBarMenu() {
               />
             ))}
           </select>
-          <div
-            className={`${
-              open
-                ? "hidden left-[-300px] bottom-[-400px]"
-                : "right-5  bottom-4 transition-all ease-in-out duration-800"
-            } absolute md:block md:right-4 md:left-auto border-1 border-[#0288AB] rounded-lg md:bottom-5`}
-          >
-            <label htmlFor="searchBar" className="flex">
-              <input
-                type="text"
-                name="searchBar"
-                placeholder="Chose a Item"
-                className="bg-[#24252B] font-black rounded-lg p-1"
-                onChange={(event) => onSearchFieldHandler(event.target.value)}
-              />
-              <div className="absolute right-2 top-3 bg-[#24252B]">
-                <Icons.SearchIcon fill="white" />
-              </div>
-            </label>
+          <div>
+            {" "}
+            <div className="right-0 ">
+              <UserLoginRegister />
+            </div>
+            <div
+              className={`${
+                open
+                  ? "hidden left-[-300px] bottom-[-400px]"
+                  : "right-5  bottom-4 transition-all ease-in-out duration-800"
+              } absolute md:block md:right-4 md:left-auto border-1 border-[#0288AB] rounded-lg md:bottom-5`}
+            >
+              <label htmlFor="searchBar" className="flex">
+                <input
+                  type="text"
+                  name="searchBar"
+                  placeholder="Chose a Item"
+                  className="bg-[#24252B] font-black rounded-lg p-1"
+                  onChange={(event) => onSearchFieldHandler(event.target.value)}
+                />
+                <div className="absolute right-2 top-3 bg-[#24252B]">
+                  <Icons.SearchIcon fill="white" />
+                </div>
+              </label>
+            </div>
           </div>
         </div>
       </div>
