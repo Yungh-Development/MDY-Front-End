@@ -2,7 +2,7 @@ import React from "react";
 import { NavBarMenu } from "./navBar";
 
 export const NavBar = () => (
-  <div>
+  <div className="">
     <NavBarMenu />
   </div>
 );

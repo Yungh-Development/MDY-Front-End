@@ -29,8 +29,8 @@ export function NavBarMenu() {
       className={`${
         open
           ? "h-10 w-10 transition-all ease-in-out duration-300"
-          : "w-[250px] h-screen transition-all ease-in-out duration-400"
-      } md:h-20 md:w-auto z-50 relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
+          : "w-[250px] h-screen transition-all ease-in-out duration-400 flex justify-around"
+      }justify-end md:h-20 md:w-auto z-50 relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
     >
       <div className="flex flex-col ml-2 md:flex-row w-auto pt-4  ">
         <div
@@ -61,10 +61,13 @@ export function NavBarMenu() {
           className={`${
             open
               ? "ml-[-300px]"
-              : "block mt-8 ml-0 transition-all ease-in-out duration-800"
+              : "block mt-10 ml-0 transition-all ease-in-out duration-800"
           } h-10  md:flex flex-row md:mt-[-4px] md:ml-8`}
         >
-          <HomeButton />
+          <div className={`${open ? "flex flex-col " : "flex flex-row "}`}>
+            <HomeButton />
+            <UserLoginRegister />
+          </div>
           <select
             className="bg-[#24252B] text-white font-black ml-0 mt-8 md:block md:ml-10 md:mt-0"
             defaultValue={categoryList.value}
@@ -79,31 +82,26 @@ export function NavBarMenu() {
               />
             ))}
           </select>
-          <div>
-            {" "}
-            <div className="right-0 ">
-              <UserLoginRegister />
-            </div>
-            <div
-              className={`${
-                open
-                  ? "hidden left-[-300px] bottom-[-400px]"
-                  : "right-5  bottom-4 transition-all ease-in-out duration-800"
-              } absolute md:block md:right-4 md:left-auto border-1 border-[#0288AB] rounded-lg md:bottom-5`}
-            >
-              <label htmlFor="searchBar" className="flex">
-                <input
-                  type="text"
-                  name="searchBar"
-                  placeholder="Chose a Item"
-                  className="bg-[#24252B] font-black rounded-lg p-1"
-                  onChange={(event) => onSearchFieldHandler(event.target.value)}
-                />
-                <div className="absolute right-2 top-3 bg-[#24252B]">
-                  <Icons.SearchIcon fill="white" />
-                </div>
-              </label>
-            </div>
+
+          <div
+            className={`${
+              open
+                ? "hidden left-[-300px] bottom-[-400px]"
+                : "right-5  bottom-4 transition-all ease-in-out duration-800"
+            } absolute md:block md:right-24 md:left-auto border-1 border-[#0288AB] rounded-lg md:bottom-5 md:flex flex-row`}
+          >
+            <label htmlFor="searchBar" className="flex relative mr-4">
+              <input
+                type="text"
+                name="searchBar"
+                placeholder="Chose a Item"
+                className="bg-[#24252B] font-black rounded-lg p-1"
+                onChange={(event) => onSearchFieldHandler(event.target.value)}
+              />
+              <div className="absolute right-2 top-4 bg-[#24252B]">
+                <Icons.SearchIcon fill="white" />
+              </div>
+            </label>
           </div>
         </div>
       </div>

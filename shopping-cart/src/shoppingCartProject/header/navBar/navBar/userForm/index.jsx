@@ -19,12 +19,17 @@ export const UserLoginRegister = () => {
 
   return (
     <div>
-      <div className={`${showForm ? "block" : "hidden"} relative `}>
+      <div
+        className={`${
+          showForm ? " flex block items-center justify-center" : "hidden"
+        }`}
+      >
         <label htmlFor="userLogin" />
         <input
           type="button"
           id="userLogin"
-          value="BOTÃO"
+          className="absolute right-0 mt-7 text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-md p-1 w-42 md:mt-14"
+          value="Login"
           onClick={() => setShowForm(!showForm)}
         />
       </div>
@@ -53,7 +58,7 @@ export const UserLoginRegister = () => {
       <div
         className={`${
           showForm ? "hidden" : "block"
-        } relative homePage flex-col w-[300px] h-auto border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] text-white bg-[#24252B] flex items-center justify-center flex-col shadow-border-light rounded-md p-2`}
+        } absolute  flex-col w-[300px] h-auto left-0 top-10 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] text-white bg-[#24252B] flex items-center justify-center flex-col shadow-border-light md:top-0 md:right-20 `}
       >
         <div
           className={`${
@@ -67,8 +72,8 @@ export const UserLoginRegister = () => {
             onClick={() => setShowForm(!showForm)}
           />
         </div>
-        <form className="flex flex-col text-lg flex items-center justify-center">
-          <h1>Wellcome Back!</h1>
+        <form className="flex flex-col text-lg  flex items-center justify-center">
+          <h1 className="mt-2 ">Wellcome Back!</h1>
           <label className="font-bold pt-4" htmlFor="userName">
             Username:
           </label>
@@ -89,10 +94,10 @@ export const UserLoginRegister = () => {
             value={userPassword}
             onChange={(data) => SetUserPassword(data.target.value)}
           />
-          <div className="text-xl w-50 flex items-center justify-center font-extrabold bg-gray-800 p-2  m-4 rounded-md hover:shadow-border-light">
+          <div className="text-xl w-50 flex items-center justify-center border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] font-extrabold bg-gray-800 p-2  m-4 rounded-base hover:shadow-border-light">
             <input
               type="button"
-              value="CLIKA NEU"
+              value="Loggin"
               onClick={() => userLoginHandler()}
               className="hover:text-white"
             />
