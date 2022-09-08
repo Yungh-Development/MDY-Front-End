@@ -29,10 +29,10 @@ export function NavBarMenu() {
       className={`${
         open
           ? "h-10 w-10 transition-all ease-in-out duration-300"
-          : "w-[250px] h-screen transition-all ease-in-out duration-400 flex justify-around"
-      }justify-end md:h-20 md:w-auto z-50 relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
+          : "w-[250px] h-screen transition-all ease-in-out duration-400"
+      }flex md:h-20 md:w-auto z-50 relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
     >
-      <div className="flex flex-col ml-2 md:flex-row w-auto pt-4  ">
+      <div className="flex flex-col relative ml-2 md:flex-row md:flex md:justify-between w-auto pt-4  ">
         <div
           className={`${
             open ? "block" : "hidden"
@@ -66,7 +66,6 @@ export function NavBarMenu() {
         >
           <div className={`${open ? "flex flex-col " : "flex flex-row "}`}>
             <HomeButton />
-            <UserLoginRegister />
           </div>
           <select
             className="bg-[#24252B] text-white font-black ml-0 mt-8 md:block md:ml-10 md:mt-0"
@@ -82,13 +81,14 @@ export function NavBarMenu() {
               />
             ))}
           </select>
-
+        </div>
+        <div className="md:flex md:flex-row">
           <div
             className={`${
               open
                 ? "hidden left-[-300px] bottom-[-400px]"
-                : "right-5  bottom-4 transition-all ease-in-out duration-800"
-            } absolute md:block md:right-24 md:left-auto border-1 border-[#0288AB] rounded-lg md:bottom-5 md:flex flex-row`}
+                : "transition-all ease-in-out duration-800"
+            } mt-16 md:block md:right-24 md:left-auto border-1 border-[#0288AB] rounded-lg md:mt-0`}
           >
             <label htmlFor="searchBar" className="flex relative mr-4">
               <input
@@ -102,6 +102,9 @@ export function NavBarMenu() {
                 <Icons.SearchIcon fill="white" />
               </div>
             </label>
+          </div>
+          <div className="mt-40 md:mt-0">
+            <UserLoginRegister />
           </div>
         </div>
       </div>

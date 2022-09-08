@@ -21,59 +21,79 @@ export const UserLoginRegister = () => {
   };
 
   const onUserLogin = () => {
-    localStorage.setItem(loginKey, JSON.stringify([userLogin, userPassword]));
+    localStorage.setItem(loginKey, JSON.stringify([userLogin]));
+    console.log("entro");
   };
 
-  console.log(userLogin);
-  console.log(userPassword);
+  const onUserLogout = () => {
+    localStorage.removeItem(loginKey);
+    setUserData(null);
+    console.log("SAIU");
+  };
+
   console.log(userData);
-  // const clearLoginData = () => {};
+  console.log(loginKey);
+  console.log(userPassword);
 
   useEffect(() => {
     const storagedUser = localStorage.getItem(loginKey);
-    if (userData && userData.length > 0) {
+    if (storagedUser && storagedUser.length > 0) {
       setUserData(JSON.parse(storagedUser));
     }
+
     console.log(storagedUser);
   }, []);
 
   return (
     <div>
-      <div
-        className={`${
-          showForm ? " flex block items-center justify-center" : "hidden"
-        }`}
-      >
-        <label htmlFor="userLogin" />
-        <input
-          type="button"
-          id="userLogin"
-          className="absolute right-0 mt-7 text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px] md:mr-8"
-          value="Login"
-          onClick={() => setShowForm(!showForm)}
-        />
-      </div>
+      {userData ? (
+        <div className="flex">
+          <div
+            className={`${
+              showForm
+                ? " flex block items-center justify-center text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
+                : "hidden"
+            }`}
+          >
+            <label htmlFor="userData" />
+            <input type="button" id="userData" className="" value={userData} />
+          </div>
 
-      {/* 
-      <div>
-        <div className="absolute text-xl p-3 top-0 right-[-170px] flex items-center justify-center font-extrabold bg-gray-800 p-2  rounded-md hover:shadow-border-light">
+          <div
+            className={`${
+              showForm
+                ? " flex block items-center justify-center text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
+                : "hidden"
+            }`}
+          >
+            <div>
+              <label htmlFor="userLogout" />
+              <input
+                type="button"
+                id="userLogout"
+                className=""
+                value="Logout"
+                onClick={() => onUserLogout()}
+              />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div
+          className={`${
+            showForm ? " flex block items-center justify-center" : "hidden"
+          }`}
+        >
+          <label htmlFor="userLogin" />
           <input
             type="button"
-            value="Sign In"
-            onClick={(event) => userLoginHandler(event.target.value)}
+            id="userLogin"
+            className="text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 "
+            value="Login"
+            onClick={() => setShowForm(!showForm)}
           />
         </div>
-
-        <div className="absolute text-xl p-3 top-0 left-[-180px] flex items-center justify-center font-extrabold bg-gray-800 p-2  rounded-md hover:shadow-border-light">
-          <input
-            type="button"
-            onClick={() => clearLoginData()}
-            className="hover:text-white"
-            value="Clear History"
-          />
-        </div>
-      </div>
-      */}
+      )}
 
       <div
         className={`${
@@ -116,7 +136,7 @@ export const UserLoginRegister = () => {
           />
           <div className="text-xl w-50 flex items-center justify-center border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] font-extrabold bg-gray-800 p-1 m-4 rounded-sm  hover:shadow-border-light">
             <input
-              type="button"
+              type="submit"
               value="Loggin"
               onClick={() => onUserLogin()}
               className="hover:text-white"
