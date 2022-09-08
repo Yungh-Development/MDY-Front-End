@@ -98,7 +98,7 @@ export function NavBarMenu() {
                 className="bg-[#24252B] font-black rounded-lg p-1"
                 onChange={(event) => onSearchFieldHandler(event.target.value)}
               />
-              <div className="absolute right-2 top-4 bg-[#24252B]">
+              <div className="absolute right-2 top-[10px] bg-[#24252B]">
                 <Icons.SearchIcon fill="white" />
               </div>
             </label>
