@@ -8,6 +8,7 @@ export const UserLoginRegister = () => {
   // const [user, setUser] = useState(null);
   // const [userLogin, setUserLogin] = useState();
   const [showForm, setShowForm] = useState(true);
+  const [showCart, setShowCart] = useState(true);
   const [userLogin, setUserLogin] = useState();
   const [userPassword, SetUserPassword] = useState();
   const [userData, setUserData] = useState(null);
@@ -56,7 +57,13 @@ export const UserLoginRegister = () => {
             }`}
           >
             <label htmlFor="userData" />
-            <input type="button" id="userData" className="" value={userData} />
+            <input
+              type="button"
+              id="userData"
+              className="cursor-pointer"
+              value={userData}
+              onClick={() => setShowCart(!showCart)}
+            />
           </div>
 
           <div
@@ -71,12 +78,14 @@ export const UserLoginRegister = () => {
               <input
                 type="button"
                 id="userLogout"
-                className=""
+                className="cursor-pointer"
                 value="Logout"
                 onClick={() => onUserLogout()}
               />
             </div>
           </div>
+
+          {showCart ? <h1>teste</h1> : <h1>testeeee</h1>}
         </div>
       ) : (
         <div
@@ -88,7 +97,7 @@ export const UserLoginRegister = () => {
           <input
             type="button"
             id="userLogin"
-            className="text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 "
+            className="cursor-pointer text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 "
             value="Login"
             onClick={() => setShowForm(!showForm)}
           />
