@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import { Icons } from "../../../../constants";
+import { UserCartContainer } from "../userCartContainer";
 
 const loginKey = "ls_user";
 
@@ -52,7 +53,7 @@ export const UserLoginRegister = () => {
           <div
             className={`${
               showForm
-                ? " flex block items-center justify-center text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
+                ? "flex block items-center justify-center h-[38px] text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
                 : "hidden"
             }`}
           >
@@ -69,7 +70,7 @@ export const UserLoginRegister = () => {
           <div
             className={`${
               showForm
-                ? " flex block items-center justify-center text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
+                ? " flex block items-center justify-center h-[38px] text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
                 : "hidden"
             }`}
           >
@@ -84,8 +85,27 @@ export const UserLoginRegister = () => {
               />
             </div>
           </div>
-
-          {showCart ? <h1>teste</h1> : <h1>testeeee</h1>}
+          <div className="relative">
+            {showCart ? (
+              <div className="absolute z-50 right-0 top-[-15px] transition-all ease-in-out duration-800 bg-[#fff] ">
+                <UserCartContainer />
+                <div
+                  className={`${
+                    showCart ? "block" : "hidden"
+                  } z-20 absolute top-2 right-2`}
+                >
+                  <Icons.CloseListIcon
+                    width="20px"
+                    height="20px"
+                    fill="black"
+                    onClick={() => setShowCart(!showCart)}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="hidden" />
+            )}
+          </div>
         </div>
       ) : (
         <div
