@@ -4,6 +4,7 @@ import { ReactComponent as CloseListIcon } from "../public/icons/xIcon.svg";
 import { ReactComponent as WhatsappIcon } from "../public/icons/whatsapp.svg";
 import { ReactComponent as InstragramIcon } from "../public/icons/instagram.svg";
 import { ReactComponent as FacebookIcon } from "../public/icons/facebook.svg";
+import { ReactComponent as CartIcon } from "../public/icons/cart4.svg";
 import photo01 from "../public/imgs/photo01.jpg";
 import photo02 from "../public/imgs/photo02.jpg";
 import photo03 from "../public/imgs/photo03.jpg";
@@ -19,6 +20,7 @@ export const Icons = {
   SearchIcon,
   HamburguerListIcon,
   CloseListIcon,
+  CartIcon,
 };
 
 export const SocialMediaIcons = {

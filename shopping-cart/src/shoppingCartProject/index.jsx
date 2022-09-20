@@ -7,20 +7,23 @@ import { ExchangeCoinContextProvider } from "./exchangeCoinContext";
 import { CollectionMockProvider } from "./collectionMock";
 import { FilteredContextListProvider } from "./filterContext";
 import { SearchFilterContextProvider } from "./searchFilterContext";
+import { AddedButtonCartProvider } from "./cartItemsContext";
 
 export const ShoppingCartProject = () => (
   <ExchangeCoinContextProvider>
     <FilteredContextListProvider>
       <SearchFilterContextProvider>
         <CollectionMockProvider>
-          <div className="">
-            <div className="absolute md:relative">
-              <HomePage />
-            </div>
+          <AddedButtonCartProvider>
+            <div className="">
+              <div className="absolute md:relative">
+                <HomePage />
+              </div>
 
-            <BodyContainer />
-            <FooterContainer />
-          </div>
+              <BodyContainer />
+              <FooterContainer />
+            </div>
+          </AddedButtonCartProvider>
         </CollectionMockProvider>
       </SearchFilterContextProvider>
     </FilteredContextListProvider>

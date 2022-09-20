@@ -1,10 +1,35 @@
 import React, { useContext } from "react";
+
 import { ExchangeCoinContext } from "../../../exchangeCoinContext";
 import { CollectionMockContext } from "../../../collectionMock";
+import { CartItemsContext } from "../../../cartItemsContext";
+import { Icons } from "../../../constants";
 
 export const MockItemsList = () => {
   const currentCoin = useContext(ExchangeCoinContext);
   const [mockList] = useContext(CollectionMockContext);
+  const [cartItems, setCartItems] = useContext(CartItemsContext);
+
+  const buyButtonHandler = (
+    name,
+    price,
+    colors,
+    sizes,
+    id,
+    image,
+    category,
+  ) => {
+    setCartItems({
+      ...cartItems,
+      name,
+      price,
+      colors,
+      sizes,
+      id,
+      image,
+      category,
+    });
+  };
 
   return (
     <div className="flex grid grid-cols-2 gap-2 lg:grid lg:grid-cols-3 gap-8 xl:grid-cols-4 gap-16 p-20 ">
@@ -41,6 +66,31 @@ export const MockItemsList = () => {
                       <option key={option} value={option} label={option} />
                     ))}
                   </select>
+                </div>
+                <div className="relative pt-12 hover:opacity-80 ">
+                  <div className="absolute bottom-0 right-2 flex border-solid border-2 border-sky-500  rounded-full p-1 float-right cursor-pointer">
+                    <Icons.CartIcon
+                      width="20px"
+                      height="20px"
+                      className=""
+                      fill="#3FBCF4"
+                    />
+                    <input
+                      type="button"
+                      value="Buy"
+                      className="pl-1 pr-1 text-black"
+                      onClick={() =>
+                        buyButtonHandler(
+                          name,
+                          price,
+                          colors,
+                          sizes,
+                          id,
+                          category,
+                        )
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             </div>
