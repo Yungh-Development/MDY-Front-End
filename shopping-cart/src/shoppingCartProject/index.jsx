@@ -8,23 +8,26 @@ import { CollectionMockProvider } from "./collectionMock";
 import { FilteredContextListProvider } from "./filterContext";
 import { SearchFilterContextProvider } from "./searchFilterContext";
 import { AddedButtonCartProvider } from "./cartItemsContext";
+import { UserLoginDataContextProvider } from "./userLoginDataContext";
 
 export const ShoppingCartProject = () => (
   <ExchangeCoinContextProvider>
-    <FilteredContextListProvider>
+    <FilteredContextListProvider value="White">
       <SearchFilterContextProvider>
-        <CollectionMockProvider>
-          <AddedButtonCartProvider>
-            <div className="">
-              <div className="absolute md:relative">
-                <HomePage />
-              </div>
+        <UserLoginDataContextProvider>
+          <CollectionMockProvider>
+            <AddedButtonCartProvider>
+              <div className="">
+                <div className="absolute md:relative">
+                  <HomePage />
+                </div>
 
-              <BodyContainer />
-              <FooterContainer />
-            </div>
-          </AddedButtonCartProvider>
-        </CollectionMockProvider>
+                <BodyContainer />
+                <FooterContainer />
+              </div>
+            </AddedButtonCartProvider>
+          </CollectionMockProvider>
+        </UserLoginDataContextProvider>
       </SearchFilterContextProvider>
     </FilteredContextListProvider>
   </ExchangeCoinContextProvider>

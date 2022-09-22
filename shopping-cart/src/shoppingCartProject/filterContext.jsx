@@ -9,8 +9,6 @@ export const CategoryItems = [
   { value: "Shoes", label: "Shoes" },
 ];
 
-console.log(FilteredContextList);
-
 export const FilteredContextListProvider = ({ children, value }) => {
   const [contextValue, setContextValue] = useState(value || CategoryItems);
   return (

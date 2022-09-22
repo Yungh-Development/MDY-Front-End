@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { ExchangeCoinContext } from "../../../exchangeCoinContext";
 import { CollectionMockContext } from "../../../collectionMock";
@@ -9,6 +9,7 @@ export const MockItemsList = () => {
   const currentCoin = useContext(ExchangeCoinContext);
   const [mockList] = useContext(CollectionMockContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
+  const [colorSelect, setColorSelect] = useState();
 
   const buyButtonHandler = (
     name,
@@ -23,12 +24,17 @@ export const MockItemsList = () => {
       ...cartItems,
       name,
       price,
-      colors,
+      colors: colorSelect,
       sizes,
       id,
       image,
       category,
     });
+  };
+
+  const onEventHandler = (data) => {
+    setColorSelect(data);
+    console.log(data);
   };
 
   return (
@@ -51,7 +57,11 @@ export const MockItemsList = () => {
                     <span>Price: {(price * 5.1).toFixed(2)}</span>
                   )}
                   <span>Stock: {quantity}</span>
-                  <select className=" text-black rounded-xl">
+                  <select
+                    className=" text-black rounded-xl mb-2 mt-2"
+                    onChange={(e) => onEventHandler(e.target.value)}
+                    value="White"
+                  >
                     {colors.map((option) => (
                       <option
                         className="w-20"

@@ -160,11 +160,7 @@ export const CollectionMockProvider = ({ children }) => {
   const [filteredList] = useContext(FilteredContextList);
   const [searchField] = useContext(searchFilterContext);
 
-  console.log(mockContext);
-  console.log(searchField);
-
   const filteredListHandler = mockContext.filter((item) => {
-    console.log(item.name.toLowerCase());
     if (searchField) {
       if (
         !item.name.toLowerCase().includes(searchField.searchData.toLowerCase())

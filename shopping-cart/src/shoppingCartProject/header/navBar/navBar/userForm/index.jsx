@@ -1,21 +1,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+
 import { Icons } from "../../../../constants";
 import { UserCartContainer } from "../userCartContainer";
+import { UserLoginDataContext } from "../../../../userLoginDataContext";
 
 const loginKey = "ls_user";
 
 export const UserLoginRegister = () => {
   // const [user, setUser] = useState(null);
-  // const [userLogin, setUserLogin] = useState();
+
   const [showForm, setShowForm] = useState(true);
   const [showCart, setShowCart] = useState(true);
-  const [userLogin, setUserLogin] = useState();
-  const [userPassword, SetUserPassword] = useState();
-  const [userData, setUserData] = useState(null);
+  const [userLoginData, setUserLoginData] = useContext(UserLoginDataContext);
+  const [, SetUserPassword] = useState();
 
   const userLoginHandler = (data) => {
-    setUserLogin(data);
+    setUserLoginData(data);
   };
 
   const userPasswordHandler = (data) => {
@@ -23,32 +24,28 @@ export const UserLoginRegister = () => {
   };
 
   const onUserLogin = () => {
-    localStorage.setItem(loginKey, JSON.stringify([userLogin]));
-    console.log("entro");
+    localStorage.setItem(loginKey, JSON.stringify([userLoginData]));
   };
 
   const onUserLogout = () => {
     localStorage.removeItem(loginKey);
-    setUserData(null);
-    console.log("SAIU");
+    setUserLoginData(null);
   };
-
-  console.log(userData);
-  console.log(loginKey);
-  console.log(userPassword);
 
   useEffect(() => {
     const storagedUser = localStorage.getItem(loginKey);
     if (storagedUser && storagedUser.length > 0) {
-      setUserData(JSON.parse(storagedUser));
+      setUserLoginData(JSON.parse(storagedUser));
     }
 
     console.log(storagedUser);
   }, []);
 
+  console.log(userLoginData);
+
   return (
     <div>
-      {userData ? (
+      {userLoginData ? (
         <div className="flex">
           <div
             className={`${
@@ -62,7 +59,7 @@ export const UserLoginRegister = () => {
               type="button"
               id="userData"
               className="cursor-pointer"
-              value={userData}
+              value={userLoginData}
               onClick={() => setShowCart(!showCart)}
             />
           </div>
