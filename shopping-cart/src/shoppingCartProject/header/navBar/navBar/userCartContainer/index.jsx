@@ -5,7 +5,7 @@ import { UserLoginDataContext } from "../../../../userLoginDataContext";
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
-  const CartItemsList = useContext(CartItemsContext);
+  const [CartItemsList] = useContext(CartItemsContext);
   const userLoginData = useContext(UserLoginDataContext);
 
   const checkOut = () => {

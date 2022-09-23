@@ -9,7 +9,7 @@ export const MockItemsList = () => {
   const currentCoin = useContext(ExchangeCoinContext);
   const [mockList] = useContext(CollectionMockContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
-  const [colorSelect, setColorSelect] = useState();
+  const [colorSelect, setColorSelect] = useState("White");
 
   const buyButtonHandler = (
     name,
@@ -20,16 +20,18 @@ export const MockItemsList = () => {
     image,
     category,
   ) => {
-    setCartItems({
+    setCartItems([
       ...cartItems,
-      name,
-      price,
-      colors: colorSelect,
-      sizes,
-      id,
-      image,
-      category,
-    });
+      {
+        name,
+        price,
+        colors: colorSelect,
+        sizes,
+        id,
+        image,
+        category,
+      },
+    ]);
   };
 
   const onEventHandler = (data) => {
@@ -39,6 +41,7 @@ export const MockItemsList = () => {
 
   return (
     <div className="flex grid grid-cols-2 gap-2 lg:grid lg:grid-cols-3 gap-8 xl:grid-cols-4 gap-16 p-20 ">
+      <h1>{colorSelect}</h1>
       {mockList.map(
         ({ name, price, quantity, colors, sizes, id, image, category }) => (
           <div key={id} className="flex  justify-evenly max-w-[350px]">
@@ -60,7 +63,7 @@ export const MockItemsList = () => {
                   <select
                     className=" text-black rounded-xl mb-2 mt-2"
                     onChange={(e) => onEventHandler(e.target.value)}
-                    value="White"
+                    value={colorSelect}
                   >
                     {colors.map((option) => (
                       <option

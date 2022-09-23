@@ -2,8 +2,8 @@ import React, { useState, useContext, createContext } from "react";
 
 export const CartItemsContext = createContext([null, () => {}]);
 
-export const AddedButtonCartProvider = ({ children, value }) => {
-  const [contextValue, setContextValue] = useState(value);
+export const AddedButtonCartProvider = ({ children }) => {
+  const [contextValue, setContextValue] = useState([]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
