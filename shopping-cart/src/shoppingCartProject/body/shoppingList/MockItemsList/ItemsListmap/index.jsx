@@ -11,13 +11,14 @@ export const ItemsListMapping = ({
   quantity,
   colorSelect,
   sizes,
+  id,
   onEventHandler,
   buyButtonHandler,
 }) => {
   const currentCoin = useContext(ExchangeCoinContext);
 
   return (
-    <div className="flex  justify-evenly max-w-[350px]">
+    <div key={id} className="flex  justify-evenly max-w-[350px]">
       <div className="rounded-xl font-black p-4 border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]">
         <div className="flex relative flex-col">
           <img
@@ -36,7 +37,7 @@ export const ItemsListMapping = ({
             <select
               className=" text-black rounded-xl mb-2 mt-2"
               onChange={(e) => onEventHandler(e.target.value)}
-              value={colorSelect}
+              defaultValue={colorSelect}
             >
               {colors.map((option) => (
                 <option

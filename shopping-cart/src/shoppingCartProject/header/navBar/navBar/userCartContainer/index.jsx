@@ -12,7 +12,6 @@ export const UserCartContainer = () => {
     console.log("Há!");
   };
 
-  console.log(CartItemsList);
   console.log(userLoginData[0]);
 
   return (

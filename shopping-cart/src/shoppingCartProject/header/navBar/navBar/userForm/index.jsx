@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Icons } from "../../../../constants";
 import { UserCartContainer } from "../userCartContainer";
 import { UserLoginDataContext } from "../../../../userLoginDataContext";
+import { CartItemsContext } from "../../../../cartItemsContext";
 
 const loginKey = "ls_user";
 
@@ -13,6 +14,7 @@ export const UserLoginRegister = () => {
   const [showForm, setShowForm] = useState(true);
   const [showCart, setShowCart] = useState(true);
   const [userLoginData, setUserLoginData] = useContext(UserLoginDataContext);
+  const [cartItems] = useContext(CartItemsContext);
   const [, SetUserPassword] = useState();
 
   const userLoginHandler = (data) => {
@@ -37,11 +39,7 @@ export const UserLoginRegister = () => {
     if (storagedUser && storagedUser.length > 0) {
       setUserLoginData(JSON.parse(storagedUser));
     }
-
-    console.log(storagedUser);
   }, []);
-
-  console.log(userLoginData);
 
   return (
     <div>
@@ -62,6 +60,14 @@ export const UserLoginRegister = () => {
               value={userLoginData}
               onClick={() => setShowCart(!showCart)}
             />
+            <div className="flex">
+              <Icons.CartIcon className="ml-1 mr-1 mt-[2px]"> </Icons.CartIcon>
+              {cartItems.length === 0 ? (
+                <div />
+              ) : (
+                <span className="text-sm">{cartItems.length}</span>
+              )}
+            </div>
           </div>
 
           <div

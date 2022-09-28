@@ -41,8 +41,9 @@ export const MockItemsList = () => {
   return (
     <div className="flex grid grid-cols-2 gap-2 lg:grid lg:grid-cols-3 gap-8 xl:grid-cols-4 gap-16 p-20 ">
       {mockList.map(
-        ({ name, price, quantity, colors, sizes, image, category }) => (
+        ({ name, price, quantity, colors, sizes, image, category, id }) => (
           <ItemsListMapping
+            key={id}
             name={name}
             price={price}
             quantity={quantity}
