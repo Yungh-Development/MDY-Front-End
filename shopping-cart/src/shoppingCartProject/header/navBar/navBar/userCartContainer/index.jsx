@@ -44,12 +44,15 @@ export const UserCartContainer = () => {
           ))
         )}
         <div className="absolute right-4 bottom-4 bg-[#24252B] text-white p-2 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
-          <input
-            type="button"
-            value="Checkout"
-            className="cursor-pointer"
-            onClick={() => checkOut()}
-          />
+          <label htmlFor="CheckoutButton">
+            <a href="/checkout">Checkout</a>
+            <input
+              id="CheckoutButton"
+              type="button"
+              className="cursor-pointer"
+              onClick={() => checkOut()}
+            />
+          </label>
         </div>
       </div>
     </div>
