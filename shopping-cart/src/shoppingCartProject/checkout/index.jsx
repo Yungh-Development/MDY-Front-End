@@ -1,8 +1,10 @@
 import React from "react";
-import { ShoppingCartProject } from "..";
+import { CheckoutFooter } from "./footer";
+import { CheckoutHeader } from "./header";
 
 export const CheckoutPage = () => (
   <div>
-    <ShoppingCartProject.HomePage />
+    <CheckoutHeader />
+    <CheckoutFooter />
   </div>
 );

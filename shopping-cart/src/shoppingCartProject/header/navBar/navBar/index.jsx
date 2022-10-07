@@ -18,12 +18,12 @@ export function NavBarMenu() {
   /* Criar Context contendo só o Filtro, passar os filtros para o provider com a mocklist e executa-los ali dentro */
   const onSearchFieldHandler = (data) => {
     setSearchData({ ...searchData, searchData: data });
-    console.log(searchData);
   };
 
   const onCategorySelectHandler = (data) => {
     setCategoryList({ ...categoryList, category: data });
   };
+
   return (
     <div
       className={`${
