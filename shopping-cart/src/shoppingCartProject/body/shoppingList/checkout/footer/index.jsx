@@ -1,9 +1,9 @@
 import React from "react";
 
-import { SocialMedia } from "../../footer/socialMedia";
-import { HomeButton } from "../../header/navBar/homeButton";
-import { ContactCard } from "../../footer/contact";
-import { MailTo } from "../../footer/mailto";
+import { SocialMedia } from "../../../../footer/socialMedia";
+import { HomeButton } from "../../../../header/navBar/homeButton";
+import { ContactCard } from "../../../../footer/contact";
+import { MailTo } from "../../../../footer/mailto";
 
 export const CheckoutFooter = () => (
   <div className="flex flex-wrap bg-[#24252B] font-black text-white justify-around items-center text-sm mt-20 pb-10 pt-5">

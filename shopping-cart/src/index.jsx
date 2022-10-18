@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import { CheckoutPage } from "./shoppingCartProject/checkout";
+import { CheckoutPage } from "./shoppingCartProject/body/shoppingList/checkout";
 
 import reportWebVitals from "./reportWebVitals";
 

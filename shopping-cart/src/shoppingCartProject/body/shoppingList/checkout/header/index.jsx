@@ -1,12 +1,16 @@
 /* eslint-disable import/prefer-default-export */
-import { React, useState } from "react";
-import { Icons } from "../../constants";
+import { React, useState, useContext } from "react";
+import { Icons } from "../../../../constants";
 
-import { HomeButton } from "../../header/navBar/homeButton";
-import { UserLoginRegister } from "../../header/navBar/navBar/userForm";
+import { HomeButton } from "../../../../header/navBar/homeButton";
+import { UserLoginRegister } from "../../../../header/navBar/navBar/userForm";
+import { UserLoginDataContext } from "../../../../userLoginDataContext";
 
 export function CheckoutHeader() {
   const [open, setOpen] = useState(true);
+  const [userLoginData] = useContext(UserLoginDataContext);
+
+  console.log(userLoginData);
 
   return (
     <div
