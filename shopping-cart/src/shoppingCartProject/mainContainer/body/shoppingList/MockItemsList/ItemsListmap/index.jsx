@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Icons } from "../../../../constants";
-import { ExchangeCoinContext } from "../../../../exchangeCoinContext";
+import { Icons } from "../../../../../constants";
+import { ExchangeCoinContext } from "../../../../../exchangeCoinContext";
 
 export const ItemsListMapping = ({
   colors,

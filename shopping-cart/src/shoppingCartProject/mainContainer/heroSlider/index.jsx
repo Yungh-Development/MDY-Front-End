@@ -2,7 +2,7 @@ import React from "react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { CarouselImgs } from "../constants";
+import { CarouselImgs } from "../../constants";
 
 export const CarouselSlide = () => (
   <Carousel autoPlay emulateTouch infiniteLoop centerMode dynamicHeight="80%">

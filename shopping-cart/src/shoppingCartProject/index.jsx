@@ -8,9 +8,7 @@ import { FilteredContextListProvider } from "./filterContext";
 import { SearchFilterContextProvider } from "./searchFilterContext";
 import { AddedButtonCartProvider } from "./cartItemsContext";
 import { UserLoginDataContextProvider } from "./userLoginDataContext";
-import { BodyContainer } from "./body/index";
-import { FooterContainer } from "./footer/index";
-import { HomePage } from "./header";
+import { FullPageContainer } from "./mainContainer/Index";
 
 export const ShoppingCartProject = () => (
   <ExchangeCoinContextProvider>
@@ -19,13 +17,7 @@ export const ShoppingCartProject = () => (
         <UserLoginDataContextProvider>
           <CollectionMockProvider>
             <AddedButtonCartProvider>
-              <div className="">
-                <div className="absolute md:relative">
-                  <HomePage />
-                </div>
-                <BodyContainer />
-                <FooterContainer />
-              </div>
+              <FullPageContainer />
             </AddedButtonCartProvider>
           </CollectionMockProvider>
         </UserLoginDataContextProvider>

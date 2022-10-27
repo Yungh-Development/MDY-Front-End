@@ -1,16 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-import { React, useState, useContext } from "react";
-import { Icons } from "../../../../constants";
-
+import { React, useState } from "react";
+import { Icons } from "../../../../../constants";
 import { HomeButton } from "../../../../header/navBar/homeButton";
-import { UserLoginRegister } from "../../../../header/navBar/navBar/userForm";
-import { UserLoginDataContext } from "../../../../userLoginDataContext";
 
-export function CheckoutHeader() {
+import { UserLoginRegister } from "./UserLoginCheckout";
+
+export const CheckoutHeader = () => {
   const [open, setOpen] = useState(true);
-  const [userLoginData] = useContext(UserLoginDataContext);
-
-  console.log(userLoginData);
 
   return (
     <div
@@ -35,6 +31,17 @@ export function CheckoutHeader() {
         </div>
         <div
           className={`${
+            open
+              ? "ml-[-300px]"
+              : "block mt-10 ml-0 transition-all ease-in-out duration-800"
+          } h-10  md:flex flex-row md:mt-[-4px] md:ml-8`}
+        >
+          <div className={`${open ? "flex flex-col " : "flex flex-row "}`}>
+            <HomeButton />
+          </div>
+        </div>
+        <div
+          className={`${
             open ? "hidden" : "block"
           } z-20 absolute top-2 right-2 md:hidden`}
         >
@@ -45,17 +52,6 @@ export function CheckoutHeader() {
             onClick={() => setOpen(!open)}
           />
         </div>
-        <div
-          className={`${
-            open
-              ? "ml-[-300px]"
-              : "block mt-10 ml-0 transition-all ease-in-out duration-800"
-          } h-10  md:flex flex-row md:mt-[-4px] md:ml-8`}
-        >
-          <div className={`${open ? "flex flex-col " : "flex flex-row "}`}>
-            <HomeButton />
-          </div>
-        </div>
         <div className="md:flex md:flex-row">
           <div className="mt-40 md:mt-0">
             <UserLoginRegister />
@@ -64,4 +60,4 @@ export function CheckoutHeader() {
       </div>
     </div>
   );
-}
+};

@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import { CheckoutPage } from "./shoppingCartProject/body/shoppingList/checkout";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,7 +10,6 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/checkout" element={<CheckoutPage />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root"),

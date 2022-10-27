@@ -1,5 +1,5 @@
 import React from "react";
-import { SocialMediaIcons } from "../../constants";
+import { SocialMediaIcons } from "../../../constants";
 
 export const SocialMedia = () => (
   <div className="mr-8 mb-2">
