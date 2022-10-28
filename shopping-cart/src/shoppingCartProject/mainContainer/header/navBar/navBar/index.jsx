@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { React, useState, useContext } from "react";
-import { Icons } from "../../../constants";
-import { FilteredContextList, CategoryItems } from "../../../filterContext";
-import { searchFilterContext } from "../../../searchFilterContext";
+import { Icons } from "../../../../constants";
+import { FilteredContextList, CategoryItems } from "../../../../filterContext";
+import { searchFilterContext } from "../../../../searchFilterContext";
 
 import { HomeButton } from "../homeButton";
 import { UserLoginRegister } from "./userForm";

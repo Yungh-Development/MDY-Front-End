@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
-import { CollectionMockContext } from "../../../collectionMock";
-import { CartItemsContext } from "../../../cartItemsContext";
+import { CollectionMockContext } from "../../../../collectionMock";
+import { CartItemsContext } from "../../../../cartItemsContext";
 import { ItemsListMapping } from "./ItemsListmap";
 
 export const MockItemsList = () => {

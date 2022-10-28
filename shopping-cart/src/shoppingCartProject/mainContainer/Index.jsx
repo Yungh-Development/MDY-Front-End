@@ -1,17 +1,15 @@
 import React from "react";
 
-import { BodyContainer } from "./mainContainer/body";
-import { FooterContainer } from "./mainContainer/footer";
+import { BodyContainer } from "./body";
+import { FooterContainer } from "./footer";
 import { HomePage } from "./header";
 
-export const FullPageContainer = () => {
-  return (
+export const FullPageContainer = () => (
+  <div>
     <div>
-      <div>
-        <HomePage />
-      </div>
-      <BodyContainer />
-      <FooterContainer />
+      <HomePage />
     </div>
-  );
-};
+    <BodyContainer />
+    <FooterContainer />
+  </div>
+);
