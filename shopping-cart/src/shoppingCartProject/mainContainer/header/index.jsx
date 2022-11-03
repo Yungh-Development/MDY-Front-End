@@ -1,7 +1,7 @@
 import React from "react";
 import { NavBar } from "./navBar";
 
-export const HomePage = () => (
+export const HeaderContainer = () => (
   <div>
     <NavBar />
   </div>

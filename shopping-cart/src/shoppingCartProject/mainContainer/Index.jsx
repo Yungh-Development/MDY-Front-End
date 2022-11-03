@@ -1,15 +1,15 @@
 import React from "react";
 
-import { BodyContainer } from "./body";
+// import { BodyContainer } from "./body";
 import { FooterContainer } from "./footer";
-import { HomePage } from "./header";
+import { HeaderContainer } from "./header";
 
-export const FullPageContainer = () => (
+export const LayoutPage = ({ children }) => (
   <div>
     <div>
-      <HomePage />
+      <HeaderContainer />
     </div>
-    <BodyContainer />
+    <div>{children}</div>
     <FooterContainer />
   </div>
 );
