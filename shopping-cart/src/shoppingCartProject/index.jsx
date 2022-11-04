@@ -1,14 +1,16 @@
 import React from "react";
-import { BodyContainer } from "./mainContainer/body";
 
-import { LayoutPage } from "./mainContainer";
+import { FooterContainer } from "./footer";
+import { HeaderContainer } from "./header/headerContainer";
 
 // import { CarouselSlide } from "./heroSlider";
 
-export const ShoppingCartProject = () => (
+export const LayoutPage = ({ children }) => (
   <div>
-    <LayoutPage>
-      <BodyContainer />
-    </LayoutPage>
+    <div>
+      <HeaderContainer />
+    </div>
+    <div>{children}</div>
+    <FooterContainer />
   </div>
 );

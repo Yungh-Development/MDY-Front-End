@@ -2,7 +2,7 @@ import React from "react";
 import { FooterCategories } from "./categories";
 import { SocialMedia } from "./socialMedia";
 import { ExchangeCoin } from "./exchangeCoin";
-import { HomeButton } from "../header/navBar/homeButton";
+import { HomeButton } from "../header/homeButton";
 import { ContactCard } from "./contact";
 import { MailTo } from "./mailto";
 

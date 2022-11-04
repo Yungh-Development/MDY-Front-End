@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { ExchangeCoinContext } from "../../../../../exchangeCoinContext";
-import { CartItemsContext } from "../../../../../cartItemsContext";
-import { UserLoginDataContext } from "../../../../../userLoginDataContext";
+import { ExchangeCoinContext } from "../../../exchangeCoinContext";
+import { CartItemsContext } from "../../../cartItemsContext";
+import { UserLoginDataContext } from "../../../userLoginDataContext";
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);

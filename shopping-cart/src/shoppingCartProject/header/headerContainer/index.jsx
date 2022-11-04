@@ -1,13 +1,13 @@
 /* eslint-disable import/prefer-default-export */
 import { React, useState, useContext } from "react";
-import { Icons } from "../../../../constants";
-import { FilteredContextList, CategoryItems } from "../../../../filterContext";
-import { searchFilterContext } from "../../../../searchFilterContext";
+import { Icons } from "../../constants";
+import { FilteredContextList, CategoryItems } from "../../filterContext";
+import { searchFilterContext } from "../../searchFilterContext";
 
 import { HomeButton } from "../homeButton";
 import { UserLoginRegister } from "./userForm";
 
-export function NavBarMenu() {
+export function HeaderContainer() {
   const [open, setOpen] = useState(true);
 
   // const [filterCategory, setFilterCategory] = useState("");
@@ -77,7 +77,7 @@ export function NavBarMenu() {
                 key={option.value}
                 value={option.value}
                 label={option.label}
-                className="text-white font-black "
+                className="text-black font-black pl-2"
               />
             ))}
           </select>

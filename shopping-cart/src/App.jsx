@@ -4,14 +4,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { WrapperContextProvider } from "./shoppingCartProject/wrapperContext";
 
-import { ShoppingCartProject } from "./shoppingCartProject";
+// import { HomePage } from "./shoppingCartProject/mainContainer/body";
+import { HomePage } from "./shoppingCartProject/body/homePage";
 
-export default function App() {
+export const App = () => (
   <Router>
     <WrapperContextProvider>
       <Routes>
-        <Route path="/" element={<ShoppingCartProject />} />
+        <Route path="/" element={<HomePage />} />
       </Routes>
     </WrapperContextProvider>
-  </Router>;
-}
+  </Router>
+);
+
+export default App;
