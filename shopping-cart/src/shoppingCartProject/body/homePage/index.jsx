@@ -32,11 +32,9 @@ export const HomePage = () => {
       },
     ]);
   };
-  console.log(cartItems.length);
 
   const onEventHandler = (data) => {
     setColorSelect(data);
-    console.log(data);
   };
 
   return (
