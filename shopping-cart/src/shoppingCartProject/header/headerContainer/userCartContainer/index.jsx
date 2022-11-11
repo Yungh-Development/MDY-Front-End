@@ -1,18 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ExchangeCoinContext } from "../../../exchangeCoinContext";
 import { CartItemsContext } from "../../../cartItemsContext";
-import { UserLoginDataContext } from "../../../userLoginDataContext";
+
+const userCart = null;
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
-  const [CartItemsList] = useContext(CartItemsContext);
-  const userLoginData = useContext(UserLoginDataContext);
+  const [cartItemsList, setCartItemsList] = useContext(CartItemsContext);
 
-  const checkOut = () => {
-    console.log("Há!");
+  const checkOutHandler = () => {
+    localStorage.setItem(userCart, JSON.stringify([cartItemsList]));
   };
 
-  console.log(userLoginData[0]);
+  const clearCartHandler = () => {
+    localStorage.removeItem(cartItemsList);
+    setCartItemsList(null);
+    console.log("Deleto");
+  };
+
+  useEffect(() => {
+    const cartStoraged = localStorage.getItem(userCart);
+    if (cartStoraged && cartStoraged.length > 0) {
+      setCartItemsList(JSON.parse(cartStoraged));
+    }
+  }, []);
+
+  console.log(cartItemsList);
 
   return (
     // const [showCart, setShowCart] = useState(true);
@@ -31,18 +44,32 @@ export const UserCartContainer = () => {
           </div>
         )}
 
-        {CartItemsList[0] === undefined ? (
+        {cartItemsList === null ? (
           <div>Carrinho Vazio!</div>
         ) : (
-          CartItemsList.map((option) => (
-            <div key={option} className="flex flex-col">
-              <span>{option.name}</span>
-              <span>{option.colors}</span>
-              <span>{option.sizes}</span>
-              <span>{option.price}</span>
-            </div>
-          ))
+          <ul>
+            {cartItemsList.map((option, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index} className="flex flex-col">
+                <span>{option.name}</span>
+                <span>{option.colors}</span>
+                <span>{option.sizes}</span>
+                <span>{option.price}</span>
+              </li>
+            ))}
+          </ul>
         )}
+        <div className="absolute left-4 bottom-4 bg-[#24252B] text-white p-3 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
+          <label htmlFor="ClearCartButton">
+            <input
+              id="ClearCartButton"
+              type="button"
+              value="Clear Cart"
+              className="cursor-pointer"
+              onClick={() => clearCartHandler()}
+            />
+          </label>
+        </div>
         <div className="absolute right-4 bottom-4 bg-[#24252B] text-white p-2 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
           <label htmlFor="CheckoutButton">
             <a href="/checkout">Checkout</a>
@@ -50,7 +77,7 @@ export const UserCartContainer = () => {
               id="CheckoutButton"
               type="button"
               className="cursor-pointer"
-              onClick={() => checkOut()}
+              onClick={() => checkOutHandler()}
             />
           </label>
         </div>

@@ -62,7 +62,7 @@ export const UserLoginRegister = () => {
             />
             <div className="flex">
               <Icons.CartIcon className="ml-1 mr-1 mt-[2px]"> </Icons.CartIcon>
-              {cartItems.length === 0 ? (
+              {cartItems == null ? (
                 <div />
               ) : (
                 <span className="text-sm">{cartItems.length}</span>

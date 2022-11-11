@@ -1,9 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import { CollectionMockContext } from "../../collectionMock";
 import { CartItemsContext } from "../../cartItemsContext";
 import { ItemsListMapping } from "./ItemsListmap";
 import { LayoutPage } from "../..";
+
+const userCart = null;
 
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
@@ -19,6 +21,7 @@ export const HomePage = () => {
     image,
     category,
   ) => {
+    localStorage.setItem(userCart, JSON.stringify(cartItems));
     setCartItems([
       ...cartItems,
       {
@@ -37,6 +40,13 @@ export const HomePage = () => {
     setColorSelect(data);
   };
 
+  useEffect(() => {
+    const cartStoraged = localStorage.getItem(userCart);
+    if (cartStoraged && cartStoraged.length > 0) {
+      setCartItems(JSON.parse(cartStoraged));
+    }
+  }, []);
+
   return (
     <LayoutPage>
       <div className="w-full justify-between">
@@ -44,7 +54,7 @@ export const HomePage = () => {
           {mockList.map(
             ({ name, price, quantity, colors, sizes, image, category, id }) => (
               <ItemsListMapping
-                key={id}
+                id={id}
                 name={name}
                 price={price}
                 quantity={quantity}
