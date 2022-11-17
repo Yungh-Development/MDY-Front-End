@@ -2,30 +2,31 @@ import React, { useContext, useEffect } from "react";
 import { ExchangeCoinContext } from "../../../exchangeCoinContext";
 import { CartItemsContext } from "../../../cartItemsContext";
 
-const userCart = null;
+const userCart = "teste";
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
-  const [cartItemsList, setCartItemsList] = useContext(CartItemsContext);
+  const [cartItems, setCartItems] = useContext(CartItemsContext);
 
   const checkOutHandler = () => {
-    localStorage.setItem(userCart, JSON.stringify([cartItemsList]));
+    localStorage.setItem(userCart, JSON.stringify([cartItems]));
   };
 
   const clearCartHandler = () => {
-    localStorage.removeItem(cartItemsList);
-    setCartItemsList(null);
+    localStorage.removeItem(cartItems);
+    setCartItems();
     console.log("Deleto");
   };
 
   useEffect(() => {
     const cartStoraged = localStorage.getItem(userCart);
-    if (cartStoraged && cartStoraged.length > 0) {
-      setCartItemsList(JSON.parse(cartStoraged));
+    if (cartStoraged) {
+      setCartItems(JSON.parse(cartStoraged));
     }
+    console.log(cartItems);
   }, []);
 
-  console.log(cartItemsList);
+  console.log(cartItems);
 
   return (
     // const [showCart, setShowCart] = useState(true);
@@ -44,11 +45,11 @@ export const UserCartContainer = () => {
           </div>
         )}
 
-        {cartItemsList === null ? (
+        {cartItems === null ? (
           <div>Carrinho Vazio!</div>
         ) : (
           <ul>
-            {cartItemsList.map((option, index) => (
+            {cartItems.map((option, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <li key={index} className="flex flex-col">
                 <span>{option.name}</span>

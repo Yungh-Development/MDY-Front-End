@@ -5,7 +5,7 @@ import { CartItemsContext } from "../../cartItemsContext";
 import { ItemsListMapping } from "./ItemsListmap";
 import { LayoutPage } from "../..";
 
-const userCart = null;
+const userCart = "teste";
 
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
@@ -42,9 +42,10 @@ export const HomePage = () => {
 
   useEffect(() => {
     const cartStoraged = localStorage.getItem(userCart);
-    if (cartStoraged && cartStoraged.length > 0) {
+    if (cartStoraged) {
       setCartItems(JSON.parse(cartStoraged));
     }
+    console.log(cartItems);
   }, []);
 
   return (
