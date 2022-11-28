@@ -13,7 +13,7 @@ export const WrapperContextProvider = ({ children }) => (
   <div>
     <wrapperContext.Provider>
       <ExchangeCoinContextProvider>
-        <FilteredContextListProvider value="White">
+        <FilteredContextListProvider>
           <SearchFilterContextProvider>
             <UserLoginDataContextProvider>
               <CollectionMockProvider>

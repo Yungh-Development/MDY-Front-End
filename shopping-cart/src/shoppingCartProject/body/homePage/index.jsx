@@ -5,22 +5,14 @@ import { CartItemsContext } from "../../cartItemsContext";
 import { ItemsListMapping } from "./ItemsListmap";
 import { LayoutPage } from "../..";
 
-const userCart = "teste";
+const userCart = [];
 
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
   const [colorSelect, setColorSelect] = useState("White");
 
-  const buyButtonHandler = (
-    name,
-    price,
-    colors,
-    sizes,
-    id,
-    image,
-    category,
-  ) => {
+  const buyButtonHandler = (name, price, colors, sizes) => {
     localStorage.setItem(userCart, JSON.stringify(cartItems));
     setCartItems([
       ...cartItems,
@@ -29,9 +21,6 @@ export const HomePage = () => {
         price,
         colors: colorSelect,
         sizes,
-        id,
-        image,
-        category,
       },
     ]);
   };
@@ -45,8 +34,9 @@ export const HomePage = () => {
     if (cartStoraged) {
       setCartItems(JSON.parse(cartStoraged));
     }
-    console.log(cartItems);
   }, []);
+
+  console.log(cartItems);
 
   return (
     <LayoutPage>
