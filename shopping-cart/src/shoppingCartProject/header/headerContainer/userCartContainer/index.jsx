@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ExchangeCoinContext } from "../../../exchangeCoinContext";
 import { CartItemsContext } from "../../../cartItemsContext";
 
@@ -13,12 +13,22 @@ export const UserCartContainer = () => {
   };
 
   const clearCartHandler = () => {
-    localStorage.removeItem(cartItems);
+    localStorage.setItem(userCart, JSON.stringify([]));
     setCartItems([]);
     console.log("Deleto");
   };
 
-  console.log(cartItems);
+  useEffect(() => {
+    const cartStoraged = localStorage.getItem(userCart);
+
+    const newValue = JSON.parse(cartStoraged);
+
+    if (cartStoraged && newValue.length > 0) {
+      setCartItems(JSON.parse(cartStoraged));
+
+      console.log(cartStoraged);
+    }
+  }, []);
 
   return (
     // const [showCart, setShowCart] = useState(true);
@@ -82,7 +92,6 @@ export const UserCartContainer = () => {
               </label>
             </div>
           )}
-
           <div className="bg-[#24252B] text-white p-2 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
             <label htmlFor="CheckoutButton">
               <a href="/checkout">Checkout</a>
