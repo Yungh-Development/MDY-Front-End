@@ -5,7 +5,7 @@ import { FilteredContextList, CategoryItems } from "../../filterContext";
 import { searchFilterContext } from "../../searchFilterContext";
 
 import { HomeButton } from "../homeButton";
-import { UserLoginRegister } from "./userForm";
+import { UserForm } from "./userForm";
 
 export function HeaderContainer() {
   const [open, setOpen] = useState(true);
@@ -103,8 +103,16 @@ export function HeaderContainer() {
               </div>
             </label>
           </div>
-          <div className="mt-40 md:mt-0">
-            <UserLoginRegister />
+          <div
+            className={`${
+              open
+                ? "hidden left-[-300px] bottom-[-400px]"
+                : "transition-all ease-in-out duration-800"
+            } mt-16 md:block md:right-24 md:left-auto border-1 border-[#0288AB] rounded-lg md:mt-0`}
+          >
+            <div className="mt-20 md:mt-0">
+              <UserForm />
+            </div>
           </div>
         </div>
       </div>

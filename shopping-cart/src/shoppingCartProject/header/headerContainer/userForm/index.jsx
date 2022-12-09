@@ -8,7 +8,7 @@ import { CartItemsContext } from "../../../cartItemsContext";
 
 const loginKey = "ls_user";
 
-export const UserLoginRegister = () => {
+export const UserForm = () => {
   // const [user, setUser] = useState(null);
 
   const [showForm, setShowForm] = useState(true);
@@ -42,9 +42,9 @@ export const UserLoginRegister = () => {
   }, []);
 
   return (
-    <div>
+    <div className="relative">
       {userLoginData ? (
-        <div className="flex">
+        <div className="flex relative">
           <div
             className={`${
               showForm
@@ -69,7 +69,6 @@ export const UserLoginRegister = () => {
               )}
             </div>
           </div>
-
           <div
             className={`${
               showForm
@@ -88,14 +87,14 @@ export const UserLoginRegister = () => {
               />
             </div>
           </div>
-          <div className="relative">
+          <div className="">
             {showCart ? (
-              <div className="absolute z-50 right-0 top-[-15px] transition-all ease-in-out duration-800 bg-[#fff] ">
+              <div className="z-50 absolute right-0 top-[-15px] transition-all ease-in-out duration-800 bg-[#fff] ">
                 <UserCartContainer />
                 <div
                   className={`${
                     showCart ? "block" : "hidden"
-                  } z-20 absolute top-2 right-2`}
+                  } z-20 absolute top-2 right-[-250px] md:right-2`}
                 >
                   <Icons.CloseListIcon
                     width="20px"
