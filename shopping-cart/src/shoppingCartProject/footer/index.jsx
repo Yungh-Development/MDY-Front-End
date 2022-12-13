@@ -7,18 +7,18 @@ import { ContactCard } from "./contact";
 import { MailTo } from "./mailto";
 
 export const FooterContainer = () => (
-  <div className="flex flex-wrap bg-[#24252B] font-black text-white justify-around items-center text-sm mt-20 pb-10 pt-5">
-    <div className="flex basis-1/2 lg:basis-1/3 xl:basis-1/4 mb-10">
-      <HomeButton />
-      <FooterCategories />
+  <footer className="bg-[#24252B] font-black text-white">
+    <div className="py-7 flex text-center justify-around">
+      <div className=" grid grid-cols-1 px-8 grid-cols-1   xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-2 gap-4 md:px-10 py-18">
+        <div className="mt-7 w-16 ml-20 md: ml-0">
+          <HomeButton />
+        </div>
+        <FooterCategories />
+        <ExchangeCoin />
+        <MailTo />
+        <ContactCard />
+        <SocialMedia />
+      </div>
     </div>
-    <div className="flex basis-1/2 lg:basis-1/3 xl:basis-1/4 mb-10">
-      <ExchangeCoin />
-      <MailTo />
-    </div>
-    <div className="flex md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-      <ContactCard />
-      <SocialMedia />
-    </div>
-  </div>
+  </footer>
 );

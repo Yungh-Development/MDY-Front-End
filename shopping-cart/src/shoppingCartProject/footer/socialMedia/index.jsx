@@ -2,7 +2,7 @@ import React from "react";
 import { SocialMediaIcons } from "../../constants";
 
 export const SocialMedia = () => (
-  <div className="mr-8 mb-2">
+  <div className="text-center">
     <span className="font-black text-base lg:text-lg">FOLLOW US</span>
     <div className="flex mt-2 justify-center items-end">
       <div className="">

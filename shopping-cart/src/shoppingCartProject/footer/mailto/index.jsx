@@ -26,8 +26,8 @@ export const MailTo = (onSubmitSavedDatas) => {
     inputRef.current.focus();
   };
   return (
-    <div>
-      <span className="ml-14">Mail to!</span>
+    <div className="text-center">
+      <span>Mail to!</span>
       <form
         className="relative font-black text-black text-md flex flex-col "
         onSubmit={onSubmitMailToHandler}
@@ -49,12 +49,14 @@ export const MailTo = (onSubmitSavedDatas) => {
             onChange={(data) => mailToEmailHanlder(data)}
           />
         </label>
-        <button
-          type="submit"
-          className="bg-[#303D4E] p-1 font-black text-white rounded-sm w-10 absolute top-full right-1"
-        >
-          Send
-        </button>
+        <div className="mt-2">
+          <button
+            type="submit"
+            className="bg-[#303D4E] p-2 font-black text-white rounded-sm w-14 hover:opacity-80 hover:border-1 hover:shadow-[0_1px_4px_1px_rgba(256,256,256,0.1)]"
+          >
+            Send
+          </button>
+        </div>
       </form>
     </div>
   );

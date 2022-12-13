@@ -8,10 +8,10 @@ export const FooterCategories = () => {
     setCategoryList({ ...categoryList, category: data });
   };
   return (
-    <div className="w-10 ml-10 ">
+    <div className="w-full">
       <ul>
         <select
-          className="bg-[#ffffff] text-black text-lg font-black h-8  ml-0 mt-8 md:block md:ml-10 md:mt-0"
+          className="bg-[#ffffff] text-black text-lg font-black h-8 mt-2 md:block md:mt-7"
           defaultValue={categoryList.value}
           onChange={(event) => onCategorySelectHandler(event.target.value)}
         >

@@ -15,7 +15,7 @@ export const ExchangeCoin = () => {
   };
 
   return (
-    <div className="flex flex-col mr-12 ml-8">
+    <div className="flex flex-col">
       {" "}
       <span className="font-black text-sm">CURRENT COIN</span>
       <select

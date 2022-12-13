@@ -30,7 +30,7 @@ export function HeaderContainer() {
         open
           ? "h-10 w-10 transition-all ease-in-out duration-300"
           : "w-[250px] h-screen transition-all ease-in-out duration-400"
-      }flex md:h-20 md:w-auto z-50 relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
+      }flex absolute top-0 z-50 md:h-20 md:w-auto md:relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
     >
       <div className="flex flex-col relative ml-2 md:flex-row md:flex md:justify-between w-auto pt-4  ">
         <div
@@ -77,7 +77,7 @@ export function HeaderContainer() {
                 key={option.value}
                 value={option.value}
                 label={option.label}
-                className="text-black font-black pl-2"
+                className="text-white font-black pl-2"
               />
             ))}
           </select>
@@ -95,10 +95,10 @@ export function HeaderContainer() {
                 type="text"
                 name="searchBar"
                 placeholder="Chose a Item"
-                className="bg-[#24252B] font-black rounded-lg p-1"
+                className="bg-[#24252B] text-white rounded-lg p-1 pl-2"
                 onChange={(event) => onSearchFieldHandler(event.target.value)}
               />
-              <div className="absolute right-2 top-[10px] bg-[#24252B]">
+              <div className="absolute right-7 md:right-2 top-[10px] bg-[#24252B]">
                 <Icons.SearchIcon fill="white" />
               </div>
             </label>

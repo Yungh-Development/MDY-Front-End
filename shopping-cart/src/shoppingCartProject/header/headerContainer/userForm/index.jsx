@@ -12,7 +12,7 @@ export const UserForm = () => {
   // const [user, setUser] = useState(null);
 
   const [showForm, setShowForm] = useState(true);
-  const [showCart, setShowCart] = useState(true);
+  const [showCart, setShowCart] = useState(false);
   const [userLoginData, setUserLoginData] = useContext(UserLoginDataContext);
   const [cartItems] = useContext(CartItemsContext);
   const [, SetUserPassword] = useState();
@@ -50,13 +50,13 @@ export const UserForm = () => {
               showForm
                 ? "flex block items-center justify-center h-[38px] text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
                 : "hidden"
-            }`}
+            } px-2`}
           >
             <label htmlFor="userData" />
             <input
               type="button"
               id="userData"
-              className="cursor-pointer"
+              className="cursor-pointer px-2"
               value={userLoginData}
               onClick={() => setShowCart(!showCart)}
             />
@@ -81,7 +81,7 @@ export const UserForm = () => {
               <input
                 type="button"
                 id="userLogout"
-                className="cursor-pointer"
+                className="cursor-pointer px-1"
                 value="Logout"
                 onClick={() => onUserLogout()}
               />
