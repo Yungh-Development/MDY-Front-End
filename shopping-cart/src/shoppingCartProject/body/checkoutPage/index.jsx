@@ -3,11 +3,21 @@ import { LayoutPage } from "../..";
 import { CartItemsContext } from "../../cartItemsContext";
 import { ExchangeCoinContext } from "../../exchangeCoinContext";
 
+const userCart = [];
+
 export const CheckoutPage = () => {
   const cartItems = useContext(CartItemsContext);
+  const [items, setItems] = useContext(CartItemsContext);
   const currentCoin = useContext(ExchangeCoinContext);
 
   let totalValue = 0;
+
+  const deleteItemHandler = (data) => {
+    const newValue = items.filter((item, index) => index !== data);
+
+    localStorage.setItem(userCart, JSON.stringify(newValue));
+    setItems(newValue);
+  };
 
   cartItems[0].forEach((item) => {
     totalValue += item.price;
@@ -16,8 +26,8 @@ export const CheckoutPage = () => {
 
   return (
     <LayoutPage>
-      <ul className="">
-        {cartItems[0].map((option) => (
+      <ul className="pt-28">
+        {cartItems[0].map((option, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <li className="flex p-4 m-6 justify-evenly rounded-xl font-black border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]">
             <span className="p-2">Nome: {option.name}</span>
@@ -28,6 +38,14 @@ export const CheckoutPage = () => {
             ) : (
               <span>{(option.price * 5.1).toFixed(2)}</span>
             )}
+
+            <input
+              type="button"
+              id="deleteHandler"
+              value="X"
+              className="hover:cursor-pointer bg-white rounded-md p-2 px-4 inline-flex items-center justify-center text-gray-400 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              onClick={() => deleteItemHandler(index)}
+            />
           </li>
         ))}
       </ul>

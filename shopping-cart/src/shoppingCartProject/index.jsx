@@ -7,7 +7,7 @@ import { HeaderContainer } from "./header/headerContainer";
 
 export const LayoutPage = ({ children }) => (
   <div>
-    <div>
+    <div className="fixed w-full z-50 mb-12">
       <HeaderContainer />
     </div>
     <div>{children}</div>
