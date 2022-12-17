@@ -12,11 +12,18 @@ export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
   const [colorSelect, setColorSelect] = useState("White");
+  const [sizeSelect, setSizeSelect] = useState("P");
 
-  const buyButtonHandler = (name, price, colors, sizes) => {
-    const Datalist = { name, price, colors: colorSelect, sizes };
+  const buyButtonHandler = (name, price, colors, sizes, image) => {
+    const Datalist = {
+      name,
+      price,
+      colors: colorSelect,
+      sizes: sizeSelect,
+      image,
+    };
     setCartItems([...cartItems, Datalist]);
-
+    console.log(sizes.target.value);
     const newItemsList = [...cartItems, Datalist];
 
     if (cartItems.length > 0) {
@@ -26,6 +33,9 @@ export const HomePage = () => {
 
   const onEventHandler = (data) => {
     setColorSelect(data);
+  };
+  const onSizeEventHandler = (data) => {
+    setSizeSelect(data);
   };
 
   useEffect(() => {
@@ -59,6 +69,7 @@ export const HomePage = () => {
                 sizes={sizes}
                 image={image}
                 category={category}
+                onSizeEventHandler={onSizeEventHandler}
                 onEventHandler={onEventHandler}
                 buyButtonHandler={buyButtonHandler}
               />

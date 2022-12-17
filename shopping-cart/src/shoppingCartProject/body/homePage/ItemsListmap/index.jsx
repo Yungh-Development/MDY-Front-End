@@ -13,6 +13,7 @@ export const ItemsListMapping = ({
   sizes,
   id,
   onEventHandler,
+  onSizeEventHandler,
   buyButtonHandler,
 }) => {
   const currentCoin = useContext(ExchangeCoinContext);
@@ -48,7 +49,10 @@ export const ItemsListMapping = ({
                 />
               ))}
             </select>
-            <select className="rounded-xl">
+            <select
+              className="rounded-xl"
+              onChange={(e) => onSizeEventHandler(e.target.value)}
+            >
               {sizes.map((option) => (
                 <option key={option} value={option} label={option} />
               ))}
