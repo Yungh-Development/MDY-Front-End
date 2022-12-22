@@ -61,7 +61,7 @@ export const ItemsListMapping = ({
       <div className="rounded-xl font-black p-4 border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]">
         <div className="flex relative flex-col">
           <img
-            className="rounded-xl lg:max-w-[200px]"
+            className="rounded-xl lg:max-w-[200px] hover:scale-110 duration-300"
             src={image}
             alt={category}
           />

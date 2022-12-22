@@ -16,7 +16,7 @@ export const SocialMedia = () => (
         </a>
       </div>
       <div>
-        <a href="www.facebook.com">
+        <a href="www.facebook.com" className="hover:text-blue-600">
           <SocialMediaIcons.FacebookIcon width="20px" height="20px" />
         </a>
       </div>

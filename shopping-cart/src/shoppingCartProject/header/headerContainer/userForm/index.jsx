@@ -7,6 +7,7 @@ import { UserLoginDataContext } from "../../../userLoginDataContext";
 import { CartItemsContext } from "../../../cartItemsContext";
 
 const loginKey = "ls_user";
+const userCart = [];
 
 export const UserForm = () => {
   // const [user, setUser] = useState(null);
@@ -14,7 +15,7 @@ export const UserForm = () => {
   const [showForm, setShowForm] = useState(true);
   const [showCart, setShowCart] = useState(false);
   const [userLoginData, setUserLoginData] = useContext(UserLoginDataContext);
-  const [cartItems] = useContext(CartItemsContext);
+  const [cartItems, setCartItems] = useContext(CartItemsContext);
   const [, SetUserPassword] = useState();
 
   const userLoginHandler = (data) => {
@@ -31,7 +32,9 @@ export const UserForm = () => {
 
   const onUserLogout = () => {
     localStorage.removeItem(loginKey);
+    localStorage.setItem(userCart, JSON.stringify([]));
     setUserLoginData(null);
+    setCartItems(userCart);
   };
 
   useEffect(() => {
