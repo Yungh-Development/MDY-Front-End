@@ -1,6 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Icons } from "../../../constants";
 import { ExchangeCoinContext } from "../../../exchangeCoinContext";
+import { CartItemsContext } from "../../../cartItemsContext";
+
+const sizes = ["P", "M", "G", "GG"];
+const userCart = [];
 
 export const ItemsListMapping = ({
   colors,
@@ -9,14 +13,48 @@ export const ItemsListMapping = ({
   name,
   price,
   quantity,
-  colorSelect,
-  sizes,
   id,
-  onEventHandler,
-  onSizeEventHandler,
-  buyButtonHandler,
 }) => {
   const currentCoin = useContext(ExchangeCoinContext);
+
+  const [cartItems, setCartItems] = useContext(CartItemsContext);
+  const [colorSelect, setColorSelect] = useState("White");
+  const [sizeSelect, setSizeSelect] = useState("P");
+
+  const buyButtonHandler = () => {
+    const Datalist = {
+      name,
+      price,
+      colors: colorSelect,
+      sizes: sizeSelect,
+      image,
+    };
+    setCartItems([...cartItems, Datalist]);
+
+    const newItemsList = [...cartItems, Datalist];
+
+    if (cartItems.length > 0) {
+      localStorage.setItem(userCart, JSON.stringify(newItemsList));
+    }
+  };
+
+  const onColorEventHandler = (data) => {
+    setColorSelect(data);
+  };
+
+  const onSizeEventHandler = (data) => {
+    setSizeSelect(data);
+  };
+
+  useEffect(() => {
+    const cartStoraged = localStorage.getItem(userCart);
+
+    const newValue = JSON.parse(cartStoraged);
+
+    if (cartStoraged && newValue.length > 0) {
+      setCartItems(JSON.parse(cartStoraged));
+    }
+  }, []);
 
   return (
     <div key={id} className="flex  justify-evenly max-w-[350px]">
@@ -37,7 +75,7 @@ export const ItemsListMapping = ({
             <span>Stock: {quantity}</span>
             <select
               className=" text-black rounded-xl mb-2 mt-2"
-              onChange={(e) => onEventHandler(e.target.value)}
+              onChange={(e) => onColorEventHandler(e.target.value)}
               defaultValue={colorSelect}
             >
               {colors.map((option) => (

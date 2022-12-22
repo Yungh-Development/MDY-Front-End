@@ -1,55 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { CollectionMockContext } from "../../collectionMock";
-import { CartItemsContext } from "../../cartItemsContext";
+
 import { ItemsListMapping } from "./ItemsListmap";
 import { LayoutPage } from "../..";
 import { CarouselSlide } from "../../heroSlider";
 
-const userCart = [];
-
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
-  const [cartItems, setCartItems] = useContext(CartItemsContext);
-  const [colorSelect, setColorSelect] = useState("White");
-  const [sizeSelect, setSizeSelect] = useState("P");
-
-  const buyButtonHandler = (name, price, colors, sizes, image) => {
-    const Datalist = {
-      name,
-      price,
-      colors: colorSelect,
-      sizes: sizeSelect,
-      image,
-    };
-    setCartItems([...cartItems, Datalist]);
-    console.log(sizes.target.value);
-    const newItemsList = [...cartItems, Datalist];
-
-    if (cartItems.length > 0) {
-      localStorage.setItem(userCart, JSON.stringify(newItemsList));
-    }
-  };
-
-  const onEventHandler = (data) => {
-    setColorSelect(data);
-  };
-  const onSizeEventHandler = (data) => {
-    setSizeSelect(data);
-  };
-
-  useEffect(() => {
-    const cartStoraged = localStorage.getItem(userCart);
-
-    const newValue = JSON.parse(cartStoraged);
-
-    if (cartStoraged && newValue.length > 0) {
-      setCartItems(JSON.parse(cartStoraged));
-
-      console.log(cartStoraged);
-    }
-    console.log(cartStoraged);
-  }, []);
 
   return (
     <LayoutPage>
@@ -69,9 +27,6 @@ export const HomePage = () => {
                 sizes={sizes}
                 image={image}
                 category={category}
-                onSizeEventHandler={onSizeEventHandler}
-                onEventHandler={onEventHandler}
-                buyButtonHandler={buyButtonHandler}
               />
             ),
           )}
