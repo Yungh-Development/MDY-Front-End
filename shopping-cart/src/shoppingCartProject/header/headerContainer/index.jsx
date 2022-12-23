@@ -63,13 +63,13 @@ export function HeaderContainer() {
               open
                 ? "ml-[-300px]"
                 : "block mt-10 ml-0 transition-all ease-in-out duration-800"
-            } h-10  md:flex flex-row md:mt-[-4px] md:ml-8`}
+            } h-24  md:flex flex-row md:mt-[-4px] md:h-10 md:ml-8`}
           >
             <div className={`${open ? "flex flex-col " : "flex flex-row "}`}>
               <HomeButton />
             </div>
             <select
-              className="bg-[#24252B] text-white font-black ml-0 mt-8 md:block md:ml-10 md:mt-0"
+              className="bg-[#24252B] text-white font-black mt-8 md:ml-10 md:mt-0"
               defaultValue={categoryList.value}
               onChange={(event) => onCategorySelectHandler(event.target.value)}
             >
@@ -89,7 +89,7 @@ export function HeaderContainer() {
                 open
                   ? "hidden left-[-300px] bottom-[-400px]"
                   : "transition-all ease-in-out duration-800"
-              } mt-16 md:block md:right-24 md:left-auto border-1 border-[#0288AB] rounded-lg md:mt-0`}
+              } mt-14 md:block md:right-24 md:left-auto border-1 border-[#0288AB] rounded-lg md:mt-0`}
             >
               <label htmlFor="searchBar" className="flex relative mr-4">
                 <input

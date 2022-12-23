@@ -92,12 +92,12 @@ export const UserForm = () => {
           </div>
           <div className="">
             {showCart ? (
-              <div className="z-50 absolute right-0 top-[-15px] transition-all ease-in-out duration-800 bg-[#fff] ">
+              <div className="z-50 absolute right-0 top-[-15px] h-screen transition-all ease-in-out duration-800 bg-[#fff] ">
                 <UserCartContainer />
                 <div
                   className={`${
                     showCart ? "block" : "hidden"
-                  } z-20 absolute top-2 right-[-250px] md:right-2`}
+                  } z-20 absolute top-4 right-[-290px] md:right-2`}
                 >
                   <Icons.CloseListIcon
                     width="20px"

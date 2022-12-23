@@ -32,20 +32,22 @@ export const MailTo = (onSubmitSavedDatas) => {
         className="relative font-black text-black text-md flex flex-col "
         onSubmit={onSubmitMailToHandler}
       >
-        <label htmlFor="name" placeholder="Name">
+        <label htmlFor="name">
           <input
             ref={inputRef}
             type="text"
             name="name"
-            className="m-1"
+            className="m-1 font-black pl-1"
+            placeholder="Name"
             onChange={(data) => mailToNameHandler(data)}
           />
         </label>
-        <label htmlFor="email" placeholder="Email">
+        <label htmlFor="email">
           <input
             type="email"
             name="email"
-            className="m-1"
+            className="m-1 font-black pl-1"
+            placeholder="Email"
             onChange={(data) => mailToEmailHanlder(data)}
           />
         </label>

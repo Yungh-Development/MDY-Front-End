@@ -26,12 +26,12 @@ export const CheckoutPage = () => {
 
   return (
     <LayoutPage>
-      <ul className="pt-28">
+      <ul className="pt-10 md:pt-28">
         {cartItems[0].map((option, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <li className="flex p-4 m-6 justify-evenly items-center rounded-xl font-black border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]">
             <img
-              className="w-24 hover:scale-125 duration-300"
+              className="w-12 md:w-24 hover:scale-125 duration-300"
               src={option.image}
               alt=""
             />
@@ -47,8 +47,8 @@ export const CheckoutPage = () => {
             <input
               type="button"
               id="deleteHandler"
-              value="X"
-              className="hover:cursor-pointer bg-white rounded-md px-3 py-1 inline-flex items-center justify-center bg-[#ef4444] fonte-black hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              value="x"
+              className="bg-red-500 hover:bg-red-700 hover:cursor-pointer text-white font-bold py-0 px-2 border border-red-700 rounded"
               onClick={() => deleteItemHandler(index)}
             />
           </li>

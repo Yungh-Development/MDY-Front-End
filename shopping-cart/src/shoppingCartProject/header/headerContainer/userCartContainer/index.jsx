@@ -31,79 +31,79 @@ export const UserCartContainer = () => {
   }, []);
 
   return (
-    // const [showCart, setShowCart] = useState(true);
-
-    <div className="absolute md:w-[300px] h-screen pt-4 md:right-0 bg-[#ffffff] text-center overflow-auto shadow-stone-400 shadow">
-      {currentCoin[0].value === "Dolar - $" ? (
-        <div>
-          <h1>Your ShoppingCart</h1>
-          <div className="flex-grow mt-4 pt-6 border-t border-stone-400" />
-        </div>
-      ) : (
-        <div>
-          <h1>Seu Carrinho</h1>
-
-          <div className="flex-grow mt-4 pt-6 border-t border-stone-400" />
-        </div>
-      )}
-
-      {cartItems.length === 0 ? (
-        <div>Carrinho Vazio!</div>
-      ) : (
-        <ul>
-          {cartItems.map((option, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <li key={index} className="flex flex-col overflow-auto">
-              <span>{option.name}</span>
-              <span>{option.colors}</span>
-              <span>{option.sizes}</span>
-              {currentCoin[0].value === "Dolar - $" ? (
-                <span>{option.price}</span>
-              ) : (
-                <span>{(option.price * 5.1).toFixed(2)}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-      <div className="flex flex-row justify-between p-8">
-        {cartItems.length === 0 ? (
-          <div className="hidden bg-[#24252B] text-white p-3 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
-            <label htmlFor="ClearCartButton">
-              <input
-                id="ClearCartButton"
-                type="button"
-                value="Clear Cart"
-                className="cursor-pointer"
-                onClick={() => clearCartHandler()}
-              />
-            </label>
+    <div className="">
+      <div className="absolute w-[300px] overflow-auto h-[500px] md:h-screen pt-4 md:right-0 bg-[#ffffff] text-center shadow-stone-400 shadow">
+        {currentCoin[0].value === "Dolar - $" ? (
+          <div>
+            <h1>Your ShoppingCart</h1>
+            <div className="flex-grow mt-4 pt-4 border-t border-stone-400" />
           </div>
         ) : (
-          <div className="block bg-[#24252B] text-white p-3 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
-            <label htmlFor="ClearCartButton">
+          <div>
+            <h1>Seu Carrinho</h1>
+
+            <div className="flex-grow mt-4 pt-4 border-t border-stone-400" />
+          </div>
+        )}
+
+        {cartItems.length === 0 ? (
+          <div>Carrinho Vazio!</div>
+        ) : (
+          <ul className="divide-y">
+            {cartItems.map((option, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index} className="flex flex-col overflow-auto p-2">
+                <span>{option.name}</span>
+                <span>{option.colors}</span>
+                <span>{option.sizes}</span>
+                {currentCoin[0].value === "Dolar - $" ? (
+                  <span>{option.price}</span>
+                ) : (
+                  <span>{(option.price * 5.1).toFixed(2)}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+        <div className="flex flex-row justify-between p-8">
+          {cartItems.length === 0 ? (
+            <div className="hidden bg-[#24252B] text-white p-3 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
+              <label htmlFor="ClearCartButton">
+                <input
+                  id="ClearCartButton"
+                  type="button"
+                  value="Clear Cart"
+                  className="cursor-pointer"
+                  onClick={() => clearCartHandler()}
+                />
+              </label>
+            </div>
+          ) : (
+            <div className="block bg-[#24252B] text-white p-3 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
+              <label htmlFor="ClearCartButton">
+                <input
+                  id="ClearCartButton"
+                  type="button"
+                  value="Clear Cart"
+                  className="cursor-pointer"
+                  onClick={() => clearCartHandler()}
+                />
+              </label>
+            </div>
+          )}
+          <div className="bg-[#24252B] text-white ml-2 p-2 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
+            <label htmlFor="CheckoutButton">
+              <a href="/checkout" className="pt-[-20px]">
+                Checkout
+              </a>
               <input
-                id="ClearCartButton"
+                id="CheckoutButton"
                 type="button"
-                value="Clear Cart"
                 className="cursor-pointer"
-                onClick={() => clearCartHandler()}
+                onClick={() => checkOutHandler()}
               />
             </label>
           </div>
-        )}
-        <div className="bg-[#24252B] text-white p-2 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm">
-          <label htmlFor="CheckoutButton">
-            <a href="/checkout" className="pt-[-20px]">
-              Checkout
-            </a>
-            <input
-              id="CheckoutButton"
-              type="button"
-              className="cursor-pointer"
-              onClick={() => checkOutHandler()}
-            />
-          </label>
         </div>
       </div>
     </div>
