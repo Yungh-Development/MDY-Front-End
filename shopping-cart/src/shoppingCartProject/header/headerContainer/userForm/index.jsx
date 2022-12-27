@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect, useContext } from "react";
 
-import { Icons } from "../../../constants";
-import { UserCartContainer } from "../userCartContainer";
-import { UserLoginDataContext } from "../../../userLoginDataContext";
-import { CartItemsContext } from "../../../cartItemsContext";
+import { Icons } from "../../../Constants";
+import { UserCartContainer } from "../UserCartContainer";
+import { UserLoginDataContext } from "../../../UserLoginDataContext";
+import { CartItemsContext } from "../../../CartItemsContext";
 
 const loginKey = "ls_user";
 const userCart = [];

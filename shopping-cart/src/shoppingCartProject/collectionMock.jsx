@@ -1,7 +1,7 @@
 import React, { useState, useContext, createContext } from "react";
 
-import { FilteredContextList } from "./filterContext";
-import { searchFilterContext } from "./searchFilterContext";
+import { FilteredContextList } from "./FilterContext";
+import { searchFilterContext } from "./SearchFilterContext";
 import ShoesImg from "../public/imgs/ShoesImg.jpg";
 import TShirtImg from "../public/imgs/T-ShirtImg.png";
 import ShortsImg from "../public/imgs/ShortsImg.png";

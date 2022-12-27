@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import { React, useState, useContext } from "react";
-import { Icons } from "../../constants";
-import { FilteredContextList, CategoryItems } from "../../filterContext";
-import { searchFilterContext } from "../../searchFilterContext";
+import { Icons } from "../../Constants";
+import { FilteredContextList, CategoryItems } from "../../FilterContext";
+import { searchFilterContext } from "../../SearchFilterContext";
 
-import { HomeButton } from "../homeButton";
-import { UserForm } from "./userForm";
+import { HomeButton } from "../HomeButton";
+import { UserForm } from "./UserForm";
 
 export function HeaderContainer() {
   const [open, setOpen] = useState(true);

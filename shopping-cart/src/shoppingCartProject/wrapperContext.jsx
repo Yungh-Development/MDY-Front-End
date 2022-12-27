@@ -1,28 +1,26 @@
 import React, { createContext } from "react";
-import { AddedButtonCartProvider } from "./cartItemsContext";
-import { CollectionMockProvider } from "./collectionMock";
-import { ExchangeCoinContextProvider } from "./exchangeCoinContext";
-import { FilteredContextListProvider } from "./filterContext";
-import { SearchFilterContextProvider } from "./searchFilterContext";
+import { AddedButtonCartProvider } from "./CartItemsContext";
+import { CollectionMockProvider } from "./CollectionMock";
+import { ExchangeCoinContextProvider } from "./ExchangeCoinContext";
+import { FilteredContextListProvider } from "./FilterContext";
+import { SearchFilterContextProvider } from "./SearchFilterContext";
 
-import { UserLoginDataContextProvider } from "./userLoginDataContext";
+import { UserLoginDataContextProvider } from "./UserLoginDataContext";
 
 export const wrapperContext = createContext([null, () => {}]);
 
 export const WrapperContextProvider = ({ children }) => (
-  <div>
-    <wrapperContext.Provider>
-      <ExchangeCoinContextProvider>
-        <FilteredContextListProvider>
-          <SearchFilterContextProvider>
-            <UserLoginDataContextProvider>
-              <CollectionMockProvider>
-                <AddedButtonCartProvider>{children}</AddedButtonCartProvider>
-              </CollectionMockProvider>
-            </UserLoginDataContextProvider>
-          </SearchFilterContextProvider>
-        </FilteredContextListProvider>
-      </ExchangeCoinContextProvider>
-    </wrapperContext.Provider>
-  </div>
+  <wrapperContext.Provider>
+    <ExchangeCoinContextProvider>
+      <FilteredContextListProvider>
+        <SearchFilterContextProvider>
+          <UserLoginDataContextProvider>
+            <CollectionMockProvider>
+              <AddedButtonCartProvider>{children}</AddedButtonCartProvider>
+            </CollectionMockProvider>
+          </UserLoginDataContextProvider>
+        </SearchFilterContextProvider>
+      </FilteredContextListProvider>
+    </ExchangeCoinContextProvider>
+  </wrapperContext.Provider>
 );

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 
-import { CollectionMockContext } from "../../collectionMock";
+import { CollectionMockContext } from "../../CollectionMock";
 
 import { ItemsListMapping } from "./ItemsListmap";
 import { LayoutPage } from "../..";
-import { CarouselSlide } from "../../heroSlider";
+import { CarouselSlide } from "../../HeroSlider";
 
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);

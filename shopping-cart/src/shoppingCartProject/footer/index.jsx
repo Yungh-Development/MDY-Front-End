@@ -1,10 +1,10 @@
 import React from "react";
-import { FooterCategories } from "./categories";
-import { SocialMedia } from "./socialMedia";
-import { ExchangeCoin } from "./exchangeCoin";
-import { HomeButton } from "../header/homeButton";
-import { ContactCard } from "./contact";
-import { MailTo } from "./mailto";
+import { FooterCategories } from "./Categories";
+import { SocialMedia } from "./SocialMedia";
+import { ExchangeCoin } from "./ExchangeCoin";
+import { HomeButton } from "../header/HomeButton";
+import { ContactCard } from "./Contact";
+import { MailTo } from "./Mailto";
 
 export const FooterContainer = () => (
   <footer className="bg-[#24252B] font-black text-white">

@@ -1,5 +1,5 @@
 import React from "react";
-import { SocialMediaIcons } from "../../constants";
+import { SocialMediaIcons } from "../../Constants";
 
 export const SocialMedia = () => (
   <div className="text-center">

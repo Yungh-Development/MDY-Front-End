@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Icons } from "../../../constants";
-import { ExchangeCoinContext } from "../../../exchangeCoinContext";
-import { CartItemsContext } from "../../../cartItemsContext";
+import { Icons } from "../../../Constants";
+import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
+import { CartItemsContext } from "../../../CartItemsContext";
 
 const sizes = ["P", "M", "G", "GG"];
 const userCart = [];

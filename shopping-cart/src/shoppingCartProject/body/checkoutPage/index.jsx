@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { LayoutPage } from "../..";
-import { CartItemsContext } from "../../cartItemsContext";
-import { ExchangeCoinContext } from "../../exchangeCoinContext";
+import { CartItemsContext } from "../../CartItemsContext";
+import { ExchangeCoinContext } from "../../ExchangeCoinContext";
 
 const userCart = [];
 

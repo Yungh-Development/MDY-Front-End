@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FilteredContextList, CategoryItems } from "../../filterContext";
+import { FilteredContextList, CategoryItems } from "../../FilterContext";
 
 export const FooterCategories = () => {
   const [categoryList, setCategoryList] = useContext(FilteredContextList);

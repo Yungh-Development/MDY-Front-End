@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { ExchangeCoinContext } from "../../../exchangeCoinContext";
-import { CartItemsContext } from "../../../cartItemsContext";
+import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
+import { CartItemsContext } from "../../../CartItemsContext";
 
 const userCart = [];
 

@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import { WrapperContextProvider } from "./shoppingCartProject/wrapperContext";
+import { WrapperContextProvider } from "./ShoppingCartProject/WrapperContext";
 
 // import { HomePage } from "./shoppingCartProject/mainContainer/body";
-import { HomePage } from "./shoppingCartProject/body/homePage";
-import { CheckoutPage } from "./shoppingCartProject/body/checkoutPage";
+import { HomePage } from "./shoppingCartProject/body/HomePage";
+import { CheckoutPage } from "./shoppingCartProject/body/CheckoutPage";
 
 export const App = () => (
   <Router>
