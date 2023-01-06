@@ -5,8 +5,8 @@ import "./App.css";
 import { WrapperContextProvider } from "./ShoppingCartProject/WrapperContext";
 
 // import { HomePage } from "./shoppingCartProject/mainContainer/body";
-import { HomePage } from "./shoppingCartProject/body/HomePage";
-import { CheckoutPage } from "./shoppingCartProject/body/CheckoutPage";
+import { HomePage } from "./ShoppingCartProject/Body/HomePage";
+import { CheckoutPage } from "./ShoppingCartProject/Body/CheckoutPage";
 
 export const App = () => (
   <Router>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { ExchangeCoinContext } from "../../ExchangeCoinContext";
 
@@ -13,6 +13,14 @@ export const ExchangeCoin = () => {
     });
     console.log(data);
   };
+
+  useEffect(() => {
+    const coinStoraged = localStorage.getItem(currentCoin);
+
+    if (coinStoraged) {
+      setCurrentCoin(JSON.parse(coinStoraged));
+    }
+  }, []);
 
   return (
     <div className="flex flex-col">

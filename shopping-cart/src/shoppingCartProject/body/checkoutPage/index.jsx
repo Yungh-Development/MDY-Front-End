@@ -22,7 +22,6 @@ export const CheckoutPage = () => {
   cartItems[0].forEach((item) => {
     totalValue += item.price;
   });
-  console.log(cartItems);
 
   return (
     <LayoutPage>

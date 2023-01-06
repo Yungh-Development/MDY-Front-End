@@ -96,8 +96,8 @@ export const ItemsListMapping = ({
               ))}
             </select>
           </div>
-          <div className="relative pt-12 hover:opacity-80 ">
-            <div className="absolute bottom-0 right-2 flex border-solid border-2 border-sky-500  rounded-full p-1 float-right cursor-pointer">
+          <div className="relative pt-12 hover:opacity-80 hover:cursor-pointer">
+            <div className="absolute bottom-0 right-2 flex border-solid border-2 border-sky-500  rounded-full p-1 float-right ">
               <Icons.CartIcon
                 width="20px"
                 height="20px"
@@ -107,7 +107,7 @@ export const ItemsListMapping = ({
               <input
                 type="button"
                 value="Buy"
-                className="pl-1 pr-1 text-black"
+                className="pl-1 pr-1 text-black hover:cursor-pointer"
                 onClick={() =>
                   buyButtonHandler(name, price, colors, sizes, category)
                 }

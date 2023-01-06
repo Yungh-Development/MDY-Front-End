@@ -1,7 +1,7 @@
 import React from "react";
 
-import { FooterContainer } from "./footer";
-import { HeaderContainer } from "./header/headerContainer";
+import { FooterContainer } from "./Footer";
+import { HeaderContainer } from "./Header/HeaderContainer";
 
 // import { CarouselSlide } from "./heroSlider";
 

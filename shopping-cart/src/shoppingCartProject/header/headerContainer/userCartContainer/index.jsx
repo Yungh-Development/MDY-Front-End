@@ -18,6 +18,13 @@ export const UserCartContainer = () => {
     console.log("Deleto");
   };
 
+  const deleteItemHandler = (data) => {
+    const newValue = cartItems.filter((item, index) => index !== data);
+
+    localStorage.setItem(userCart, JSON.stringify(newValue));
+    setCartItems(newValue);
+  };
+
   useEffect(() => {
     const cartStoraged = localStorage.getItem(userCart);
 
@@ -25,8 +32,6 @@ export const UserCartContainer = () => {
 
     if (cartStoraged && newValue.length > 0) {
       setCartItems(JSON.parse(cartStoraged));
-
-      console.log(cartStoraged);
     }
   }, []);
 
@@ -49,7 +54,7 @@ export const UserCartContainer = () => {
         {cartItems.length === 0 ? (
           <div>Carrinho Vazio!</div>
         ) : (
-          <ul className="divide-y">
+          <ul className="flex flex-col divide-y ">
             {cartItems.map((option, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <li key={index} className="flex flex-col overflow-auto p-2">
@@ -61,6 +66,13 @@ export const UserCartContainer = () => {
                 ) : (
                   <span>{(option.price * 5.1).toFixed(2)}</span>
                 )}
+                <input
+                  type="button"
+                  id="deleteHandler"
+                  value="Excluir"
+                  className="bg-red-500 hover:bg-red-700 my-4 w-28 ml-20 hover:cursor-pointer text-white font-bold border border-red-700 rounded"
+                  onClick={() => deleteItemHandler(index)}
+                />
               </li>
             ))}
           </ul>
