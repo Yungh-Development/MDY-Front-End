@@ -70,7 +70,7 @@ export const UserCartContainer = () => {
                   type="button"
                   id="deleteHandler"
                   value="Excluir"
-                  className="bg-red-500 hover:bg-red-700 my-4 w-28 ml-20 hover:cursor-pointer text-white font-bold border border-red-700 rounded"
+                  className="text-sky-500 font-thin text-base hover:opacity-80 hover:underline my-4 w-28 ml-20 hover:cursor-pointer font-bold"
                   onClick={() => deleteItemHandler(index)}
                 />
               </li>

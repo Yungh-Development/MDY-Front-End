@@ -58,19 +58,23 @@ export const ItemsListMapping = ({
 
   return (
     <div key={id} className="flex  justify-evenly max-w-[350px]">
-      <div className="rounded-xl font-black p-4 border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]">
-        <div className="flex relative flex-col">
+      <div className="rounded-md font-medium text-base p-4 border-2 w-[280px] shadow-[0_2px_1px_2px_rgba(0,0,0,0.2)]">
+        <div className="flex relative flex-col grid justify-items-stretch justify-center">
           <img
-            className="rounded-xl lg:max-w-[200px] hover:scale-110 duration-300"
+            className="rounded-xl lg:max-w-[200px] opacity-80 hover:scale-110 duration-300 hover:opacity-100"
             src={image}
             alt={category}
           />
           <div className="flex flex-col flex ">
-            <span className="text-center text-xl pb-2">{name}</span>
+            <span className="text-center font-bold text-2xl pb-2">{name}</span>
             {currentCoin[0].value === "Dolar - $" ? (
-              <span>Price: {price}</span>
+              <span className="font-black text-xl text-sky-500">
+                Price: {price}
+              </span>
             ) : (
-              <span>Price: {(price * 5.1).toFixed(2)}</span>
+              <p className="font-black text-xl text-sky-500">
+                Price: {(price * 5.1).toFixed(2)}
+              </p>
             )}
             <span>Stock: {quantity}</span>
             <select
