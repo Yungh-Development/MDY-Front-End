@@ -10,7 +10,7 @@ export const CollectionMockContext = createContext([null, () => {}]);
 
 export const CollectionMock = [
   {
-    id: 1,
+    id: "1",
     name: "Normal T-Shirt",
     price: 69.99,
     inStock: true,
@@ -22,7 +22,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
-    id: 2,
+    id: "2",
     name: "Ultra T-Shirts",
     price: 69.99,
     inStock: true,
@@ -34,7 +34,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
-    id: 3,
+    id: "3",
     name: "Camisetona",
     price: 59.99,
     inStock: true,
@@ -46,7 +46,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
-    id: 4,
+    id: "4",
     name: "Camisetuxa",
     price: 59.99,
     inStock: true,
@@ -58,7 +58,7 @@ export const CollectionMock = [
     image: TShirtImg,
   },
   {
-    id: 5,
+    id: "5",
     name: "Normal Shorts",
     price: 49.99,
     inStock: true,
@@ -70,7 +70,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
-    id: 6,
+    id: "6",
     name: "Ultra Shorts",
     price: 39.99,
     inStock: true,
@@ -82,7 +82,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
-    id: 7,
+    id: "7",
     name: "Shortin",
     price: 49.99,
     inStock: true,
@@ -94,7 +94,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
-    id: 8,
+    id: "8",
     name: "Carçola",
     price: 59.99,
     inStock: true,
@@ -106,7 +106,7 @@ export const CollectionMock = [
     image: ShortsImg,
   },
   {
-    id: 9,
+    id: "9",
     name: "Normal Shoes",
     price: 49.99,
     inStock: true,
@@ -118,7 +118,7 @@ export const CollectionMock = [
     image: ShoesImg,
   },
   {
-    id: 10,
+    id: "10",
     name: "Ultra Shoes",
     price: 39.99,
     inStock: true,
@@ -130,7 +130,7 @@ export const CollectionMock = [
     image: ShoesImg,
   },
   {
-    id: 11,
+    id: "11",
     name: "Sapatin",
     price: 49.99,
     inStock: true,
@@ -142,7 +142,7 @@ export const CollectionMock = [
     image: ShoesImg,
   },
   {
-    id: 12,
+    id: "12",
     name: "Chinela",
     price: 59.99,
     inStock: true,
