@@ -31,8 +31,6 @@ export const UserForm = () => {
   };
 
   const onUserLogout = () => {
-    localStorage.removeItem(loginKey);
-    localStorage.setItem(userCart, JSON.stringify([]));
     setUserLoginData(null);
     setCartItems(userCart);
   };
