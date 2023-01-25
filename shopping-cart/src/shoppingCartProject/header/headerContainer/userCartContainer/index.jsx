@@ -1,16 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
 import { CartItemsContext } from "../../../CartItemsContext";
-import { CollectionMock } from "../../../CollectionMock";
 
 const userCart = [];
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
-  const [teste, setTeste] = useState([]);
-
-  const { product } = CollectionMock;
 
   const checkOutHandler = () => {
     localStorage.setItem(userCart, JSON.stringify([cartItems]));
@@ -19,8 +15,8 @@ export const UserCartContainer = () => {
   const clearCartHandler = () => {
     localStorage.setItem(userCart, JSON.stringify([]));
     setCartItems([]);
-    console.log("Deleto");
   };
+  console.log(cartItems);
 
   const deleteItemHandler = (data) => {
     const newValue = cartItems.filter((item, index) => index !== data);
@@ -33,17 +29,6 @@ export const UserCartContainer = () => {
     const cartStoraged = localStorage.getItem(userCart);
 
     const newValue = JSON.parse(cartStoraged);
-
-    const exist = teste.find((x) => x.name === teste.name);
-    if (exist) {
-      setTeste(
-        teste.map((x) =>
-          x.name === product.name ? { ...exist, qty: exist.qty + 1 } : x,
-        ),
-      );
-    } else {
-      setTeste([...teste, { ...product, qty: 1 }]);
-    }
 
     if (cartStoraged && newValue.length > 0) {
       setCartItems(JSON.parse(cartStoraged));
@@ -81,7 +66,7 @@ export const UserCartContainer = () => {
                 ) : (
                   <span>{(option.price * 5.1).toFixed(2)}</span>
                 )}
-                <span>{teste.length}</span>
+
                 <input
                   type="button"
                   id="deleteHandler"

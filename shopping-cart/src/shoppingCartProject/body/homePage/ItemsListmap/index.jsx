@@ -22,19 +22,42 @@ export const ItemsListMapping = ({
   const [sizeSelect, setSizeSelect] = useState("P");
 
   const buyButtonHandler = () => {
-    const Datalist = {
+    const dataList = {
       name,
       price,
+      id,
       colors: colorSelect,
       sizes: sizeSelect,
       image,
     };
-    setCartItems([...cartItems, Datalist]);
+    // const uniqueItemsList = [...cartItems, dataList];
 
-    const newItemsList = [...cartItems, Datalist];
+    // objeto vazio.
+
+    const newItemsList = [...cartItems, dataList];
 
     if (cartItems.length > 0) {
       localStorage.setItem(userCart, JSON.stringify(newItemsList));
+    }
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const item of newItemsList) {
+      const uniqueItem = JSON.stringify({
+        id: item.id,
+        colors: item.colors,
+        sizes: item.sizes,
+      });
+
+      if (newItemsList[uniqueItem]) {
+        // eslint-disable-next-line no-plusplus, no-unused-expressions
+        newItemsList[uniqueItem]++;
+        // acessa o objeto/valor e adiciona mais um caso igual
+        // adicionar botão de + -  para exclusão unitaria
+      } else {
+        newItemsList[uniqueItem] = 1;
+        // guardar objeto com item e valor
+      }
+      setCartItems(newItemsList);
     }
   };
 

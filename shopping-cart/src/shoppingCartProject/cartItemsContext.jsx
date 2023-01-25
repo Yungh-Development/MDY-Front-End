@@ -10,6 +10,7 @@ export const AddedButtonCartProvider = ({ children }) => {
     if (cartStoraged) {
       setContextValue(JSON.parse(cartStoraged));
     }
+    console.log(contextValue);
   }, []);
 
   return (
