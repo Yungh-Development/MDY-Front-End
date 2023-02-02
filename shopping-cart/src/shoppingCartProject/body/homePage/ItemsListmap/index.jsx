@@ -30,15 +30,17 @@ export const ItemsListMapping = ({
       sizes: sizeSelect,
       image,
     };
-    // const uniqueItemsList = [...cartItems, dataList];
 
     // objeto vazio.
+    const uniqueItemsList = {};
 
     const newItemsList = [...cartItems, dataList];
 
     if (cartItems.length > 0) {
       localStorage.setItem(userCart, JSON.stringify(newItemsList));
     }
+
+    console.log(cartItems);
 
     // eslint-disable-next-line no-restricted-syntax
     for (const item of newItemsList) {
@@ -48,16 +50,17 @@ export const ItemsListMapping = ({
         sizes: item.sizes,
       });
 
-      if (newItemsList[uniqueItem]) {
+      if (uniqueItemsList[uniqueItem]) {
         // eslint-disable-next-line no-plusplus, no-unused-expressions
-        newItemsList[uniqueItem]++;
+        uniqueItemsList[uniqueItem]++;
         // acessa o objeto/valor e adiciona mais um caso igual
         // adicionar botão de + -  para exclusão unitaria
       } else {
-        newItemsList[uniqueItem] = 1;
+        uniqueItemsList[uniqueItem] = 1;
         // guardar objeto com item e valor
       }
-      setCartItems(newItemsList);
+      setCartItems(uniqueItemsList);
+      console.log(uniqueItemsList);
     }
   };
 
