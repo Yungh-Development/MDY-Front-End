@@ -59,7 +59,15 @@ export const ItemsListMapping = ({
         uniqueItemsList[uniqueItem] = 1;
         // guardar objeto com item e valor
       }
-      setCartItems(uniqueItemsList);
+      // const MergedList = [...uniqueItem, uniqueItemsList[uniqueItem]];
+      // O if tem que ser testado no UserCart e lá somar ou diminuir quantidade de itens
+
+      localStorage.setItem(
+        uniqueItemsList[uniqueItem],
+        JSON.stringify(uniqueItem),
+      );
+
+      setCartItems(newItemsList);
       console.log(uniqueItemsList);
     }
   };

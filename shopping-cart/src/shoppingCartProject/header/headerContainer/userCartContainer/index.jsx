@@ -3,6 +3,7 @@ import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
 import { CartItemsContext } from "../../../CartItemsContext";
 
 const userCart = [];
+const uniqueItemsList = {};
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
@@ -26,6 +27,11 @@ export const UserCartContainer = () => {
   };
 
   useEffect(() => {
+    const teste = localStorage.getItem(uniqueItemsList);
+    const obj = JSON.parse(teste);
+
+    console.log(obj);
+    console.log(teste);
     const cartStoraged = localStorage.getItem(userCart);
 
     const newValue = JSON.parse(cartStoraged);
