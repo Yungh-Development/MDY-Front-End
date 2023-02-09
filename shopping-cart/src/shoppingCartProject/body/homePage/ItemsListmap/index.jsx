@@ -45,30 +45,38 @@ export const ItemsListMapping = ({
     // eslint-disable-next-line no-restricted-syntax
     for (const item of newItemsList) {
       const uniqueItem = JSON.stringify({
+        name: item.name,
+        price: item.price,
         id: item.id,
         colors: item.colors,
         sizes: item.sizes,
       });
 
+      uniqueItemsList[uniqueItem] = {
+        // eslint-disable-next-line object-shorthand
+        item: item,
+        quantity: 1,
+      };
+
       if (uniqueItemsList[uniqueItem]) {
         // eslint-disable-next-line no-plusplus, no-unused-expressions
-        uniqueItemsList[uniqueItem]++;
+        uniqueItemsList[uniqueItem].quantity += 1;
         // acessa o objeto/valor e adiciona mais um caso igual
-        // adicionar botão de + -  para exclusão unitaria
       } else {
-        uniqueItemsList[uniqueItem] = 1;
+        uniqueItemsList[uniqueItem].quantity = 1;
         // guardar objeto com item e valor
       }
-      // const MergedList = [...uniqueItem, uniqueItemsList[uniqueItem]];
-      // O if tem que ser testado no UserCart e lá somar ou diminuir quantidade de itens
 
       localStorage.setItem(
         uniqueItemsList[uniqueItem],
-        JSON.stringify(uniqueItem),
+        JSON.stringify(
+          uniqueItemsList[uniqueItem],
+          uniqueItemsList[uniqueItem].quantity,
+        ),
       );
 
       setCartItems(newItemsList);
-      console.log(uniqueItemsList);
+      console.log(uniqueItemsList[uniqueItem].quantity);
     }
   };
 

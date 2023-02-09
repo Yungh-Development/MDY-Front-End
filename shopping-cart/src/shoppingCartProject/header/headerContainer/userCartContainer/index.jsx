@@ -1,13 +1,18 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
 import { CartItemsContext } from "../../../CartItemsContext";
 
 const userCart = [];
 const uniqueItemsList = {};
 
+const teste = localStorage.getItem(uniqueItemsList);
+const obj = JSON.parse(teste);
+
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
+  // eslint-disable-next-line prefer-const
+  let [count, setCount] = useState(1);
 
   const checkOutHandler = () => {
     localStorage.setItem(userCart, JSON.stringify([cartItems]));
@@ -17,7 +22,24 @@ export const UserCartContainer = () => {
     localStorage.setItem(userCart, JSON.stringify([]));
     setCartItems([]);
   };
-  console.log(cartItems);
+
+  const addButtonHandler = () => {
+    if (count >= 1) {
+      count += 1;
+      setCount(count);
+    } else {
+      count = 1;
+    }
+  };
+
+  const deleteButtonHandler = () => {
+    if (count >= 1) {
+      count -= 1;
+      setCount(count);
+    } else {
+      count = 1;
+    }
+  };
 
   const deleteItemHandler = (data) => {
     const newValue = cartItems.filter((item, index) => index !== data);
@@ -27,11 +49,9 @@ export const UserCartContainer = () => {
   };
 
   useEffect(() => {
-    const teste = localStorage.getItem(uniqueItemsList);
-    const obj = JSON.parse(teste);
-
-    console.log(obj);
     console.log(teste);
+    console.log(obj);
+
     const cartStoraged = localStorage.getItem(userCart);
 
     const newValue = JSON.parse(cartStoraged);
@@ -72,7 +92,25 @@ export const UserCartContainer = () => {
                 ) : (
                   <span>{(option.price * 5.1).toFixed(2)}</span>
                 )}
-
+                <div className="flex justify-center py-1">
+                  <input
+                    type="button"
+                    id="addButtonHandler"
+                    value="+"
+                    className="text-[#1d4ed8] bg-[#4ade80] px-2  font-thin text-lg hover:opacity-90 hover:cursor-pointer font-bold"
+                    onClick={() => addButtonHandler()}
+                  />
+                  <span className="border-solid border-[1px] border-[#0f172a] px-4">
+                    {count}
+                  </span>
+                  <input
+                    type="button"
+                    id="deleteButtonHandler"
+                    value="-"
+                    className="text-[#1d4ed8] bg-[#f87171] px-2 font-thin text-lg hover:opacity-90 hover:cursor-pointer font-bold"
+                    onClick={() => deleteButtonHandler()}
+                  />
+                </div>
                 <input
                   type="button"
                   id="deleteHandler"
