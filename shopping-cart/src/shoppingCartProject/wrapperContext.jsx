@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { AddedButtonCartProvider } from "./CartItemsContext";
+import { AddedButtonCartProvider } from "./ItemsStoreContext";
 import { CollectionMockProvider } from "./CollectionMock";
 import { ExchangeCoinContextProvider } from "./ExchangeCoinContext";
 import { FilteredContextListProvider } from "./FilterContext";

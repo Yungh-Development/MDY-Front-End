@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
-import { CartItemsContext } from "../../../CartItemsContext";
+import { ItemsStoreContext } from "../../../ItemsStoreContext";
 
 const userCart = [];
 const uniqueItemsList = {};
@@ -10,7 +10,7 @@ const obj = JSON.parse(teste);
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
-  const [cartItems, setCartItems] = useContext(CartItemsContext);
+  const [cartItems, setCartItems] = useContext(ItemsStoreContext);
   // eslint-disable-next-line prefer-const
   let [count, setCount] = useState(1);
 

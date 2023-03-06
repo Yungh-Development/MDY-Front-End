@@ -1,24 +1,46 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
+import React, {
+  useState,
+  useContext,
+  createContext,
+  useEffect,
+  useMemo,
+} from "react";
+// eslint-disable-next-line import/no-unresolved
+import useLocalStorage from "@d2k/react-localstorage";
 
-export const CartItemsContext = createContext([null, () => {}]);
+import { StorageKey } from "./Constants";
 
-export const AddedButtonCartProvider = ({ children }) => {
-  const [contextValue, setContextValue] = useState([]);
+export const CartContext = createContext([
+  null,
+  { items: [], setItems: (items) => items },
+]);
+
+export function CartContextProvider({ children }) {
+  const [stateValue, setStateValue] = useState([]);
+  const [storageValue, setStorageValue] = useLocalStorage(StorageKey, []);
 
   useEffect(() => {
-    const cartStoraged = localStorage.getItem(contextValue);
-    if (cartStoraged) {
-      setContextValue(JSON.parse(cartStoraged));
-    }
-    console.log(contextValue);
-  }, []);
+    setStateValue(storageValue ?? []);
+  }, [storageValue]);
+
+  const setValue = (newValue) => {
+    setStateValue(newValue);
+    setStorageValue(newValue);
+  };
+
+  // Memoize to get rid of excessive rendering
+  const contextValue = useMemo(
+    () => ({ items: stateValue, setItems: setValue }),
+    [stateValue, setValue],
+  );
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <CartItemsContext.Provider value={[contextValue, setContextValue]}>
-      {children}
-    </CartItemsContext.Provider>
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
+}
+CartContextProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
-export const useTestContext = () => useContext(CartItemsContext);
+export const useCartContext = () => useContext(CartContext);

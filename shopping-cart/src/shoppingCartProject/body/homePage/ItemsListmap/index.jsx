@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Icons } from "../../../Constants";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
-import { CartItemsContext } from "../../../CartItemsContext";
+import { ItemsStoreContext } from "../../../ItemsStoreContext";
 
 const sizes = ["P", "M", "G", "GG"];
 const userCart = [];
@@ -17,7 +17,7 @@ export const ItemsListMapping = ({
 }) => {
   const currentCoin = useContext(ExchangeCoinContext);
 
-  const [cartItems, setCartItems] = useContext(CartItemsContext);
+  const [cartItems, setCartItems] = useContext(ItemsStoreContext);
   const [colorSelect, setColorSelect] = useState("White");
   const [sizeSelect, setSizeSelect] = useState("P");
 
@@ -52,19 +52,16 @@ export const ItemsListMapping = ({
         sizes: item.sizes,
       });
 
-      uniqueItemsList[uniqueItem] = {
-        // eslint-disable-next-line object-shorthand
-        item: item,
-        quantity: 1,
-      };
-
       if (uniqueItemsList[uniqueItem]) {
         // eslint-disable-next-line no-plusplus, no-unused-expressions
         uniqueItemsList[uniqueItem].quantity += 1;
         // acessa o objeto/valor e adiciona mais um caso igual
       } else {
-        uniqueItemsList[uniqueItem].quantity = 1;
-        // guardar objeto com item e valor
+        uniqueItemsList[uniqueItem] = {
+          // eslint-disable-next-line object-shorthand
+          item: item,
+          quantity: 1,
+        };
       }
 
       localStorage.setItem(

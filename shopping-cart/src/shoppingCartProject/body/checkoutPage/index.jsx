@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { LayoutPage } from "../..";
-import { CartItemsContext } from "../../CartItemsContext";
+import { ItemsStoreContext } from "../../ItemsStoreContext";
 import { ExchangeCoinContext } from "../../ExchangeCoinContext";
 
 const userCart = [];
 
 export const CheckoutPage = () => {
-  const cartItems = useContext(CartItemsContext);
-  const [items, setItems] = useContext(CartItemsContext);
+  const cartItems = useContext(ItemsStoreContext);
+  const [items, setItems] = useContext(ItemsStoreContext);
   const currentCoin = useContext(ExchangeCoinContext);
 
   let totalValue = 0;

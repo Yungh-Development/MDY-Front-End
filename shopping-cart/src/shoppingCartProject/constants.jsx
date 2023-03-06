@@ -9,6 +9,8 @@ import photo01 from "../public/imgs/photo01.jpg";
 import photo02 from "../public/imgs/photo02.jpg";
 import photo03 from "../public/imgs/photo03.jpg";
 
+export const StorageKey = "shoppingCart";
+
 export const CategoryItems = [
   { value: "categories", label: "Chose a Category" },
   { value: "TShirts", label: "T-Shirt" },
