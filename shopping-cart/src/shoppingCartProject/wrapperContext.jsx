@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { AddedButtonCartProvider } from "./ItemsStoreContext";
+import { ItemsStoreContextProvider } from "./ItemsStoreContext";
 import { CollectionMockProvider } from "./CollectionMock";
 import { ExchangeCoinContextProvider } from "./ExchangeCoinContext";
 import { FilteredContextListProvider } from "./FilterContext";
@@ -18,7 +18,9 @@ export const WrapperContextProvider = ({ children }) => (
           <UserLoginDataContextProvider>
             <CollectionMockProvider>
               <CartContextProvider>
-                <AddedButtonCartProvider>{children}</AddedButtonCartProvider>
+                <ItemsStoreContextProvider>
+                  {children}
+                </ItemsStoreContextProvider>
               </CartContextProvider>
             </CollectionMockProvider>
           </UserLoginDataContextProvider>

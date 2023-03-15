@@ -1,143 +1,136 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { Icons } from "../../../Constants";
+
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
-import { ItemsStoreContext } from "../../../ItemsStoreContext";
+// import { ItemsStoreContext } from "../../../ItemsStoreContext";
+import { CartContextProvider } from "../../../CartItemsContext";
+import { CollectionMock } from "../../../CollectionMock";
+import getUniqueKeyFromItem from "../../../getUniqueKeyFromItem";
+import arrayToOptions from "../../../arrayToOptions";
 
-const sizes = ["P", "M", "G", "GG"];
-const userCart = [];
+const itemPropType = PropTypes.shape({
+  id: PropTypes.number,
+  name: PropTypes.string,
+  price: PropTypes.number,
+  discountPercentage: PropTypes.number,
+  quantity: PropTypes.number,
+  category: PropTypes.string,
+  thumbnail: PropTypes.string,
+  image: PropTypes.arrayOf(PropTypes.string),
+  sizes: PropTypes.arrayOf(PropTypes.string),
+  colors: PropTypes.arrayOf(PropTypes.string),
+});
 
-export const ItemsListMapping = ({
-  colors,
-  image,
-  category,
-  name,
-  price,
-  quantity,
-  id,
-}) => {
+function Options({ name, options, value, onChange }) {
+  return (
+    <select
+      name={name}
+      id={name}
+      value={value}
+      onChange={(event) => {
+        onChange(event.target.value);
+      }}
+    >
+      <option value="">Select {name}</option>
+      {options.map((option) => (
+        <option value={option.value} key={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+  );
+}
+Options.propTypes = {
+  name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(itemPropType).isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+function ItemsListMapping({ item }) {
   const currentCoin = useContext(ExchangeCoinContext);
+  const { items, setItems } = CartContextProvider();
+  const [optionals, setOptionals] = useState({});
 
-  const [cartItems, setCartItems] = useContext(ItemsStoreContext);
-  const [colorSelect, setColorSelect] = useState("White");
-  const [sizeSelect, setSizeSelect] = useState("P");
+  const handleOptionalChange = (key, value) => {
+    setOptionals({ ...optionals, [key]: value });
+  };
 
-  const buyButtonHandler = () => {
-    const dataList = {
-      name,
-      price,
-      id,
-      colors: colorSelect,
-      sizes: sizeSelect,
-      image,
+  const handleClickBuy = () => {
+    if (!optionals.color) {
+      // eslint-disable-next-line no-alert
+      alert("You must pick a color!");
+      return;
+    }
+
+    if (!optionals.size) {
+      // eslint-disable-next-line no-alert
+      alert("You must pick a size!");
+      return;
+    }
+
+    const itemToStore = {
+      id: item.id,
+      ...optionals,
     };
 
-    // objeto vazio.
-    const uniqueItemsList = {};
+    itemToStore.uniqueKey = getUniqueKeyFromItem(itemToStore);
 
-    const newItemsList = [...cartItems, dataList];
+    // Check if exists
 
-    if (cartItems.length > 0) {
-      localStorage.setItem(userCart, JSON.stringify(newItemsList));
+    const existsIndex = items.findIndex(
+      (storageItem) => storageItem.uniqueKey === itemToStore.uniqueKey,
+    );
+
+    if (existsIndex >= 0) {
+      items[existsIndex].quantity += 1;
+    } else {
+      items.push({ ...itemToStore, quantity: 1 });
     }
 
-    console.log(cartItems);
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const item of newItemsList) {
-      const uniqueItem = JSON.stringify({
-        name: item.name,
-        price: item.price,
-        id: item.id,
-        colors: item.colors,
-        sizes: item.sizes,
-      });
-
-      if (uniqueItemsList[uniqueItem]) {
-        // eslint-disable-next-line no-plusplus, no-unused-expressions
-        uniqueItemsList[uniqueItem].quantity += 1;
-        // acessa o objeto/valor e adiciona mais um caso igual
-      } else {
-        uniqueItemsList[uniqueItem] = {
-          // eslint-disable-next-line object-shorthand
-          item: item,
-          quantity: 1,
-        };
-      }
-
-      localStorage.setItem(
-        uniqueItemsList[uniqueItem],
-        JSON.stringify(
-          uniqueItemsList[uniqueItem],
-          uniqueItemsList[uniqueItem].quantity,
-        ),
-      );
-
-      setCartItems(newItemsList);
-      console.log(uniqueItemsList[uniqueItem].quantity);
-    }
+    setItems([...items]);
   };
-
-  const onColorEventHandler = (data) => {
-    setColorSelect(data);
-  };
-
-  const onSizeEventHandler = (data) => {
-    setSizeSelect(data);
-  };
-
-  useEffect(() => {
-    const cartStoraged = localStorage.getItem(userCart);
-
-    const newValue = JSON.parse(cartStoraged);
-
-    if (cartStoraged && newValue.length > 0) {
-      setCartItems(JSON.parse(cartStoraged));
-    }
-  }, []);
 
   return (
-    <div key={id} className="flex  justify-evenly max-w-[350px]">
+    <div key={item.id} className="flex  justify-evenly max-w-[350px]">
       <div className="rounded-md font-medium text-base p-4 border-2 w-[280px] shadow-[0_2px_1px_2px_rgba(0,0,0,0.2)]">
         <div className="flex relative flex-col grid justify-items-stretch justify-center">
           <img
             className="rounded-xl lg:max-w-[200px] opacity-80 hover:scale-110 duration-300 hover:opacity-100"
-            src={image}
-            alt={category}
+            src={item.image}
+            alt={item.category}
           />
           <div className="flex flex-col flex ">
-            <span className="text-center font-bold text-2xl pb-2">{name}</span>
+            <span className="text-center font-bold text-2xl pb-2">
+              {item.name}
+            </span>
             {currentCoin[0].value === "Dolar - $" ? (
               <span className="font-black text-xl text-sky-500">
-                Price: {price}
+                Price: {item.price}
               </span>
             ) : (
               <p className="font-black text-xl text-sky-500">
-                Price: {(price * 5.1).toFixed(2)}
+                Price: {(item.price * 5.1).toFixed(2)}
               </p>
             )}
-            <span>Stock: {quantity}</span>
-            <select
-              className=" text-black rounded-xl mb-2 mt-2"
-              onChange={(e) => onColorEventHandler(e.target.value)}
-              defaultValue={colorSelect}
-            >
-              {colors.map((option) => (
-                <option
-                  className="w-20"
-                  key={option}
-                  value={option}
-                  label={option}
-                />
-              ))}
-            </select>
-            <select
-              className="rounded-xl"
-              onChange={(e) => onSizeEventHandler(e.target.value)}
-            >
-              {sizes.map((option) => (
-                <option key={option} value={option} label={option} />
-              ))}
-            </select>
+            <span>Stock: {item.quantity}</span>
+            <Options
+              name="color"
+              value={optionals.color ?? ""}
+              options={arrayToOptions(item.colors)}
+              onChange={(value) => {
+                handleOptionalChange("color", value);
+              }}
+            />
+            <Options
+              name="size"
+              value={optionals.size ?? ""}
+              options={arrayToOptions(item.sizes)}
+              onChange={(value) => {
+                handleOptionalChange("size", value);
+              }}
+            />
           </div>
           <div className="relative pt-12 hover:opacity-80 hover:cursor-pointer">
             <div className="absolute bottom-0 right-2 flex border-solid border-2 border-sky-500  rounded-full p-1 float-right ">
@@ -151,9 +144,7 @@ export const ItemsListMapping = ({
                 type="button"
                 value="Buy"
                 className="pl-1 pr-1 text-black hover:cursor-pointer"
-                onClick={() =>
-                  buyButtonHandler(name, price, colors, sizes, category)
-                }
+                onClick={handleClickBuy}
               />
             </div>
           </div>
@@ -161,4 +152,15 @@ export const ItemsListMapping = ({
       </div>
     </div>
   );
+}
+
+ItemsListMapping.propTypes = {
+  item: itemPropType.isRequired,
 };
+
+const ProductList = () =>
+  CollectionMock.map((product) => (
+    <ItemsListMapping item={product} key={product.id} />
+  ));
+
+export default ProductList;

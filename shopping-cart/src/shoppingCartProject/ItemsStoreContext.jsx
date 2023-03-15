@@ -2,7 +2,7 @@ import React, { useState, useContext, createContext, useEffect } from "react";
 
 export const ItemsStoreContext = createContext([null, () => {}]);
 
-export const AddedButtonCartProvider = ({ children }) => {
+export const ItemsStoreContextProvider = ({ children }) => {
   const [contextValue, setContextValue] = useState([]);
 
   useEffect(() => {
