@@ -7,7 +7,8 @@ import React, {
 } from "react";
 // eslint-disable-next-line import/no-unresolved
 import useLocalStorage from "@d2k/react-localstorage";
-
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from "prop-types";
 import { StorageKey } from "./Constants";
 
 export const CartContext = createContext([

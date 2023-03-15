@@ -4,6 +4,7 @@ import { CollectionMockProvider } from "./CollectionMock";
 import { ExchangeCoinContextProvider } from "./ExchangeCoinContext";
 import { FilteredContextListProvider } from "./FilterContext";
 import { SearchFilterContextProvider } from "./SearchFilterContext";
+import { CartContextProvider } from "./CartItemsContext";
 
 import { UserLoginDataContextProvider } from "./UserLoginDataContext";
 
@@ -16,7 +17,9 @@ export const WrapperContextProvider = ({ children }) => (
         <SearchFilterContextProvider>
           <UserLoginDataContextProvider>
             <CollectionMockProvider>
-              <AddedButtonCartProvider>{children}</AddedButtonCartProvider>
+              <CartContextProvider>
+                <AddedButtonCartProvider>{children}</AddedButtonCartProvider>
+              </CartContextProvider>
             </CollectionMockProvider>
           </UserLoginDataContextProvider>
         </SearchFilterContextProvider>
