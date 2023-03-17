@@ -1,47 +1,31 @@
-import React, {
-  useState,
-  useContext,
-  createContext,
-  useEffect,
-  useMemo,
-} from "react";
-// eslint-disable-next-line import/no-unresolved
-import useLocalStorage from "@d2k/react-localstorage";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import PropTypes from "prop-types";
+import React, { useState, useContext, createContext, useEffect } from "react";
+
 import { StorageKey } from "./Constants";
 
-export const CartContext = createContext([
-  null,
-  { items: [], setItems: (items) => items },
-]);
+export const CartItemsContext = createContext([null, () => {}]);
 
-export function CartContextProvider({ children }) {
-  const [stateValue, setStateValue] = useState([]);
-  const [storageValue, setStorageValue] = useLocalStorage(StorageKey, []);
+export const CartItemsContextProvider = ({ children }) => {
+  const [contextValue, setContextValue] = useState([]);
 
-  useEffect(() => {
-    setStateValue(storageValue ?? []);
-  }, [storageValue]);
-
-  const setValue = (newValue) => {
-    setStateValue(newValue);
-    setStorageValue(newValue);
+  const setValue = (value) => {
+    setContextValue(value);
+    localStorage.setItem(StorageKey, JSON.stringify(value));
   };
 
-  // Memoize to get rid of excessive rendering
-  const contextValue = useMemo(
-    () => ({ items: stateValue, setItems: setValue }),
-    [stateValue, setValue],
-  );
+  useEffect(() => {
+    const storeItems = localStorage.getItem(StorageKey, contextValue);
+    if (storeItems) {
+      setContextValue(JSON.parse(storeItems));
+    }
+    console.log(contextValue);
+  }, []);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
+    <CartItemsContext.Provider value={[contextValue, setValue]}>
+      {children}
+    </CartItemsContext.Provider>
   );
-}
-CartContextProvider.propTypes = {
-  children: PropTypes.element.isRequired,
 };
 
-export const useCartContext = () => useContext(CartContext);
+export const useTestContext = () => useContext(CartItemsContext);

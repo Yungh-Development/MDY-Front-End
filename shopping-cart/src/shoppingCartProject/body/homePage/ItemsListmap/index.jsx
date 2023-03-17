@@ -1,136 +1,118 @@
-import React, { useContext, useState } from "react";
-import PropTypes from "prop-types";
+import React, { useContext, useState, useEffect } from "react";
 import { Icons } from "../../../Constants";
-
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
 // import { ItemsStoreContext } from "../../../ItemsStoreContext";
-import { CartContextProvider } from "../../../CartItemsContext";
-import { CollectionMock } from "../../../CollectionMock";
+import { CartItemsContext } from "../../../CartItemsContext";
 import getUniqueKeyFromItem from "../../../getUniqueKeyFromItem";
-import arrayToOptions from "../../../arrayToOptions";
 
-const itemPropType = PropTypes.shape({
-  id: PropTypes.number,
-  name: PropTypes.string,
-  price: PropTypes.number,
-  discountPercentage: PropTypes.number,
-  quantity: PropTypes.number,
-  category: PropTypes.string,
-  thumbnail: PropTypes.string,
-  image: PropTypes.arrayOf(PropTypes.string),
-  sizes: PropTypes.arrayOf(PropTypes.string),
-  colors: PropTypes.arrayOf(PropTypes.string),
-});
+const sizes = ["P", "M", "G", "GG"];
+const userCart = [];
 
-function Options({ name, options, value, onChange }) {
-  return (
-    <select
-      name={name}
-      id={name}
-      value={value}
-      onChange={(event) => {
-        onChange(event.target.value);
-      }}
-    >
-      <option value="">Select {name}</option>
-      {options.map((option) => (
-        <option value={option.value} key={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  );
-}
-Options.propTypes = {
-  name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(itemPropType).isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-
-function ItemsListMapping({ item }) {
+export const ItemsListMapping = ({
+  colors,
+  image,
+  category,
+  name,
+  price,
+  quantity,
+  id,
+}) => {
   const currentCoin = useContext(ExchangeCoinContext);
-  const { items, setItems } = CartContextProvider();
-  const [optionals, setOptionals] = useState({});
+  const [cartItems, setCartItems] = useContext(CartItemsContext);
 
-  const handleOptionalChange = (key, value) => {
-    setOptionals({ ...optionals, [key]: value });
+  const [colorSelect, setColorSelect] = useState("White");
+  const [sizeSelect, setSizeSelect] = useState("P");
+
+  const optionals = {
+    color: colorSelect,
+    size: sizeSelect,
   };
 
-  const handleClickBuy = () => {
-    if (!optionals.color) {
-      // eslint-disable-next-line no-alert
-      alert("You must pick a color!");
-      return;
-    }
-
-    if (!optionals.size) {
-      // eslint-disable-next-line no-alert
-      alert("You must pick a size!");
-      return;
-    }
-
+  const buyButtonHandler = () => {
     const itemToStore = {
-      id: item.id,
+      id,
+      name,
+      price,
       ...optionals,
     };
 
     itemToStore.uniqueKey = getUniqueKeyFromItem(itemToStore);
 
     // Check if exists
-
-    const existsIndex = items.findIndex(
+    const existsIndex = cartItems.findIndex(
       (storageItem) => storageItem.uniqueKey === itemToStore.uniqueKey,
     );
 
     if (existsIndex >= 0) {
-      items[existsIndex].quantity += 1;
+      cartItems[existsIndex].quantity += 1;
     } else {
-      items.push({ ...itemToStore, quantity: 1 });
+      cartItems.push({ ...itemToStore, quantity: 1 });
     }
 
-    setItems([...items]);
+    setCartItems([...cartItems]);
   };
 
+  const onColorEventHandler = (data) => {
+    setColorSelect(data);
+  };
+
+  const onSizeEventHandler = (data) => {
+    setSizeSelect(data);
+  };
+
+  useEffect(() => {
+    const cartStoraged = localStorage.getItem([userCart]);
+
+    const newValue = JSON.parse(cartStoraged);
+
+    if (cartStoraged && newValue.length > 0) {
+      setCartItems(JSON.parse(cartStoraged));
+    }
+  }, []);
+
   return (
-    <div key={item.id} className="flex  justify-evenly max-w-[350px]">
+    <div key={id} className="flex  justify-evenly max-w-[350px]">
       <div className="rounded-md font-medium text-base p-4 border-2 w-[280px] shadow-[0_2px_1px_2px_rgba(0,0,0,0.2)]">
         <div className="flex relative flex-col grid justify-items-stretch justify-center">
           <img
             className="rounded-xl lg:max-w-[200px] opacity-80 hover:scale-110 duration-300 hover:opacity-100"
-            src={item.image}
-            alt={item.category}
+            src={image}
+            alt={category}
           />
           <div className="flex flex-col flex ">
-            <span className="text-center font-bold text-2xl pb-2">
-              {item.name}
-            </span>
+            <span className="text-center font-bold text-2xl pb-2">{name}</span>
             {currentCoin[0].value === "Dolar - $" ? (
               <span className="font-black text-xl text-sky-500">
-                Price: {item.price}
+                Price: {price}
               </span>
             ) : (
               <p className="font-black text-xl text-sky-500">
-                Price: {(item.price * 5.1).toFixed(2)}
+                Price: {(price * 5.1).toFixed(2)}
               </p>
             )}
-            <span>Stock: {item.quantity}</span>
-            <Options
-              name="color"
-              value={optionals.color ?? ""}
-              options={arrayToOptions(item.colors)}
-              onChange={(value) => {
-                handleOptionalChange("color", value);
-              }}
-            />
-            <Options
-              name="size"
-              value={optionals.size ?? ""}
-              options={arrayToOptions(item.sizes)}
-              onChange={(value) => {
-                handleOptionalChange("size", value);
-              }}
-            />
+            <span>Stock: {quantity}</span>
+            <select
+              className=" text-black rounded-xl mb-2 mt-2"
+              onChange={(e) => onColorEventHandler(e.target.value)}
+              defaultValue={colorSelect}
+            >
+              {colors.map((option) => (
+                <option
+                  className="w-20"
+                  key={option}
+                  value={option}
+                  label={option}
+                />
+              ))}
+            </select>
+            <select
+              className="rounded-xl"
+              onChange={(e) => onSizeEventHandler(e.target.value)}
+            >
+              {sizes.map((option) => (
+                <option key={option} value={option} label={option} />
+              ))}
+            </select>
           </div>
           <div className="relative pt-12 hover:opacity-80 hover:cursor-pointer">
             <div className="absolute bottom-0 right-2 flex border-solid border-2 border-sky-500  rounded-full p-1 float-right ">
@@ -144,7 +126,9 @@ function ItemsListMapping({ item }) {
                 type="button"
                 value="Buy"
                 className="pl-1 pr-1 text-black hover:cursor-pointer"
-                onClick={handleClickBuy}
+                onClick={() =>
+                  buyButtonHandler(name, price, colors, sizes, category)
+                }
               />
             </div>
           </div>
@@ -152,15 +136,4 @@ function ItemsListMapping({ item }) {
       </div>
     </div>
   );
-}
-
-ItemsListMapping.propTypes = {
-  item: itemPropType.isRequired,
 };
-
-const ProductList = () =>
-  CollectionMock.map((product) => (
-    <ItemsListMapping item={product} key={product.id} />
-  ));
-
-export default ProductList;

@@ -2,13 +2,12 @@ import React, { useContext } from "react";
 
 import { CollectionMockContext } from "../../CollectionMock";
 
-import { ProductList } from "./ItemsListmap";
+import { ItemsListMapping } from "./ItemsListmap";
 import { LayoutPage } from "../..";
 import { CarouselSlide } from "../../HeroSlider";
 
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
-
   return (
     <LayoutPage>
       <div className="w-full justify-between">
@@ -18,7 +17,7 @@ export const HomePage = () => {
         <div className="flex grid grid-cols-2 gap-2 lg:grid lg:grid-cols-3 gap-8 xl:grid-cols-4 gap-16 p-20 ">
           {mockList.map(
             ({ name, price, quantity, colors, sizes, image, category, id }) => (
-              <ProductList
+              <ItemsListMapping
                 id={id}
                 name={name}
                 price={price}

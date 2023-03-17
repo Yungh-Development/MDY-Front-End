@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
-import { ItemsStoreContext } from "../../../ItemsStoreContext";
+// import { ItemsStoreContext } from "../../../ItemsStoreContext";
+import { CartItemsContext } from "../../../CartItemsContext";
 
 const userCart = [];
-const uniqueItemsList = {};
-
-const teste = localStorage.getItem(uniqueItemsList);
-const obj = JSON.parse(teste);
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
-  const [cartItems, setCartItems] = useContext(ItemsStoreContext);
+  const [cartItems, setCartItems] = useContext(CartItemsContext);
   // eslint-disable-next-line prefer-const
   let [count, setCount] = useState(1);
 
@@ -48,10 +45,9 @@ export const UserCartContainer = () => {
     setCartItems(newValue);
   };
 
-  useEffect(() => {
-    console.log(teste);
-    console.log(obj);
+  console.log(cartItems);
 
+  useEffect(() => {
     const cartStoraged = localStorage.getItem(userCart);
 
     const newValue = JSON.parse(cartStoraged);
