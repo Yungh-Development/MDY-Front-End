@@ -1,15 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
+import React, { useContext, useEffect } from "react";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
 // import { ItemsStoreContext } from "../../../ItemsStoreContext";
 import { CartItemsContext } from "../../../CartItemsContext";
+import { PlusMinusButton } from "../../../PlusMinusButtonContext";
 
 const userCart = [];
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
+
   // eslint-disable-next-line prefer-const
-  let [count, setCount] = useState(1);
 
   const checkOutHandler = () => {
     localStorage.setItem(userCart, JSON.stringify([cartItems]));
@@ -20,32 +23,40 @@ export const UserCartContainer = () => {
     setCartItems([]);
   };
 
-  const addButtonHandler = () => {
-    if (count >= 1) {
-      count += 1;
-      setCount(count);
+  const deleteItemHandler = (item) => {
+    const copyList = [...cartItems];
+
+    const newValue = copyList.filter((uniqueKey) => uniqueKey !== item);
+    setCartItems([...newValue]);
+  };
+
+  const handleClickPlus = (item) => {
+    const copyList = [...cartItems];
+
+    const uniqueItem = copyList.find(
+      (option) => option.uniqueKey === item.uniqueKey,
+    );
+
+    uniqueItem.quantity += 1;
+    console.log(uniqueItem);
+    setCartItems(copyList);
+  };
+
+  const handleClickMinus = (item) => {
+    const copyList = [...cartItems];
+
+    const uniqueItem = copyList.find(
+      (option) => option.uniqueKey === item.uniqueKey,
+    );
+
+    if (uniqueItem.quantity <= 0) {
+      deleteItemHandler(item);
     } else {
-      count = 1;
+      uniqueItem.quantity -= 1;
     }
+    console.log(uniqueItem.quantity);
+    setCartItems(copyList);
   };
-
-  const deleteButtonHandler = () => {
-    if (count >= 1) {
-      count -= 1;
-      setCount(count);
-    } else {
-      count = 1;
-    }
-  };
-
-  const deleteItemHandler = (data) => {
-    const newValue = cartItems.filter((item, index) => index !== data);
-
-    localStorage.setItem(userCart, JSON.stringify(newValue));
-    setCartItems(newValue);
-  };
-
-  console.log(cartItems);
 
   useEffect(() => {
     const cartStoraged = localStorage.getItem(userCart);
@@ -81,38 +92,28 @@ export const UserCartContainer = () => {
               // eslint-disable-next-line react/no-array-index-key
               <li key={index} className="flex flex-col overflow-auto p-2">
                 <span>{option.name}</span>
-                <span>{option.colors}</span>
-                <span>{option.sizes}</span>
+                <span>{option.color}</span>
+                <span>{option.size}</span>
                 {currentCoin[0].value === "Dolar - $" ? (
                   <span>{option.price}</span>
                 ) : (
                   <span>{(option.price * 5.1).toFixed(2)}</span>
                 )}
-                <div className="flex justify-center py-1">
-                  <input
-                    type="button"
-                    id="addButtonHandler"
-                    value="+"
-                    className="text-[#1d4ed8] bg-[#4ade80] px-2  font-thin text-lg hover:opacity-90 hover:cursor-pointer font-bold"
-                    onClick={() => addButtonHandler()}
-                  />
-                  <span className="border-solid border-[1px] border-[#0f172a] px-4">
-                    {count}
-                  </span>
-                  <input
-                    type="button"
-                    id="deleteButtonHandler"
-                    value="-"
-                    className="text-[#1d4ed8] bg-[#f87171] px-2 font-thin text-lg hover:opacity-90 hover:cursor-pointer font-bold"
-                    onClick={() => deleteButtonHandler()}
+
+                <div>
+                  <PlusMinusButton
+                    item={option}
+                    onClickPlus={handleClickPlus}
+                    onClickMinus={handleClickMinus}
                   />
                 </div>
+
                 <input
                   type="button"
                   id="deleteHandler"
                   value="Excluir"
                   className="text-sky-500 font-thin text-base hover:opacity-80 hover:underline my-4 w-28 ml-20 hover:cursor-pointer font-bold"
-                  onClick={() => deleteItemHandler(index)}
+                  onClick={() => deleteItemHandler(option)}
                 />
               </li>
             ))}
