@@ -27,12 +27,13 @@ export const ItemsListMapping = ({
     color: colorSelect,
     size: sizeSelect,
   };
-
+  console.log(cartItems);
   const buyButtonHandler = () => {
     const itemToStore = {
       id,
       name,
       price,
+      image,
       ...optionals,
     };
 
@@ -127,7 +128,7 @@ export const ItemsListMapping = ({
                 value="Buy"
                 className="pl-1 pr-1 text-black hover:cursor-pointer"
                 onClick={() =>
-                  buyButtonHandler(name, price, colors, sizes, category)
+                  buyButtonHandler(name, price, colors, sizes, category, image)
                 }
               />
             </div>

@@ -8,6 +8,7 @@ import { CarouselSlide } from "../../HeroSlider";
 
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
+  console.log(mockList);
   return (
     <LayoutPage>
       <div className="w-full justify-between">

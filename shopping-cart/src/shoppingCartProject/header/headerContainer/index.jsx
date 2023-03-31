@@ -30,7 +30,7 @@ export function HeaderContainer() {
         className={`${
           open
             ? "h-10 w-10 transition-all ease-in-out duration-300"
-            : "w-[250px] h-screen transition-all ease-in-out duration-400"
+            : "w-[300px] h-screen transition-all ease-in-out duration-400"
         }flex absolute top-0 z-50 md:h-20 lg:h-28  md:w-auto md:relative font-black text-lg bg-[#24252B] shadow-stone-300 shadow`}
       >
         <div className="flex flex-col relative pt-4 ml-2 md:flex-row md:flex md:justify-between w-auto lg:pt-8  ">

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Icons } from "../../../Constants";
 import { UserCartContainer } from "../UserCartContainer";
 import { UserLoginDataContext } from "../../../UserLoginDataContext";
-import { ItemsStoreContext } from "../../../ItemsStoreContext";
+import { CartItemsContext } from "../../../CartItemsContext";
 
 const loginKey = "ls_user";
 const userCart = [];
@@ -15,7 +15,7 @@ export const UserForm = () => {
   const [showForm, setShowForm] = useState(true);
   const [showCart, setShowCart] = useState(false);
   const [userLoginData, setUserLoginData] = useContext(UserLoginDataContext);
-  const [cartItems, setCartItems] = useContext(ItemsStoreContext);
+  const [cartItems, setCartItems] = useContext(CartItemsContext);
   const [, SetUserPassword] = useState();
 
   const userLoginHandler = (data) => {
@@ -41,6 +41,8 @@ export const UserForm = () => {
       setUserLoginData(JSON.parse(storagedUser));
     }
   }, []);
+
+  console.log(cartItems);
 
   return (
     <div className="relative">

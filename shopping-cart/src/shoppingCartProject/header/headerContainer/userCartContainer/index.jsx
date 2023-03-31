@@ -26,7 +26,9 @@ export const UserCartContainer = () => {
   const deleteItemHandler = (item) => {
     const copyList = [...cartItems];
 
-    const newValue = copyList.filter((uniqueKey) => uniqueKey !== item);
+    const newValue = copyList.filter(
+      (option) => option.uniqueKey !== item.uniqueKey,
+    );
     setCartItems([...newValue]);
   };
 
@@ -38,7 +40,7 @@ export const UserCartContainer = () => {
     );
 
     uniqueItem.quantity += 1;
-    console.log(uniqueItem);
+    console.log(uniqueItem.quantity);
     setCartItems(copyList);
   };
 
@@ -49,13 +51,17 @@ export const UserCartContainer = () => {
       (option) => option.uniqueKey === item.uniqueKey,
     );
 
-    if (uniqueItem.quantity <= 0) {
-      deleteItemHandler(item);
+    if (uniqueItem.quantity <= 1) {
+      const newValue = copyList.filter(
+        (option) => option.uniqueKey !== uniqueItem.uniqueKey,
+      );
+      setCartItems([...newValue]);
+      console.log(newValue);
     } else {
       uniqueItem.quantity -= 1;
+      setCartItems([...copyList]);
     }
-    console.log(uniqueItem.quantity);
-    setCartItems(copyList);
+    console.log(item.uniqueKey);
   };
 
   useEffect(() => {
