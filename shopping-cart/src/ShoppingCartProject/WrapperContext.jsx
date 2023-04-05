@@ -8,10 +8,10 @@ import { CartItemsContextProvider } from "./CartItemsContext";
 
 import { UserLoginDataContextProvider } from "./UserLoginDataContext";
 
-export const wrapperContext = createContext([null, () => {}]);
+export const WrapperContext = createContext([null, () => {}]);
 
 export const WrapperContextProvider = ({ children }) => (
-  <wrapperContext.Provider>
+  <WrapperContext.Provider>
     <ExchangeCoinContextProvider>
       <FilteredContextListProvider>
         <SearchFilterContextProvider>
@@ -27,5 +27,5 @@ export const WrapperContextProvider = ({ children }) => (
         </SearchFilterContextProvider>
       </FilteredContextListProvider>
     </ExchangeCoinContextProvider>
-  </wrapperContext.Provider>
+  </WrapperContext.Provider>
 );

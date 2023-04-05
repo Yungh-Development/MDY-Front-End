@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 
-import { StorageKey } from "./Constants";
+import { StorageKey } from "./constants";
 
 export const CartItemsContext = createContext([null, () => {}]);
 
@@ -14,10 +14,10 @@ export const CartItemsContextProvider = ({ children }) => {
 
   useEffect(() => {
     const storeItems = localStorage.getItem(StorageKey, contextValue);
+
     if (storeItems) {
       setContextValue(JSON.parse(storeItems));
     }
-    console.log(contextValue);
   }, []);
 
   return (
