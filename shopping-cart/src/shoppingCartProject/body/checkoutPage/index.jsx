@@ -29,7 +29,10 @@ export const CheckoutPage = () => {
       <ul className="pt-10 grid justify-items-center sm:justify-items-stretch md:pt-28 ">
         {cartItems[0].map((option) => (
           // eslint-disable-next-line react/no-array-index-key
-          <li className="flex flex-col w-[250px] items-center justify-center sm:flex-row sm:w-[auto] p-4 m-6 sm:justify-evenly items-center rounded-xl font-black border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]">
+          <li
+            key={option.id}
+            className="flex flex-col w-[250px] items-center justify-center sm:flex-row sm:w-[auto] p-4 m-6 sm:justify-evenly items-center rounded-xl font-black border-2 shadow-[0_15px_60px_15px_rgba(0,0,0,0.1)]"
+          >
             <img
               className="w-12 md:w-24 hover:scale-125 duration-300"
               src={option.image}
@@ -40,9 +43,9 @@ export const CheckoutPage = () => {
             <span className="p-2">Size: {option.size}</span>
             <span className="p-2">Quantity {option.quantity}</span>
             {currentCoin[0].value === "Dolar - $" ? (
-              <span>{option.price}</span>
+              <span>$: {option.price}</span>
             ) : (
-              <span>{(option.price * 5.1).toFixed(2)}</span>
+              <span>R$: {(option.price * 5.1).toFixed(2)}</span>
             )}
 
             <input

@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect, useContext } from "react";
 
@@ -17,6 +19,8 @@ export const UserForm = () => {
   const [userLoginData, setUserLoginData] = useContext(UserLoginDataContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
   const [, SetUserPassword] = useState();
+  // const [sumItems] = useState(0);
+  let sumItemsList = 0;
 
   const userLoginHandler = (data) => {
     setUserLoginData(data);
@@ -28,6 +32,19 @@ export const UserForm = () => {
 
   const onUserLogin = () => {
     localStorage.setItem(loginKey, JSON.stringify([userLoginData]));
+  };
+
+  const countCartItemsHandler = () => {
+    const copyList = [...cartItems];
+
+    sumItemsList = copyList
+      .map((option) => ({
+        value: option.quantity,
+      }))
+      .reduce(
+        (previousValue, currentValue) => (previousValue += currentValue.value),
+        0,
+      );
   };
 
   const onUserLogout = () => {
@@ -72,7 +89,9 @@ export const UserForm = () => {
               {cartItems == null ? (
                 <div />
               ) : (
-                <span className="text-sm">{cartItems.length}</span>
+                <span className="text-sm" onLoad={countCartItemsHandler()}>
+                  {sumItemsList}
+                </span>
               )}
             </div>
           </div>

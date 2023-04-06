@@ -18,16 +18,18 @@ export const HomePage = () => {
         <div className="flex grid grid-cols-2 gap-2 lg:grid lg:grid-cols-3 gap-8 xl:grid-cols-4 gap-16 p-20 ">
           {mockList.map(
             ({ name, price, quantity, colors, sizes, image, category, id }) => (
-              <ItemsListMapping
-                id={id}
-                name={name}
-                price={price}
-                quantity={quantity}
-                colors={colors}
-                sizes={sizes}
-                image={image}
-                category={category}
-              />
+              <div key={id}>
+                <ItemsListMapping
+                  id={id}
+                  name={name}
+                  price={price}
+                  quantity={quantity}
+                  colors={colors}
+                  sizes={sizes}
+                  image={image}
+                  category={category}
+                />
+              </div>
             ),
           )}
         </div>

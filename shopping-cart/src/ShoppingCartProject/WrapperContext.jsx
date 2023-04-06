@@ -11,7 +11,7 @@ import { UserLoginDataContextProvider } from "./UserLoginDataContext";
 export const WrapperContext = createContext([null, () => {}]);
 
 export const WrapperContextProvider = ({ children }) => (
-  <WrapperContext.Provider>
+  <WrapperContext.Provider value={children}>
     <ExchangeCoinContextProvider>
       <FilteredContextListProvider>
         <SearchFilterContextProvider>
