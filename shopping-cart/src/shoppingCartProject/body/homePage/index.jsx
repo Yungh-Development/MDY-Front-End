@@ -5,14 +5,18 @@ import { CollectionMockContext } from "../../CollectionMock";
 import { ItemsListMapping } from "./ItemsListmap";
 import { LayoutPage } from "../..";
 import { CarouselSlide } from "../../HeroSlider";
+import { SearchComponents } from "./SearchComponents";
 
 export const HomePage = () => {
   const [mockList] = useContext(CollectionMockContext);
 
   return (
     <LayoutPage>
+      <div className="fixed w-full z-20 pt-16">
+        <SearchComponents />
+      </div>
       <div className="w-full justify-between">
-        <div className="pt-0 md:pt-28">
+        <div className="pt-0 md:pt-32">
           <CarouselSlide />
         </div>
         <div className="flex grid grid-cols-2 gap-2 lg:grid lg:grid-cols-3 gap-8 xl:grid-cols-4 gap-16 p-20 ">
