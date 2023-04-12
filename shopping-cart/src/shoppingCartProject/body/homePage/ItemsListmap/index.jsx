@@ -84,11 +84,11 @@ export const ItemsListMapping = ({
             <span className="text-center font-bold text-2xl pb-2">{name}</span>
             {currentCoin[0].value === "Dolar - $" ? (
               <span className="font-black text-xl text-sky-500">
-                $: {price}
+                Price: {price}
               </span>
             ) : (
               <p className="font-black text-xl text-sky-500">
-                R$: {(price * 5.1).toFixed(2)}
+                Price: {(price * 5.1).toFixed(2)}
               </p>
             )}
             <span>Stock: {quantity}</span>

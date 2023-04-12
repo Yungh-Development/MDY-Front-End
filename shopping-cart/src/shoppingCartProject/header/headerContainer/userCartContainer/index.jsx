@@ -98,9 +98,9 @@ export const UserCartContainer = () => {
                 <span>{option.color}</span>
                 <span>{option.size}</span>
                 {currentCoin[0].value === "Dolar - $" ? (
-                  <span>$: {option.price}</span>
+                  <span>{option.price}</span>
                 ) : (
-                  <span>R$: {(option.price * 5.1).toFixed(2)}</span>
+                  <span>{(option.price * 5.1).toFixed(2)}</span>
                 )}
 
                 <div>
