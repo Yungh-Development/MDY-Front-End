@@ -19,7 +19,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "TShirts",
     subCategory: "Male",
-    image: TShirtImg,
+    image: [TShirtImg],
   },
   {
     id: "2",
@@ -31,7 +31,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "TShirts",
     subCategory: "Female",
-    image: TShirtImg,
+    image: [TShirtImg],
   },
   {
     id: "3",
@@ -43,7 +43,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "TShirts",
     subCategory: "Male",
-    image: TShirtImg,
+    image: [TShirtImg],
   },
   {
     id: "4",
@@ -55,7 +55,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "TShirts",
     subCategory: "Female",
-    image: TShirtImg,
+    image: [TShirtImg],
   },
   {
     id: "5",
@@ -67,7 +67,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shorts",
     subCategory: "Male",
-    image: ShortsImg,
+    image: [ShortsImg],
   },
   {
     id: "6",
@@ -79,7 +79,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shorts",
     subCategory: "Female",
-    image: ShortsImg,
+    image: [ShortsImg],
   },
   {
     id: "7",
@@ -91,7 +91,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shorts",
     subCategory: "Male",
-    image: ShortsImg,
+    image: [ShortsImg],
   },
   {
     id: "8",
@@ -103,7 +103,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shorts",
     subCategory: "Female",
-    image: ShortsImg,
+    image: [ShortsImg],
   },
   {
     id: "9",
@@ -115,7 +115,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shoes",
     subCategory: "Male",
-    image: ShoesImg,
+    image: [ShoesImg],
   },
   {
     id: "10",
@@ -127,7 +127,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shoes",
     subCategory: "Female",
-    image: ShoesImg,
+    image: [ShoesImg],
   },
   {
     id: "11",
@@ -139,7 +139,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shoes",
     subCategory: "Male",
-    image: ShoesImg,
+    image: [ShoesImg],
   },
   {
     id: "12",
@@ -151,7 +151,7 @@ export const CollectionMock = [
     sizes: ["P", "M", "G", "GG"],
     category: "Shoes",
     subCategory: "Female",
-    image: ShoesImg,
+    image: [ShoesImg],
   },
 ];
 

@@ -1,7 +1,9 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect, useContext } from "react";
 
-import { Icons } from "../../../Constants";
+import { Icons } from "../../../constants";
 import { UserCartContainer } from "../UserCartContainer";
 import { UserLoginDataContext } from "../../../UserLoginDataContext";
 import { CartItemsContext } from "../../../CartItemsContext";
@@ -17,6 +19,8 @@ export const UserForm = () => {
   const [userLoginData, setUserLoginData] = useContext(UserLoginDataContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
   const [, SetUserPassword] = useState();
+  // const [sumItems] = useState(0);
+  let sumItemsList = 0;
 
   const userLoginHandler = (data) => {
     setUserLoginData(data);
@@ -30,9 +34,24 @@ export const UserForm = () => {
     localStorage.setItem(loginKey, JSON.stringify([userLoginData]));
   };
 
+  const checkOutHandler = () => {
+    localStorage.setItem(userCart, JSON.stringify([cartItems]));
+  };
+
+  const countCartItemsHandler = () => {
+    const copyList = [...cartItems];
+
+    sumItemsList = copyList
+      .map((option) => ({
+        value: option.quantity,
+      }))
+      .reduce(
+        (previousValue, currentValue) => (previousValue += currentValue.value),
+        0,
+      );
+  };
+
   const onUserLogout = () => {
-    localStorage.removeItem(loginKey);
-    localStorage.setItem(userCart, JSON.stringify([]));
     setUserLoginData(null);
     setCartItems(userCart);
   };
@@ -69,33 +88,62 @@ export const UserForm = () => {
               value={userLoginData}
               onClick={() => setShowCart(!showCart)}
             />
+
             <div className="flex">
               <Icons.CartIcon className="ml-1 mr-1 mt-[2px]"> </Icons.CartIcon>
               {cartItems == null ? (
                 <div />
               ) : (
-                <span className="text-sm">{cartItems.length}</span>
+                <span className="text-sm" onLoad={countCartItemsHandler()}>
+                  {sumItemsList}
+                </span>
               )}
             </div>
           </div>
           <div
             className={`${
               showForm
-                ? " flex block items-center justify-center h-[38px] text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm p-1 w-42 md:top-[-4px]"
+                ? " flex block h-[38px] text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm px-2 text-center w-42"
+                : "hidden"
+            }`}
+          >
+            <div className="mt-[-3px]">
+              <label htmlFor="CheckoutButton" className="mb-4">
+                <a
+                  href="/checkout"
+                  className=" hover:text-gray-200 hover:opacity-90"
+                >
+                  Checkout
+                </a>
+                <input
+                  id="CheckoutButton"
+                  type="button"
+                  className="cursor-pointer"
+                  onClick={() => checkOutHandler()}
+                />
+              </label>
+            </div>
+          </div>
+          <div
+            className={`${
+              showForm
+                ? " flex block h-[38px] text-white mr-4 border-1 shadow-[0_1px_4px_1px_rgba(256,256,256,0.4)] rounded-sm px-2 py-1 text-center w-42"
                 : "hidden"
             }`}
           >
             <div>
               <label htmlFor="userLogout" />
+
               <input
                 type="button"
                 id="userLogout"
-                className="cursor-pointer px-1"
                 value="Logout"
+                className="cursor-pointer hover:text-gray-200 hover:opacity-90"
                 onClick={() => onUserLogout()}
               />
             </div>
           </div>
+
           <div className="">
             {showCart ? (
               <div className="z-50 absolute right-0 top-[-15px] h-screen transition-all ease-in-out duration-800 bg-[#fff] ">

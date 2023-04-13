@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Icons } from "../../../Constants";
+import { Icons } from "../../../constants";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
+// import { ItemsStoreContext } from "../../../ItemsStoreContext";
 import { CartItemsContext } from "../../../CartItemsContext";
+import getUniqueKeyFromItem from "../../../getUniqueKeyFromItem";
 
 const sizes = ["P", "M", "G", "GG"];
 const userCart = [];
@@ -16,26 +18,39 @@ export const ItemsListMapping = ({
   id,
 }) => {
   const currentCoin = useContext(ExchangeCoinContext);
-
   const [cartItems, setCartItems] = useContext(CartItemsContext);
+
   const [colorSelect, setColorSelect] = useState("White");
   const [sizeSelect, setSizeSelect] = useState("P");
 
+  const optionals = {
+    color: colorSelect,
+    size: sizeSelect,
+  };
+
   const buyButtonHandler = () => {
-    const Datalist = {
+    const itemToStore = {
+      id,
       name,
       price,
-      colors: colorSelect,
-      sizes: sizeSelect,
       image,
+      ...optionals,
     };
-    setCartItems([...cartItems, Datalist]);
 
-    const newItemsList = [...cartItems, Datalist];
+    itemToStore.uniqueKey = getUniqueKeyFromItem(itemToStore);
 
-    if (cartItems.length > 0) {
-      localStorage.setItem(userCart, JSON.stringify(newItemsList));
+    // Check if exists
+    const existsIndex = cartItems.findIndex(
+      (storageItem) => storageItem.uniqueKey === itemToStore.uniqueKey,
+    );
+
+    if (existsIndex >= 0) {
+      cartItems[existsIndex].quantity += 1;
+    } else {
+      cartItems.push({ ...itemToStore, quantity: 1 });
     }
+
+    setCartItems([...cartItems]);
   };
 
   const onColorEventHandler = (data) => {
@@ -47,7 +62,7 @@ export const ItemsListMapping = ({
   };
 
   useEffect(() => {
-    const cartStoraged = localStorage.getItem(userCart);
+    const cartStoraged = localStorage.getItem([userCart]);
 
     const newValue = JSON.parse(cartStoraged);
 
@@ -69,11 +84,11 @@ export const ItemsListMapping = ({
             <span className="text-center font-bold text-2xl pb-2">{name}</span>
             {currentCoin[0].value === "Dolar - $" ? (
               <span className="font-black text-xl text-sky-500">
-                Price: {price}
+                $: {price}
               </span>
             ) : (
               <p className="font-black text-xl text-sky-500">
-                Price: {(price * 5.1).toFixed(2)}
+                R$: {(price * 5.1).toFixed(2)}
               </p>
             )}
             <span>Stock: {quantity}</span>
@@ -113,7 +128,7 @@ export const ItemsListMapping = ({
                 value="Buy"
                 className="pl-1 pr-1 text-black hover:cursor-pointer"
                 onClick={() =>
-                  buyButtonHandler(name, price, colors, sizes, category)
+                  buyButtonHandler(name, price, colors, sizes, category, image)
                 }
               />
             </div>

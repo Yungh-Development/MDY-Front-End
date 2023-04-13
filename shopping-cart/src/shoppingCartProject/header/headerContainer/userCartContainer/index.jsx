@@ -1,16 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
+import React, { useContext, useEffect } from "react";
 import { ExchangeCoinContext } from "../../../ExchangeCoinContext";
+// import { ItemsStoreContext } from "../../../ItemsStoreContext";
 import { CartItemsContext } from "../../../CartItemsContext";
-import { CollectionMock } from "../../../CollectionMock";
+import { PlusMinusButton } from "../../../PlusMinusButtonContext";
 
 const userCart = [];
 
 export const UserCartContainer = () => {
   const currentCoin = useContext(ExchangeCoinContext);
   const [cartItems, setCartItems] = useContext(CartItemsContext);
-  const [teste, setTeste] = useState([]);
 
-  const { product } = CollectionMock;
+  // eslint-disable-next-line prefer-const
 
   const checkOutHandler = () => {
     localStorage.setItem(userCart, JSON.stringify([cartItems]));
@@ -19,31 +21,50 @@ export const UserCartContainer = () => {
   const clearCartHandler = () => {
     localStorage.setItem(userCart, JSON.stringify([]));
     setCartItems([]);
-    console.log("Deleto");
   };
 
-  const deleteItemHandler = (data) => {
-    const newValue = cartItems.filter((item, index) => index !== data);
+  const deleteItemHandler = (item) => {
+    const copyList = [...cartItems];
 
-    localStorage.setItem(userCart, JSON.stringify(newValue));
-    setCartItems(newValue);
+    const newValue = copyList.filter(
+      (option) => option.uniqueKey !== item.uniqueKey,
+    );
+    setCartItems([...newValue]);
+  };
+
+  const handleClickPlus = (item) => {
+    const copyList = [...cartItems];
+
+    const uniqueItem = copyList.find(
+      (option) => option.uniqueKey === item.uniqueKey,
+    );
+
+    uniqueItem.quantity += 1;
+    setCartItems(copyList);
+  };
+
+  const handleClickMinus = (item) => {
+    const copyList = [...cartItems];
+
+    const uniqueItem = copyList.find(
+      (option) => option.uniqueKey === item.uniqueKey,
+    );
+
+    if (uniqueItem.quantity <= 1) {
+      const newValue = copyList.filter(
+        (option) => option.uniqueKey !== uniqueItem.uniqueKey,
+      );
+      setCartItems([...newValue]);
+    } else {
+      uniqueItem.quantity -= 1;
+      setCartItems([...copyList]);
+    }
   };
 
   useEffect(() => {
     const cartStoraged = localStorage.getItem(userCart);
 
     const newValue = JSON.parse(cartStoraged);
-
-    const exist = teste.find((x) => x.name === teste.name);
-    if (exist) {
-      setTeste(
-        teste.map((x) =>
-          x.name === product.name ? { ...exist, qty: exist.qty + 1 } : x,
-        ),
-      );
-    } else {
-      setTeste([...teste, { ...product, qty: 1 }]);
-    }
 
     if (cartStoraged && newValue.length > 0) {
       setCartItems(JSON.parse(cartStoraged));
@@ -74,20 +95,28 @@ export const UserCartContainer = () => {
               // eslint-disable-next-line react/no-array-index-key
               <li key={index} className="flex flex-col overflow-auto p-2">
                 <span>{option.name}</span>
-                <span>{option.colors}</span>
-                <span>{option.sizes}</span>
+                <span>{option.color}</span>
+                <span>{option.size}</span>
                 {currentCoin[0].value === "Dolar - $" ? (
-                  <span>{option.price}</span>
+                  <span>$: {option.price}</span>
                 ) : (
-                  <span>{(option.price * 5.1).toFixed(2)}</span>
+                  <span>R$: {(option.price * 5.1).toFixed(2)}</span>
                 )}
-                <span>{teste.length}</span>
+
+                <div>
+                  <PlusMinusButton
+                    item={option}
+                    onClickPlus={handleClickPlus}
+                    onClickMinus={handleClickMinus}
+                  />
+                </div>
+
                 <input
                   type="button"
                   id="deleteHandler"
                   value="Excluir"
                   className="text-sky-500 font-thin text-base hover:opacity-80 hover:underline my-4 w-28 ml-20 hover:cursor-pointer font-bold"
-                  onClick={() => deleteItemHandler(index)}
+                  onClick={() => deleteItemHandler(option)}
                 />
               </li>
             ))}

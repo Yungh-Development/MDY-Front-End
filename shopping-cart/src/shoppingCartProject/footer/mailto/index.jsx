@@ -51,7 +51,7 @@ export const MailTo = (onSubmitSavedDatas) => {
             onChange={(data) => mailToEmailHanlder(data)}
           />
         </label>
-        <div className="mt-2">
+        <div className="my-4">
           <button
             type="submit"
             className="bg-[#303D4E] p-2 font-black text-white rounded-sm w-14 hover:opacity-80 hover:border-1 hover:shadow-[0_1px_4px_1px_rgba(256,256,256,0.1)]"
