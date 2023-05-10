@@ -1,16 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-import { createStore, combineReducers } from "redux";
-import { Provider } from "react-redux";
-import { reducer as formReducer } from "redux-form";
-
-import "./index.css";
 import App from "./App";
-
-const rootReducer = combineReducers({
-  form: formReducer,
-});
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./Reducers/RecuderCombiner";
 
 const store = createStore(rootReducer);
 
